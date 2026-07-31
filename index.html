@@ -3,438 +3,425 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>歐胡島 Go City 4 日行程表（可拖曳）</title>
+<title>歐胡島 4 日行程手冊</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#EDE6D2;
-    --paper-2:#E4DBC2;
-    --ink:#16323A;
-    --ink-soft:#3E5A61;
-    --route:#B8433B;
-    --sun:#C98A2E;
-    --moon:#4C5B8C;
-    --line:#c9bd9c;
-    --ok:#3E6B4A;
-    --warn:#9C5A1E;
-    --card:#FBF8EF;
+    --sea:#0FB5A6;
+    --sea-dark:#0A7F76;
+    --hibiscus:#FF5C7A;
+    --hibiscus-dark:#E23F5F;
+    --sun:#FFC93C;
+    --leaf:#2E9C6B;
+    --sand:#FFF8EC;
+    --card:#FFFFFF;
+    --ink:#2B2140;
+    --ink-soft:#6B6280;
+    --line:#F0E4D0;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    background:var(--paper);
-    background-image:linear-gradient(var(--paper-2) 1px, transparent 1px), linear-gradient(90deg, var(--paper-2) 1px, transparent 1px);
-    background-size:32px 32px;
+    background:var(--sand);
+    background-image:radial-gradient(circle at 90% 0%, rgba(255,201,60,0.18), transparent 40%),
+                      radial-gradient(circle at 0% 20%, rgba(15,181,166,0.13), transparent 35%);
     color:var(--ink);
-    font-family:'Inter', sans-serif;
+    font-family:'Nunito', sans-serif;
     line-height:1.5;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:1400px;margin:0 auto;padding:24px 18px 70px;}
+  .wrap{max-width:640px; margin:0 auto; padding:0 0 60px;}
 
   header.hero{
-    border:1.5px solid var(--ink);
-    border-radius:2px;
-    padding:22px 24px;
-    background:rgba(251,248,239,0.7);
-    margin-bottom:16px;
+    background:linear-gradient(135deg, var(--sea) 0%, var(--sea-dark) 55%, #0C6560 100%);
+    color:#fff;
+    padding:26px 20px 34px;
+    border-radius:0 0 28px 28px;
+    position:relative;
+    overflow:hidden;
   }
-  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--route);margin:0 0 6px;}
-  h1{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(24px,4vw,34px);margin:0 0 8px;}
-  .hero-meta{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:13px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
-  .hero-meta b{color:var(--ink);}
+  header.hero::after{
+    content:"🌺";
+    position:absolute; right:14px; top:10px; font-size:46px; opacity:.35; transform:rotate(12deg);
+  }
+  .eyebrow{font-family:'Baloo 2',sans-serif; font-size:13px; letter-spacing:.06em; opacity:.85; margin:0 0 4px;}
+  h1{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:28px; margin:0 0 10px;}
+  .hero-chips{display:flex; flex-wrap:wrap; gap:6px;}
+  .chip{background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.4); border-radius:20px; padding:4px 12px; font-size:12.5px; font-weight:600;}
 
-  .notice{border-left:3px solid var(--route);background:rgba(184,67,59,0.07);padding:12px 15px;margin:14px 0 18px;font-size:13.5px;}
-  .notice b{color:var(--route);}
-  .notice ul{margin:6px 0 0;padding-left:18px;}
-  .notice li{margin-bottom:3px;}
+  .wave{display:block; width:100%; height:26px; margin-top:-2px;}
+
+  main{padding:0 14px;}
+
+  .notice{
+    background:#fff; border:2px dashed var(--hibiscus);
+    border-radius:16px; padding:14px 16px; margin:16px 0; font-size:13.5px;
+  }
+  .notice b{color:var(--hibiscus-dark);}
+  .notice ul{margin:6px 0 0; padding-left:18px;}
+  .notice li{margin-bottom:4px;}
 
   .dnd-hint{
-    display:flex;align-items:center;gap:10px;flex-wrap:wrap;
-    background:rgba(76,91,140,0.08);
-    border:1px dashed var(--moon);
-    border-radius:6px;
-    padding:10px 14px;
-    font-size:13px;
-    margin-bottom:18px;
+    background:linear-gradient(135deg, #FFF3D6, #FFE6E9);
+    border-radius:16px; padding:12px 15px; margin-bottom:14px; font-size:13px;
+    display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
   }
-  .dnd-hint b{color:var(--moon);}
   #reset-btn{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:12px;
-    background:var(--ink);
-    color:var(--paper);
-    border:none;
-    border-radius:20px;
-    padding:6px 14px;
-    cursor:pointer;
+    font-family:'Baloo 2',sans-serif; font-size:12.5px;
+    background:var(--ink); color:#fff; border:none; border-radius:20px;
+    padding:7px 14px; cursor:pointer;
   }
-  #reset-btn:hover{opacity:.85;}
 
-  .board{
-    display:flex;
-    gap:14px;
-    overflow-x:auto;
-    padding-bottom:10px;
-    align-items:flex-start;
+  nav.tabs{
+    position:sticky; top:0; z-index:10;
+    display:flex; gap:8px; overflow-x:auto;
+    padding:12px 14px; background:var(--sand);
+    -webkit-overflow-scrolling:touch;
   }
-  .day-col{
-    flex:0 0 340px;
-    max-width:340px;
-    border:1.5px solid var(--ink);
-    border-radius:6px;
-    background:rgba(251,248,239,0.55);
-    display:flex;
-    flex-direction:column;
+  nav.tabs::-webkit-scrollbar{display:none;}
+  nav.tabs button{
+    flex:0 0 auto;
+    font-family:'Baloo 2',sans-serif; font-size:14px; font-weight:600;
+    background:#fff; color:var(--ink-soft);
+    border:2px solid var(--line); border-radius:20px;
+    padding:8px 16px; cursor:pointer; white-space:nowrap;
   }
-  .day-col-head{
-    padding:12px 14px 10px;
-    border-bottom:1.5px solid var(--ink);
+  nav.tabs button.active{
+    background:var(--hibiscus); border-color:var(--hibiscus); color:#fff;
   }
-  .day-col-head h2{font-family:'Fraunces',serif;font-size:18px;margin:0 0 2px;}
-  .day-col-head .status{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:10.5px;
-    color:var(--ok);
-    border:1px solid var(--ok);
-    display:inline-block;
-    padding:1px 8px;
-    border-radius:20px;
-    margin-top:4px;
-  }
-  .day-col-head .sub{font-size:11.5px;color:var(--ink-soft);margin-top:4px;}
 
-  .card-list{
-    list-style:none;
-    margin:0;
-    padding:10px;
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-    min-height:80px;
-    flex:1;
+  .day-banner{
+    border-radius:18px; padding:16px 18px; margin:6px 0 14px; color:#fff;
+    position:relative; overflow:hidden;
   }
+  .day-banner h2{font-family:'Baloo 2',sans-serif; font-size:20px; margin:0 0 2px;}
+  .day-banner .sub{font-size:13px; opacity:.92; margin:0 0 8px;}
+  .day-banner .status{
+    display:inline-block; background:rgba(255,255,255,0.25); border-radius:20px;
+    font-size:12px; font-weight:700; padding:3px 10px;
+  }
+  .banner-1{background:linear-gradient(135deg,#0FB5A6,#0A7F76);}
+  .banner-2{background:linear-gradient(135deg,#2E9C6B,#1F7350);}
+  .banner-3{background:linear-gradient(135deg,#FF5C7A,#E23F5F);}
+  .banner-4{background:linear-gradient(135deg,#5B6BC0,#3F4C99);}
+
+  .day-panel{display:none;}
+  .day-panel.active{display:block;}
+
+  .card-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
+
   .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:10px 11px;
-    cursor:grab;
-    font-size:12.5px;
-    box-shadow:0 1px 0 rgba(22,50,58,.05);
+    background:var(--card); border-radius:16px; padding:14px 15px;
+    box-shadow:0 3px 10px rgba(43,33,64,0.07);
+    border-left:6px solid var(--sea);
+    font-size:13.5px;
   }
-  .card.dragging{opacity:.35;}
-  .card:active{cursor:grabbing;}
-  .card-time{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--route);font-weight:600;}
-  .card-title{font-family:'Fraunces',serif;font-weight:600;font-size:15px;margin:3px 0 6px;}
-  .card-row{margin:4px 0;color:var(--ink-soft);}
-  .card-row b{color:var(--ink);}
-  .card a.map{color:var(--route);text-decoration:none;border-bottom:1px dotted var(--route);}
-  .card a.map:hover{opacity:.7;}
-  .badge{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:1px 7px;border-radius:20px;border:1px solid currentColor;margin-left:4px;}
-  .badge.book{color:var(--warn);}
-  .badge.free{color:var(--ok);}
-  .fee{font-size:11.5px;color:var(--warn);background:rgba(156,90,30,0.08);border-radius:4px;padding:4px 6px;margin-top:6px;}
+  .card.type-water{border-left-color:var(--sea);}
+  .card.type-culture{border-left-color:var(--hibiscus);}
+  .card.type-nature{border-left-color:var(--leaf);}
+  .card.type-history{border-left-color:#5B6BC0;}
+
+  .card-top{display:flex; align-items:baseline; justify-content:space-between; gap:8px; flex-wrap:wrap;}
+  .card-time{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13.5px; color:var(--hibiscus-dark);}
+  .card-title{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16.5px; margin:4px 0 8px; display:flex; align-items:center; gap:6px;}
+  .badge{font-family:'Nunito',sans-serif; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px;}
+  .badge.book{background:#FFE9C7; color:#9C5A1E;}
+  .badge.free{background:#DCF2E6; color:#1F7350;}
+
+  .info-block p{margin:5px 0;}
+  .info-block .k{font-weight:700; color:var(--ink);}
+  .info-block a{color:var(--sea-dark); font-weight:700; text-decoration:none; border-bottom:2px solid rgba(15,181,166,.3);}
+  .info-block a:hover{border-bottom-color:var(--sea-dark);}
+  .closed{color:var(--hibiscus-dark); font-weight:700;}
+
+  .fee-line{
+    margin-top:8px; background:#FFF3E0; border-radius:10px; padding:7px 10px; font-size:12.5px; color:#9C5A1E;
+  }
+
   .video-link{
-    display:flex;align-items:center;gap:8px;margin-top:7px;text-decoration:none;
-    border:1px solid var(--line); border-radius:4px; padding:5px 7px; background:rgba(255,255,255,.4);
+    margin-top:9px; display:flex; align-items:center; gap:9px; text-decoration:none;
+    background:#F5F2FF; border-radius:10px; padding:6px 8px;
   }
-  .video-link img{width:64px;height:36px;object-fit:cover;border-radius:3px;flex-shrink:0;}
-  .video-link span{font-size:11px;color:var(--ink);line-height:1.3;}
-  .video-link:hover{background:rgba(255,255,255,.8);}
+  .video-link img{width:60px; height:34px; object-fit:cover; border-radius:6px; flex-shrink:0;}
+  .video-link span{font-size:11.5px; color:var(--ink); font-weight:600; line-height:1.3;}
 
-  /* reference table view */
-  section.ref{margin-top:34px;}
-  section.ref h3{font-family:'Fraunces',serif;font-size:20px;margin:0 0 4px;}
-  section.ref p.sub{font-size:13px;color:var(--ink-soft);margin:0 0 14px;}
-  .table-scroll{overflow-x:auto; border:1px solid var(--line); border-radius:6px;}
-  table.full{width:100%; border-collapse:collapse; font-size:12.8px; min-width:980px;}
-  table.full th, table.full td{border:1px solid var(--line); padding:9px 10px; text-align:left; vertical-align:top;}
-  table.full th{background:rgba(22,50,58,0.07); font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.04em;}
-  table.full tr:nth-child(even) td{background:rgba(22,50,58,0.02);}
-  table.full td a{color:var(--route);}
+  .card-controls{
+    display:flex; align-items:center; gap:6px; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);
+  }
+  .card-controls button{
+    font-family:'Baloo 2',sans-serif; font-size:13px; background:var(--sand); border:1px solid var(--line);
+    border-radius:8px; width:30px; height:30px; cursor:pointer; color:var(--ink);
+  }
+  .card-controls select{
+    font-family:'Nunito',sans-serif; font-size:12px; border-radius:8px; border:1px solid var(--line);
+    padding:5px 8px; background:#fff; color:var(--ink-soft); margin-left:auto;
+  }
 
-  footer.notes{margin-top:40px;border-top:1.5px solid var(--ink);padding-top:16px;font-size:12.8px;color:var(--ink-soft);}
-  footer.notes b{color:var(--ink);}
+  footer.notes{margin:30px 14px 0; font-size:12px; color:var(--ink-soft); text-align:center;}
 
-  @media (max-width:640px){
-    .wrap{padding:16px 10px 50px;}
-    .day-col{flex:0 0 280px;}
+  @media (min-width:480px){
+    h1{font-size:32px;}
   }
 </style>
 </head>
 <body>
-<div class="wrap">
 
   <header class="hero">
-    <p class="eyebrow">Oʻahu · Go City All-Inclusive Pass · 4 Days · 可拖曳規劃版</p>
-    <h1>歐胡島行程表</h1>
-    <div class="hero-meta">
-      <span><b>使用天數：</b>4 天（14 日效期內任選）</span>
-      <span><b>涵蓋日期：</b>8/31、9/1、9/2、9/8</span>
-      <span><b>基地：</b>Waikiki</span>
+    <p class="eyebrow">OʻAHU · GO CITY ALL-INCLUSIVE · 4 DAYS</p>
+    <h1>🌴 歐胡島行程手冊</h1>
+    <div class="hero-chips">
+      <span class="chip">4 天／14 日效期</span>
+      <span class="chip">8/31・9/1・9/2・9/8</span>
+      <span class="chip">基地 Waikiki</span>
     </div>
   </header>
+  <svg class="wave" viewBox="0 0 500 26" preserveAspectRatio="none"><path d="M0,10 C120,26 380,-6 500,10 L500,26 L0,26 Z" fill="#FFF8EC"/></svg>
 
-  <div class="notice">
-    <b>先講重點（邏輯可行性）：</b>
-    <ul>
-      <li>Waimea Valley <b>週一公休</b>，其餘每天 09:00–16:00 — 排在 9/2（三）沒問題</li>
-      <li>Hula Class 在 Kahuku，<b>不在</b> Waimea Valley 園區內，平日固定 <b>12:00</b> 一場（週末才有 10:00 場）</li>
-      <li>PCC <b>週三、週日公休</b> — 排在 9/1（二）沒問題</li>
-      <li>Kualoa Ranch Ocean Voyage 週日公休、其餘每天營業（9/7 因假日休園，不影響你排的 9/1）</li>
-      <li>Ka Moana Luau <b>週六公休</b>，其餘每天 17:30–20:00 — 排在 8/31（一）沒問題</li>
-      <li>USS Arizona Memorial <b>免費船票不含在 Go City 票內</b>，需另外上 recreation.gov 搶，常提前數週額滿</li>
-    </ul>
-  </div>
+  <main>
+    <div class="notice">
+      <b>🐢 邏輯可行性重點：</b>
+      <ul>
+        <li>Waimea Valley <span class="closed">週一公休</span>，其餘每天 09:00–16:00 — 排 9/2（三）沒問題</li>
+        <li>Hula Class 在 Kahuku（不在 Waimea Valley 園區內），平日固定 <b>12:00</b> 一場</li>
+        <li>PCC <span class="closed">週三、週日公休</span> — 排 9/1（二）沒問題</li>
+        <li>Kualoa Ranch Ocean Voyage <span class="closed">週日公休</span>，其餘每天營業</li>
+        <li>Ka Moana Luau <span class="closed">週六公休</span>，其餘每天 17:30–20:00 — 排 8/31（一）沒問題</li>
+        <li>USS Arizona 免費船票<b>不含在 Go City 票內</b>，需另外上 recreation.gov 搶</li>
+      </ul>
+    </div>
 
-  <div class="dnd-hint">
-    <span>🖱️ <b>可以拖曳：</b>下面每張卡片都能直接拖到同一天的不同順序，或拖到別天的欄位裡試排看看（純前端互動，重新整理頁面就會回到原始建議順序）</span>
-    <button id="reset-btn">重設為原始順序</button>
-  </div>
+    <div class="dnd-hint">
+      <span>👆 每張卡片可以用 ▲▼ 調整同一天內順序，或用右下角選單「搬到別天」</span>
+      <button id="reset-btn">重設順序</button>
+    </div>
 
-  <div class="board" id="board">
+    <nav class="tabs" id="tabs">
+      <button data-day="8/31" class="active">🌊 8/31（一）</button>
+      <button data-day="9/1">🦕 9/1（二）</button>
+      <button data-day="9/2">🌿 9/2（三）</button>
+      <button data-day="9/8">⚓ 9/8（二）</button>
+    </nav>
 
-    <div class="day-col" data-day="8/31">
-      <div class="day-col-head">
-        <h2>8/31（一）</h2>
-        <div class="sub">Waikiki 水上日</div>
+    <section class="day-panel active" data-panel="8/31">
+      <div class="day-banner banner-1">
+        <h2>🌊 8/31（一）Waikiki 水上日</h2>
+        <p class="sub">兩個水上行程集合點都在 Kewalo Basin Harbor，銜接超順</p>
         <span class="status">✓ 三項當日均營業</span>
       </div>
-      <ul class="card-list" id="col-1"></ul>
-    </div>
+      <ul class="card-list" id="col-8/31"></ul>
+    </section>
 
-    <div class="day-col" data-day="9/1">
-      <div class="day-col-head">
-        <h2>9/1（二）</h2>
-        <div class="sub">古蘭尼牧場＋PCC</div>
+    <section class="day-panel" data-panel="9/1">
+      <div class="day-banner banner-2">
+        <h2>🦕 9/1（二）古蘭尼牧場＋PCC</h2>
+        <p class="sub">兩地車程約 20–30 分鐘，牧場早開、PCC 中午開，順序剛好</p>
         <span class="status">✓ 兩處週二皆營業</span>
       </div>
-      <ul class="card-list" id="col-2"></ul>
-    </div>
+      <ul class="card-list" id="col-9/1"></ul>
+    </section>
 
-    <div class="day-col" data-day="9/2">
-      <div class="day-col-head">
-        <h2>9/2（三）</h2>
-        <div class="sub">北海岸：瀑布谷＋Hula</div>
+    <section class="day-panel" data-panel="9/2">
+      <div class="day-banner banner-3">
+        <h2>🌿 9/2（三）北海岸：瀑布谷＋Hula</h2>
+        <p class="sub">先逛 Waimea 再北上 Kahuku，卡準 Hula 中午 12 點場</p>
         <span class="status">✓ 兩處週三皆營業</span>
       </div>
-      <ul class="card-list" id="col-3"></ul>
-    </div>
+      <ul class="card-list" id="col-9/2"></ul>
+    </section>
 
-    <div class="day-col" data-day="9/8">
-      <div class="day-col-head">
-        <h2>9/8（二）</h2>
-        <div class="sub">珍珠港</div>
+    <section class="day-panel" data-panel="9/8">
+      <div class="day-banner banner-4">
+        <h2>⚓ 9/8（二）珍珠港</h2>
+        <p class="sub">建議提早到，安檢排隊耗時，最後入場 15:00</p>
         <span class="status">✓ 每日開放</span>
       </div>
-      <ul class="card-list" id="col-4"></ul>
-    </div>
-
-  </div>
-
-  <section class="ref">
-    <h3>完整資訊總表</h3>
-    <p class="sub">拖曳卡片是給你快速試排順序用的；正式預約前請以這張表的細節（公休日、可預約時段、取消/no-show 費用、預約連結）為準。</p>
-    <div class="table-scroll">
-      <table class="full">
-        <thead>
-          <tr>
-            <th style="width:8%">日期／時間</th>
-            <th style="width:16%">行程</th>
-            <th style="width:20%">地址</th>
-            <th style="width:16%">營業日／公休</th>
-            <th style="width:18%">預約方式與可約時段</th>
-            <th style="width:14%">取消／No-show 費用</th>
-            <th style="width:8%">參考影片</th>
-          </tr>
-        </thead>
-        <tbody id="ref-body"></tbody>
-      </table>
-    </div>
-  </section>
+      <ul class="card-list" id="col-9/8"></ul>
+    </section>
+  </main>
 
   <footer class="notes">
-    <p>營業日／時段資訊查證時間：2026 年 7 月底，依 Go City 官方頁面與各景點官網目前公告內容。實際仍可能因季節、私人包場、天候而臨時調整，出發前建議在 Go City App 內再次確認當週時段。No-show／取消費用欄位中若標示「金額未公開」，代表官方頁面只寫了取消規則、沒有寫具體罰金數字，建議預約當下直接跟客服確認。</p>
+    營業日／時段查證時間：2026 年 7 月底，依 Go City 及各景點官網公告內容。實際仍可能季節性調整，出發前建議在 Go City App 內再次確認。
   </footer>
 
-</div>
-
 <script>
+const DAYS = ["8/31","9/1","9/2","9/8"];
+
 const DATA = [
   {
-    day:"8/31", time:"10:15–12:15",
+    id:"turtle", day:"8/31", time:"10:15–12:15", type:"water", icon:"🐢",
     title:"Waikiki Turtle Canyon Snorkel Cruise",
-    duration:"2 小時",
     addr:"1085 Ala Moana Blvd, Suite 104, Honolulu, HI 96814（Kewalo Basin Harbor 報到處）",
-    hours:"每日 10:15 / 13:00 兩場，全年無休",
-    booking:"官網預約：<a class='map' target='_blank' href='https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co'>Honolulu Snorkel Company ↗</a>（選日期時段人數，輸入 Go City 票號）",
+    hours:"每日 10:15 / 13:00 兩場，<b>全年無休</b>",
+    booking:"需預約 → <a target='_blank' href='https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co'>官網訂位 ↗</a>（選日期時段人數，輸入 Go City 票號）",
     bookingBadge:"需預約",
-    fee:"每人固定收 $1 海洋保育費；24 小時內取消或未到，信用卡將被收取費用（官方頁面未列出明確 no-show 金額，零售參考價 up to $94/人）",
-    video:{id:"dVBwvXAdur4", label:"實際行程影片：從 Kewalo Basin Harbor 出發的 Turtle Canyon 浮潛"}
+    fee:"每人固定收 $1 海洋保育費；<b>24 小時內取消或未到</b>信用卡將被收費（官方未列明確 no-show 金額，零售參考價 up to $94/人）",
+    video:{id:"dVBwvXAdur4", label:"實際行程影片：Kewalo Basin Harbor 出發的 Turtle Canyon 浮潛"}
   },
   {
-    day:"8/31", time:"14:00–16:00",
+    id:"makani", day:"8/31", time:"14:00–16:00", type:"water", icon:"⛵",
     title:"Makani Catamaran Sail",
-    duration:"2 小時",
     addr:"1009 Ala Moana Blvd F31, Honolulu, HI 96814（同樣在 Kewalo Basin Harbor，Makani Kiosk）",
-    hours:"每日 11:00 / 14:00 兩場，全年無休",
-    booking:"電話預約：<b>(808) 591-9000</b>（無線上系統，視空位而定）",
+    hours:"每日 11:00 / 14:00 兩場，<b>全年無休</b>",
+    booking:"需預約 → 電話 <b>(808) 591-9000</b>（無線上系統，視空位而定）",
     bookingBadge:"需預約",
-    fee:"每人固定收 $1 海洋保育費；48 小時內取消，信用卡將被收取費用（官方未列明確 no-show 金額，零售參考價 up to $143/人）",
+    fee:"每人固定收 $1 海洋保育費；<b>48 小時內取消</b>信用卡將被收費（零售參考價 up to $143/人）",
     video:{id:"T_2Dz2WRu8U", label:"Go City 官方介紹影片：Makani Catamaran Sail"}
   },
   {
-    day:"8/31", time:"17:30–20:00",
+    id:"luau", day:"8/31", time:"17:30–20:00", type:"culture", icon:"🔥",
     title:"Ka Moana Luau @ Aloha Tower（Premium 名額）",
-    duration:"2.5 小時",
     addr:"1 Aloha Tower Dr, Honolulu, HI 96813",
-    hours:"週一至週五、週日 17:30–20:00；<b style='color:var(--warn)'>週六公休</b>",
-    booking:"<a class='map' target='_blank' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
+    hours:"週一至週五、週日 17:30–20:00；<span class='closed'>週六公休</span>",
+    booking:"需預約 → <a target='_blank' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
     bookingBadge:"需預約",
-    fee:"24 小時內取消不予退款／視同 no-show 全額收費",
+    fee:"<b>24 小時內取消</b>不予退款，視同全額 no-show 收費",
     video:{id:"xvSD0AzOb_I", label:"Ka Moana Luau 新場地（Aloha Tower）介紹影片"}
   },
   {
-    day:"9/1", time:"09:20–10:50",
+    id:"kualoa", day:"9/1", time:"09:20–10:50", type:"nature", icon:"🦕",
     title:"Kualoa Ranch – Ocean Voyage Adventure",
-    duration:"1.5 小時",
     addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744",
-    hours:"每日 08:40 / 09:20 / 10:20 / 11:00 / 13:00 / 13:40 / 14:45；<b style='color:var(--warn)'>週日公休</b>（9/7 因假日亦休園，不影響本次行程）",
-    booking:"<a class='map' target='_blank' href='https://www.kualoa.com/tours-and-activities'>kualoa.com ↗</a> 選「Ocean Voyage Adventure」→ 選時間人數 → 先付款，現場刷 Go City Pass 後退款",
-    bookingBadge:"需預約（先付款）",
-    fee:"未出席不予退款（等同全額 no-show 費用，零售參考價 up to $63/人）",
+    hours:"每日 08:40 / 09:20 / 10:20 / 11:00 / 13:00 / 13:40 / 14:45；<span class='closed'>週日公休</span>（9/7 假日亦休園，不影響本次行程）",
+    booking:"需預約（先付款）→ <a target='_blank' href='https://www.kualoa.com/tours-and-activities'>kualoa.com ↗</a> 選「Ocean Voyage Adventure」選時間人數，現場刷 Go City Pass 後退款",
+    bookingBadge:"需預約",
+    fee:"<b>未出席不予退款</b>（等同全額 no-show，零售參考價 up to $63/人）",
     video:{id:"l6zOfSTy62o", label:"Kualoa Ranch 官方影片：Ocean Voyage Adventure"}
   },
   {
-    day:"9/1", time:"約 12:00–18:00",
+    id:"pcc", day:"9/1", time:"約 12:00–18:00", type:"culture", icon:"🌺",
     title:"Polynesian Cultural Center",
-    duration:"約 6 小時",
     addr:"55-370 Kamehameha Hwy, Laie, HI 96762",
-    hours:"Islands of Polynesia：週一二四五六 12:15–18:00；<b style='color:var(--warn)'>週三、週日公休</b>",
-    booking:"Go City 官方：免預約，主入口噴水池旁 Ticketing Center 刷 Pass 即可；保險起見可先電話 <b>1-844-365-2843</b> 確認名額",
-    bookingBadge:"現場刷卡（建議先電話確認）",
+    hours:"Islands of Polynesia 週一二四五六 12:15–18:00；<span class='closed'>週三、週日公休</span>",
+    booking:"免預約，主入口噴水池旁 Ticketing Center 刷 Pass 即可；保險起見可先電話 <b>1-844-365-2843</b> 確認名額",
+    bookingBadge:"現場刷卡",
     fee:"無需預約，故無 no-show 費用；晚間付費大秀 HĀ: Breath of Life 需另外加購",
     video:{id:"Af06OcBG2gM", label:"PCC Island Villages 園區導覽影片"}
   },
   {
-    day:"9/2", time:"09:00–11:15",
+    id:"waimea", day:"9/2", time:"09:00–11:15", type:"nature", icon:"🌿",
     title:"Waimea Valley",
-    duration:"2–2.5 小時",
     addr:"59-864 Kamehameha Hwy, Haleʻiwa, HI 96712",
-    hours:"週二至週日 09:00–16:00；<b style='color:var(--warn)'>週一公休</b>",
+    hours:"週二至週日 09:00–16:00；<span class='closed'>週一公休</span>",
     booking:"免預約，現場出示 Go City App 掃碼即可入園",
     bookingBadge:"現場刷卡",
     fee:"無需預約，無 no-show 費用",
     video:{id:"r83YaKgi98E", label:"Waimea Valley 瀑布谷與植物園導覽影片"}
   },
   {
-    day:"9/2", time:"12:00–13:00",
+    id:"hula", day:"9/2", time:"12:00–13:00", type:"culture", icon:"💃",
     title:"Hula Class on the North Shore",
-    duration:"1 小時",
-    addr:"57-571 Kamehameha Hwy, Kahuku, HI 96731（集合點靠近 Waiale'e Beach Park，確切地點預約後另行通知）",
+    addr:"57-571 Kamehameha Hwy, Kahuku, HI 96731（集合點靠近 Waiale'e Beach Park，確切位置預約後另行通知）",
     hours:"平日固定 <b>12:00</b> 一場；週六日改為 10:00 一場",
-    booking:"Email 或電話 <b>(808) 866-6630</b>，<b>須至少提前 24 小時</b>預約",
-    bookingBadge:"需提前 24hr 預約",
-    fee:"官方未公布明確 no-show 罰金；天候不佳可能由主辦方取消，出發前建議再次確認",
-    video:{id:"MA91i8kZDQ4", label:"示意影片：Hula 三個基本步伐 Hela／Kāʻo／Kāholo 教學（非本行程實拍）"}
+    booking:"需提前 24hr 預約 → Email 或電話 <b>(808) 866-6630</b>",
+    bookingBadge:"需預約",
+    fee:"官方未公布明確 no-show 罰金；<b>天候不佳可能由主辦方取消</b>，出發前建議再次確認",
+    video:{id:"MA91i8kZDQ4", label:"示意影片：Hula 三個基本步伐教學（非本行程實拍）"}
   },
   {
-    day:"9/8", time:"08:00 起（最後入場 15:00）",
+    id:"missouri", day:"9/8", time:"08:00 起（最後入場 15:00）", type:"history", icon:"⚓",
     title:"Battleship Missouri Memorial",
-    duration:"建議 60–90 分鐘",
     addr:"1 Arizona Memorial Rd, Honolulu, HI 96818（Pearl Harbor Visitor Center）",
-    hours:"每日 08:00–16:00，全年無休（需攜帶政府核發相片證件／護照）",
+    hours:"每日 08:00–16:00，全年無休；<b>需攜帶政府核發相片證件／護照</b>",
     booking:"免預約，Go City Pass 現場出示掃碼即可；含 35 分鐘導覽（08:00–15:30 場次）",
     bookingBadge:"現場刷卡",
     fee:"無需預約，無 no-show 費用",
     video:{id:"BZ8i12GDRBo", label:"Battleship Missouri Memorial 參觀導覽影片"}
   },
   {
-    day:"9/8", time:"⚠ 不含在 Go City 票內",
+    id:"arizona", day:"9/8", time:"⚠ 不含在 Go City 票內", type:"history", icon:"🎖",
     title:"USS Arizona Memorial（另外搶票）",
-    duration:"約 45 分鐘（含船程）",
     addr:"同 Pearl Harbor Visitor Center",
     hours:"依 NPS 每日釋出名額而定",
-    booking:"<a class='map' target='_blank' href='https://www.recreation.gov/'>recreation.gov ↗</a> 搶時段票，常提前數週額滿；現場也有候補名額但常需排隊 1–2 小時",
+    booking:"另外搶票 → <a target='_blank' href='https://www.recreation.gov/'>recreation.gov ↗</a>，常提前數週額滿；現場也有候補但常需排隊 1–2 小時",
     bookingBadge:"另外搶票",
     fee:"依 NPS 規則，免費但需準時報到",
     video:null
   }
 ];
 
-const dayToCol = {"8/31":"col-1","9/1":"col-2","9/2":"col-3","9/8":"col-4"};
-
 function ytThumb(id){ return `https://img.youtube.com/vi/${id}/hqdefault.jpg`; }
 
-function renderCards(){
-  Object.values(dayToCol).forEach(id=>{ document.getElementById(id).innerHTML=""; });
-  DATA.forEach((item, idx)=>{
+function dayOptionsHTML(current){
+  return DAYS.map(d=>`<option value="${d}" ${d===current?'selected':''}>搬到 ${d}</option>`).join('');
+}
+
+function renderAll(){
+  DAYS.forEach(d=>{ document.getElementById(`col-${d}`).innerHTML=''; });
+  DATA.forEach(item=>{
     const li = document.createElement('li');
-    li.className='card';
-    li.draggable=true;
-    li.dataset.idx=idx;
+    li.className = `card type-${item.type}`;
+    li.dataset.id = item.id;
     li.innerHTML = `
-      <div class="card-time">${item.time}</div>
-      <div class="card-title">${item.title} <span class="badge ${item.bookingBadge.includes('免') || item.bookingBadge.includes('現場')? 'free':'book'}">${item.bookingBadge}</span></div>
-      <div class="card-row"><b>地址：</b>${item.addr} — <a class="map" target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.addr)}">Maps ↗</a></div>
-      <div class="card-row"><b>營業：</b>${item.hours}</div>
-      <div class="card-row"><b>預約：</b>${item.booking}</div>
-      <div class="fee">${item.fee}</div>
+      <div class="card-top">
+        <span class="card-time">${item.time}</span>
+        <span class="badge ${item.bookingBadge==='現場刷卡'?'free':'book'}">${item.bookingBadge}</span>
+      </div>
+      <div class="card-title">${item.icon} ${item.title}</div>
+      <div class="info-block">
+        <p><span class="k">📍 地址：</span>${item.addr} — <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.addr)}">Google Maps ↗</a></p>
+        <p><span class="k">🗓 營業：</span>${item.hours}</p>
+        <p><span class="k">🎟 預約：</span>${item.booking}</p>
+      </div>
+      <div class="fee-line">💸 ${item.fee}</div>
       ${item.video? `<a class="video-link" target="_blank" href="https://www.youtube.com/watch?v=${item.video.id}">
-        <img src="${ytThumb(item.video.id)}" alt="video thumbnail">
-        <span>${item.video.label}</span>
-      </a>`:''}
+        <img src="${ytThumb(item.video.id)}" alt="video">
+        <span>▶ ${item.video.label}</span>
+      </a>` : ''}
+      <div class="card-controls">
+        <button class="move-up" title="往上移">▲</button>
+        <button class="move-down" title="往下移">▼</button>
+        <select class="move-day">${dayOptionsHTML(item.day)}</select>
+      </div>
     `;
-    document.getElementById(dayToCol[item.day]).appendChild(li);
+    document.getElementById(`col-${item.day}`).appendChild(li);
   });
-  attachDnD();
+  attachControls();
 }
 
-function renderRefTable(){
-  const tbody = document.getElementById('ref-body');
-  tbody.innerHTML = DATA.map(item=>`
-    <tr>
-      <td>${item.day}<br>${item.time}</td>
-      <td>${item.title}<br><span style="color:var(--ink-soft);font-size:11.5px;">${item.duration}</span></td>
-      <td>${item.addr}<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.addr)}">Google Maps ↗</a></td>
-      <td>${item.hours}</td>
-      <td>${item.booking}</td>
-      <td>${item.fee}</td>
-      <td>${item.video? `<a target="_blank" href="https://www.youtube.com/watch?v=${item.video.id}"><img src="${ytThumb(item.video.id)}" style="width:70px;border-radius:4px;" alt="video"></a>`:'—'}</td>
-    </tr>
-  `).join('');
-}
-
-let dragEl=null;
-function attachDnD(){
+function attachControls(){
   document.querySelectorAll('.card').forEach(card=>{
-    card.addEventListener('dragstart', ()=>{ dragEl=card; setTimeout(()=>card.classList.add('dragging'),0); });
-    card.addEventListener('dragend', ()=>{ card.classList.remove('dragging'); dragEl=null; });
-  });
-  document.querySelectorAll('.card-list').forEach(list=>{
-    list.addEventListener('dragover', e=>{
-      e.preventDefault();
-      if(!dragEl) return;
-      const after = getDragAfterElement(list, e.clientY);
-      if(after==null){ list.appendChild(dragEl); } else { list.insertBefore(dragEl, after); }
-    });
+    const id = card.dataset.id;
+    card.querySelector('.move-up').addEventListener('click', ()=>moveWithinDay(id,-1));
+    card.querySelector('.move-down').addEventListener('click', ()=>moveWithinDay(id,1));
+    card.querySelector('.move-day').addEventListener('change', e=>moveToDay(id, e.target.value));
   });
 }
-function getDragAfterElement(container, y){
-  const els=[...container.querySelectorAll('.card:not(.dragging)')];
-  return els.reduce((closest, child)=>{
-    const box=child.getBoundingClientRect();
-    const offset=y-box.top-box.height/2;
-    if(offset<0 && offset>closest.offset){ return {offset, element:child}; }
-    return closest;
-  }, {offset:-Infinity}).element;
+
+function moveWithinDay(id, dir){
+  const item = DATA.find(d=>d.id===id);
+  const sameDay = DATA.filter(d=>d.day===item.day);
+  const idxGlobal = DATA.indexOf(item);
+  const idxLocal = sameDay.indexOf(item);
+  const swapWithLocal = idxLocal + dir;
+  if(swapWithLocal < 0 || swapWithLocal >= sameDay.length) return;
+  const swapItem = sameDay[swapWithLocal];
+  const idxSwapGlobal = DATA.indexOf(swapItem);
+  DATA[idxGlobal] = swapItem;
+  DATA[idxSwapGlobal] = item;
+  renderAll();
 }
 
-document.getElementById('reset-btn').addEventListener('click', renderCards);
+function moveToDay(id, newDay){
+  const item = DATA.find(d=>d.id===id);
+  item.day = newDay;
+  renderAll();
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active', b.dataset.day===newDay));
+  document.querySelectorAll('.day-panel').forEach(p=>p.classList.toggle('active', p.dataset.panel===newDay));
+}
 
-renderCards();
-renderRefTable();
+document.getElementById('tabs').addEventListener('click', e=>{
+  const btn = e.target.closest('button');
+  if(!btn) return;
+  document.querySelectorAll('#tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.day-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector(`.day-panel[data-panel="${btn.dataset.day}"]`).classList.add('active');
+});
+
+document.getElementById('reset-btn').addEventListener('click', ()=>location.reload());
+
+renderAll();
 </script>
 </body>
 </html>
