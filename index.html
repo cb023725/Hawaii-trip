@@ -8,161 +8,142 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sea:#0FB5A6;
-    --sea-dark:#0A7F76;
-    --hibiscus:#FF5C7A;
-    --hibiscus-dark:#E23F5F;
-    --sun:#FFC93C;
-    --leaf:#2E9C6B;
-    --sand:#FFF8EC;
-    --card:#FFFFFF;
-    --ink:#2B2140;
-    --ink-soft:#6B6280;
-    --line:#F0E4D0;
+    --sea:#0FB5A6; --sea-dark:#0A7F76;
+    --hibiscus:#FF5C7A; --hibiscus-dark:#E23F5F;
+    --sun:#FFC93C; --leaf:#2E9C6B; --indigo:#5B6BC0;
+    --sand:#FFF8EC; --card:#FFFFFF;
+    --ink:#2B2140; --ink-soft:#6B6280; --line:#F0E4D0;
+    --grey-zone:#DDD6C8;
   }
   *{box-sizing:border-box;}
   body{
-    margin:0;
-    background:var(--sand);
-    background-image:radial-gradient(circle at 90% 0%, rgba(255,201,60,0.18), transparent 40%),
-                      radial-gradient(circle at 0% 20%, rgba(15,181,166,0.13), transparent 35%);
-    color:var(--ink);
-    font-family:'Nunito', sans-serif;
-    line-height:1.5;
-    -webkit-font-smoothing:antialiased;
+    margin:0; background:var(--sand);
+    background-image:radial-gradient(circle at 90% 0%, rgba(255,201,60,0.16), transparent 40%),
+                      radial-gradient(circle at 0% 20%, rgba(15,181,166,0.11), transparent 35%);
+    color:var(--ink); font-family:'Nunito', sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased;
   }
   .wrap{max-width:640px; margin:0 auto; padding:0 0 60px;}
 
   header.hero{
     background:linear-gradient(135deg, var(--sea) 0%, var(--sea-dark) 55%, #0C6560 100%);
-    color:#fff;
-    padding:26px 20px 34px;
-    border-radius:0 0 28px 28px;
-    position:relative;
-    overflow:hidden;
+    color:#fff; padding:24px 20px 30px; border-radius:0 0 26px 26px; position:relative; overflow:hidden;
   }
-  header.hero::after{
-    content:"🌺";
-    position:absolute; right:14px; top:10px; font-size:46px; opacity:.35; transform:rotate(12deg);
-  }
-  .eyebrow{font-family:'Baloo 2',sans-serif; font-size:13px; letter-spacing:.06em; opacity:.85; margin:0 0 4px;}
-  h1{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:28px; margin:0 0 10px;}
+  header.hero::after{content:"🌴"; position:absolute; right:14px; top:8px; font-size:42px; opacity:.32; transform:rotate(10deg);}
+  .eyebrow{font-family:'Baloo 2',sans-serif; font-size:12.5px; letter-spacing:.06em; opacity:.85; margin:0 0 4px;}
+  h1{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:27px; margin:0 0 10px;}
   .hero-chips{display:flex; flex-wrap:wrap; gap:6px;}
-  .chip{background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.4); border-radius:20px; padding:4px 12px; font-size:12.5px; font-weight:600;}
-
-  .wave{display:block; width:100%; height:26px; margin-top:-2px;}
+  .chip{background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.4); border-radius:20px; padding:4px 12px; font-size:12px; font-weight:600;}
+  .wave{display:block; width:100%; height:22px; margin-top:-2px;}
 
   main{padding:0 14px;}
 
-  .notice{
-    background:#fff; border:2px dashed var(--hibiscus);
-    border-radius:16px; padding:14px 16px; margin:16px 0; font-size:13.5px;
+  .card.notice{
+    background:#fff; border:2px dashed var(--sea); border-radius:16px; padding:14px 16px; margin:16px 0; font-size:13px;
   }
-  .notice b{color:var(--hibiscus-dark);}
-  .notice ul{margin:6px 0 0; padding-left:18px;}
-  .notice li{margin-bottom:4px;}
-
-  .dnd-hint{
-    background:linear-gradient(135deg, #FFF3D6, #FFE6E9);
-    border-radius:16px; padding:12px 15px; margin-bottom:14px; font-size:13px;
-    display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;
-  }
-  #reset-btn{
-    font-family:'Baloo 2',sans-serif; font-size:12.5px;
-    background:var(--ink); color:#fff; border:none; border-radius:20px;
-    padding:7px 14px; cursor:pointer;
-  }
+  .card.notice b{color:var(--sea-dark);}
+  .card.notice ul{margin:6px 0 0; padding-left:18px;}
+  .card.notice li{margin-bottom:4px;}
 
   nav.tabs{
-    position:sticky; top:0; z-index:10;
-    display:flex; gap:8px; overflow-x:auto;
-    padding:12px 14px; background:var(--sand);
-    -webkit-overflow-scrolling:touch;
+    position:sticky; top:0; z-index:20;
+    display:flex; gap:8px; overflow-x:auto; padding:10px 14px;
+    background:rgba(255,248,236,0.95); backdrop-filter:blur(3px);
+    -webkit-overflow-scrolling:touch; border-bottom:1px solid var(--line);
   }
   nav.tabs::-webkit-scrollbar{display:none;}
-  nav.tabs button{
-    flex:0 0 auto;
-    font-family:'Baloo 2',sans-serif; font-size:14px; font-weight:600;
-    background:#fff; color:var(--ink-soft);
-    border:2px solid var(--line); border-radius:20px;
-    padding:8px 16px; cursor:pointer; white-space:nowrap;
+  nav.tabs a{
+    flex:0 0 auto; font-family:'Baloo 2',sans-serif; font-size:13.5px; font-weight:600;
+    background:#fff; color:var(--ink-soft); border:2px solid var(--line); border-radius:20px;
+    padding:6px 14px; cursor:pointer; white-space:nowrap; text-decoration:none;
   }
-  nav.tabs button.active{
-    background:var(--hibiscus); border-color:var(--hibiscus); color:#fff;
-  }
+  nav.tabs a.active{background:var(--hibiscus); border-color:var(--hibiscus); color:#fff;}
 
-  .day-banner{
-    border-radius:18px; padding:16px 18px; margin:6px 0 14px; color:#fff;
-    position:relative; overflow:hidden;
+  /* overview */
+  section.overview{margin:16px 0 22px;}
+  section.overview h2{font-family:'Baloo 2',sans-serif; font-size:19px; margin:0 0 10px;}
+  .ov-list{display:flex; flex-direction:column; gap:10px;}
+  .ov-item{
+    display:flex; gap:12px; align-items:flex-start; background:#fff; border-radius:14px; padding:12px 13px;
+    box-shadow:0 2px 8px rgba(43,33,64,0.06); text-decoration:none; color:var(--ink);
   }
-  .day-banner h2{font-family:'Baloo 2',sans-serif; font-size:20px; margin:0 0 2px;}
-  .day-banner .sub{font-size:13px; opacity:.92; margin:0 0 8px;}
-  .day-banner .status{
-    display:inline-block; background:rgba(255,255,255,0.25); border-radius:20px;
-    font-size:12px; font-weight:700; padding:3px 10px;
+  .ov-num{
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13px; color:#fff;
+    width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    text-align:center; line-height:1.1;
   }
+  .ov-body b{font-family:'Baloo 2',sans-serif; font-size:14.5px; display:block; margin-bottom:2px;}
+  .ov-body .region{font-size:11.5px; color:var(--ink-soft);}
+  .ov-body .hi{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
+
+  /* island map */
+  .island-map{display:flex; align-items:center; gap:10px; margin:10px 0 14px;}
+  .island-map svg{width:96px; height:auto; flex-shrink:0;}
+  .island-legend{font-size:11.5px; color:var(--ink-soft); display:flex; flex-direction:column; gap:3px;}
+  .island-legend .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px;}
+
+  .day-banner{border-radius:18px; padding:14px 17px; margin:26px 0 10px; color:#fff; scroll-margin-top:60px;}
+  .day-banner h2{font-family:'Baloo 2',sans-serif; font-size:19px; margin:0 0 2px;}
+  .day-banner .sub{font-size:12.5px; opacity:.92; margin:0;}
   .banner-1{background:linear-gradient(135deg,#0FB5A6,#0A7F76);}
   .banner-2{background:linear-gradient(135deg,#2E9C6B,#1F7350);}
   .banner-3{background:linear-gradient(135deg,#FF5C7A,#E23F5F);}
   .banner-4{background:linear-gradient(135deg,#5B6BC0,#3F4C99);}
 
-  .day-panel{display:none;}
-  .day-panel.active{display:block;}
-
-  .card-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px;}
+  .card-list{list-style:none; margin:0 0 6px; padding:0; display:flex; flex-direction:column; gap:10px;}
 
   .card{
-    background:var(--card); border-radius:16px; padding:14px 15px;
-    box-shadow:0 3px 10px rgba(43,33,64,0.07);
-    border-left:6px solid var(--sea);
-    font-size:13.5px;
+    background:var(--card); border-radius:14px; padding:12px 14px;
+    box-shadow:0 2px 8px rgba(43,33,64,0.06); border-left:5px solid var(--sea); font-size:13px;
   }
   .card.type-water{border-left-color:var(--sea);}
   .card.type-culture{border-left-color:var(--hibiscus);}
   .card.type-nature{border-left-color:var(--leaf);}
-  .card.type-history{border-left-color:#5B6BC0;}
+  .card.type-history{border-left-color:var(--indigo);}
 
-  .card-top{display:flex; align-items:baseline; justify-content:space-between; gap:8px; flex-wrap:wrap;}
+  .card-head{display:flex; align-items:center; justify-content:space-between; gap:8px;}
   .card-time{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13.5px; color:var(--hibiscus-dark);}
-  .card-title{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16.5px; margin:4px 0 8px; display:flex; align-items:center; gap:6px;}
-  .badge{font-family:'Nunito',sans-serif; font-size:10.5px; font-weight:700; padding:2px 9px; border-radius:20px;}
+  .badge{font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px;}
   .badge.book{background:#FFE9C7; color:#9C5A1E;}
   .badge.free{background:#DCF2E6; color:#1F7350;}
+  .card-title{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:15.5px; margin:4px 0 6px;}
 
-  .info-block p{margin:5px 0;}
-  .info-block .k{font-weight:700; color:var(--ink);}
-  .info-block a{color:var(--sea-dark); font-weight:700; text-decoration:none; border-bottom:2px solid rgba(15,181,166,.3);}
-  .info-block a:hover{border-bottom-color:var(--sea-dark);}
+  .card-lines p{margin:3px 0; color:var(--ink-soft);}
+  .card-lines .lbl{color:var(--ink); font-weight:700; margin-right:2px;}
+  .card-lines a{color:var(--sea-dark); font-weight:700; text-decoration:none; border-bottom:2px solid rgba(15,181,166,.3);}
   .closed{color:var(--hibiscus-dark); font-weight:700;}
+  .fee-line{margin-top:7px; background:#FFF3E0; border-radius:9px; padding:6px 9px; font-size:12px; color:#9C5A1E;}
 
-  .fee-line{
-    margin-top:8px; background:#FFF3E0; border-radius:10px; padding:7px 10px; font-size:12.5px; color:#9C5A1E;
-  }
+  .video-link{margin-top:8px; display:flex; align-items:center; gap:8px; text-decoration:none; background:#F5F2FF; border-radius:9px; padding:5px 7px;}
+  .video-link img{width:52px; height:30px; object-fit:cover; border-radius:5px; flex-shrink:0;}
+  .video-link span{font-size:11px; color:var(--ink); font-weight:600; line-height:1.25;}
 
-  .video-link{
-    margin-top:9px; display:flex; align-items:center; gap:9px; text-decoration:none;
-    background:#F5F2FF; border-radius:10px; padding:6px 8px;
-  }
-  .video-link img{width:60px; height:34px; object-fit:cover; border-radius:6px; flex-shrink:0;}
-  .video-link span{font-size:11.5px; color:var(--ink); font-weight:600; line-height:1.3;}
+  .card-controls{display:flex; align-items:center; gap:5px; margin-top:9px; padding-top:8px; border-top:1px dashed var(--line);}
+  .card-controls button{font-family:'Baloo 2',sans-serif; font-size:12px; background:var(--sand); border:1px solid var(--line); border-radius:7px; width:26px; height:26px; cursor:pointer; color:var(--ink);}
+  .card-controls select{font-size:11.5px; border-radius:7px; border:1px solid var(--line); padding:4px 6px; background:#fff; color:var(--ink-soft); margin-left:auto;}
 
-  .card-controls{
-    display:flex; align-items:center; gap:6px; margin-top:10px; padding-top:10px; border-top:1px dashed var(--line);
+  /* modal */
+  .modal-backdrop{
+    position:fixed; inset:0; background:rgba(43,33,64,0.45); display:none;
+    align-items:center; justify-content:center; z-index:100; padding:16px;
   }
-  .card-controls button{
-    font-family:'Baloo 2',sans-serif; font-size:13px; background:var(--sand); border:1px solid var(--line);
-    border-radius:8px; width:30px; height:30px; cursor:pointer; color:var(--ink);
+  .modal-backdrop.show{display:flex;}
+  .modal{
+    background:#fff; border-radius:18px; padding:20px; max-width:400px; width:100%;
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
   }
-  .card-controls select{
-    font-family:'Nunito',sans-serif; font-size:12px; border-radius:8px; border:1px solid var(--line);
-    padding:5px 8px; background:#fff; color:var(--ink-soft); margin-left:auto;
+  .modal h3{font-family:'Baloo 2',sans-serif; font-size:17px; margin:0 0 10px;}
+  .modal .check{display:flex; gap:8px; align-items:flex-start; margin-bottom:9px; font-size:13px;}
+  .modal .check .icon{flex-shrink:0;}
+  .modal .ok{color:var(--leaf);}
+  .modal .warn{color:var(--hibiscus-dark); font-weight:700;}
+  .modal-actions{display:flex; gap:8px; margin-top:16px;}
+  .modal-actions button{
+    flex:1; font-family:'Baloo 2',sans-serif; font-size:13.5px; font-weight:600; padding:9px; border-radius:10px; border:none; cursor:pointer;
   }
+  .btn-cancel{background:var(--sand); color:var(--ink);}
+  .btn-confirm{background:var(--hibiscus); color:#fff;}
 
   footer.notes{margin:30px 14px 0; font-size:12px; color:var(--ink-soft); text-align:center;}
-
-  @media (min-width:480px){
-    h1{font-size:32px;}
-  }
 </style>
 </head>
 <body>
@@ -176,164 +157,172 @@
       <span class="chip">基地 Waikiki</span>
     </div>
   </header>
-  <svg class="wave" viewBox="0 0 500 26" preserveAspectRatio="none"><path d="M0,10 C120,26 380,-6 500,10 L500,26 L0,26 Z" fill="#FFF8EC"/></svg>
+  <svg class="wave" viewBox="0 0 500 22" preserveAspectRatio="none"><path d="M0,8 C120,22 380,-4 500,8 L500,22 L0,22 Z" fill="#FFF8EC"/></svg>
 
   <main>
-    <div class="notice">
-      <b>🐢 邏輯可行性重點：</b>
+    <div class="card notice">
+      <b>🎫 Go City 卡使用小提醒：</b>
       <ul>
-        <li>Waimea Valley <span class="closed">週一公休</span>，其餘每天 09:00–16:00 — 排 9/2（三）沒問題</li>
-        <li>Hula Class 在 Kahuku（不在 Waimea Valley 園區內），平日固定 <b>12:00</b> 一場</li>
-        <li>PCC <span class="closed">週三、週日公休</span> — 排 9/1（二）沒問題</li>
-        <li>Kualoa Ranch Ocean Voyage <span class="closed">週日公休</span>，其餘每天營業</li>
-        <li>Ka Moana Luau <span class="closed">週六公休</span>，其餘每天 17:30–20:00 — 排 8/31（一）沒問題</li>
-        <li>USS Arizona 免費船票<b>不含在 Go City 票內</b>，需另外上 recreation.gov 搶</li>
+        <li>下載 Go City App 並輸入訂單編號，四天效期<b>不需連續</b>，14 天內任選 4 天使用即可</li>
+        <li>多數行程要<b>自己另外向業者預約</b>（官網／電話），Go City App 本身不負責訂位，只負責入場掃碼</li>
+        <li>現場入場時打開 App 出示 QR Code 給工作人員掃描即可，需要預約的行程記得同時附上票號</li>
+        <li>各行程取消規則不同，時間快到前建議直接跟業者確認一次，避免被收取 no-show 費用</li>
       </ul>
     </div>
 
-    <div class="dnd-hint">
-      <span>👆 每張卡片可以用 ▲▼ 調整同一天內順序，或用右下角選單「搬到別天」</span>
-      <button id="reset-btn">重設順序</button>
-    </div>
-
     <nav class="tabs" id="tabs">
-      <button data-day="8/31" class="active">🌊 8/31（一）</button>
-      <button data-day="9/1">🦕 9/1（二）</button>
-      <button data-day="9/2">🌿 9/2（三）</button>
-      <button data-day="9/8">⚓ 9/8（二）</button>
+      <a href="#day-831" data-day="8/31" class="active">8/31（一）</a>
+      <a href="#day-91" data-day="9/1">9/1（二）</a>
+      <a href="#day-92" data-day="9/2">9/2（三）</a>
+      <a href="#day-98" data-day="9/8">9/8（二）</a>
     </nav>
 
-    <section class="day-panel active" data-panel="8/31">
-      <div class="day-banner banner-1">
-        <h2>🌊 8/31（一）Waikiki 水上日</h2>
-        <p class="sub">兩個水上行程集合點都在 Kewalo Basin Harbor，銜接超順</p>
-        <span class="status">✓ 三項當日均營業</span>
-      </div>
-      <ul class="card-list" id="col-8/31"></ul>
+    <section class="overview">
+      <h2>行程概覽</h2>
+      <div class="ov-list" id="overview-list"></div>
     </section>
 
-    <section class="day-panel" data-panel="9/1">
-      <div class="day-banner banner-2">
-        <h2>🦕 9/1（二）古蘭尼牧場＋PCC</h2>
-        <p class="sub">兩地車程約 20–30 分鐘，牧場早開、PCC 中午開，順序剛好</p>
-        <span class="status">✓ 兩處週二皆營業</span>
-      </div>
-      <ul class="card-list" id="col-9/1"></ul>
+    <section class="day-banner banner-1" id="day-831" data-day="8/31">
+      <h2>8/31（一）Waikiki 水上日</h2>
+      <p class="sub">兩個水上行程集合點都在 Kewalo Basin Harbor，銜接超順</p>
     </section>
+    <div id="map-8/31"></div>
+    <ul class="card-list" id="col-8/31"></ul>
 
-    <section class="day-panel" data-panel="9/2">
-      <div class="day-banner banner-3">
-        <h2>🌿 9/2（三）北海岸：瀑布谷＋Hula</h2>
-        <p class="sub">先逛 Waimea 再北上 Kahuku，卡準 Hula 中午 12 點場</p>
-        <span class="status">✓ 兩處週三皆營業</span>
-      </div>
-      <ul class="card-list" id="col-9/2"></ul>
+    <section class="day-banner banner-2" id="day-91" data-day="9/1">
+      <h2>9/1（二）古蘭尼牧場＋PCC</h2>
+      <p class="sub">兩地車程約 20–30 分鐘，牧場早開、PCC 中午開，順序剛好</p>
     </section>
+    <div id="map-9/1"></div>
+    <ul class="card-list" id="col-9/1"></ul>
 
-    <section class="day-panel" data-panel="9/8">
-      <div class="day-banner banner-4">
-        <h2>⚓ 9/8（二）珍珠港</h2>
-        <p class="sub">建議提早到，安檢排隊耗時，最後入場 15:00</p>
-        <span class="status">✓ 每日開放</span>
-      </div>
-      <ul class="card-list" id="col-9/8"></ul>
+    <section class="day-banner banner-3" id="day-92" data-day="9/2">
+      <h2>9/2（三）北海岸：瀑布谷＋Hula</h2>
+      <p class="sub">先逛 Waimea 再北上 Kahuku，卡準 Hula 中午 12 點場</p>
     </section>
+    <div id="map-9/2"></div>
+    <ul class="card-list" id="col-9/2"></ul>
+
+    <section class="day-banner banner-4" id="day-98" data-day="9/8">
+      <h2>9/8（二）珍珠港</h2>
+      <p class="sub">建議提早到，安檢排隊耗時，最後入場 15:00</p>
+    </section>
+    <div id="map-9/8"></div>
+    <ul class="card-list" id="col-9/8"></ul>
   </main>
 
   <footer class="notes">
     營業日／時段查證時間：2026 年 7 月底，依 Go City 及各景點官網公告內容。實際仍可能季節性調整，出發前建議在 Go City App 內再次確認。
   </footer>
 
+  <div class="modal-backdrop" id="modal-backdrop">
+    <div class="modal">
+      <h3 id="modal-title"></h3>
+      <div id="modal-checks"></div>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="modal-cancel">取消</button>
+        <button class="btn-confirm" id="modal-confirm">確定搬動</button>
+      </div>
+    </div>
+  </div>
+
 <script>
 const DAYS = ["8/31","9/1","9/2","9/8"];
+const DAY_WEEKDAY = {"8/31":"一","9/1":"二","9/2":"三","9/8":"二"};
+const DAY_LABEL = {"8/31":"8/31（一）","9/1":"9/1（二）","9/2":"9/2（三）","9/8":"9/8（二）"};
+const REGION_LABEL = {waikiki:"Waikiki／市區", windward:"東岸 Windward", northshore:"北海岸 North Shore", pearlharbor:"珍珠港"};
+const REGION_COLOR = {waikiki:"var(--sea)", windward:"var(--leaf)", northshore:"var(--sun)", pearlharbor:"var(--indigo)"};
+const REGION_POS = {
+  northshore:{cx:52, cy:26}, windward:{cx:74, cy:56}, pearlharbor:{cx:34, cy:66}, waikiki:{cx:50, cy:78}
+};
 
 const DATA = [
   {
-    id:"turtle", day:"8/31", time:"10:15–12:15", type:"water", icon:"🐢",
+    id:"turtle", day:"8/31", time:"10:15–12:15", type:"water", icon:"🐢", region:"waikiki", closedDays:[],
     title:"Waikiki Turtle Canyon Snorkel Cruise",
     addr:"1085 Ala Moana Blvd, Suite 104, Honolulu, HI 96814（Kewalo Basin Harbor 報到處）",
-    hours:"每日 10:15 / 13:00 兩場，<b>全年無休</b>",
-    booking:"需預約 → <a target='_blank' href='https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co'>官網訂位 ↗</a>（選日期時段人數，輸入 Go City 票號）",
+    hours:"每日 10:15 / 13:00 兩場，全年無休",
+    booking:"官網訂位 <a target='_blank' href='https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co'>↗</a>（選日期時段人數，輸入 Go City 票號）",
     bookingBadge:"需預約",
-    fee:"每人固定收 $1 海洋保育費；<b>24 小時內取消或未到</b>信用卡將被收費（官方未列明確 no-show 金額，零售參考價 up to $94/人）",
-    video:{id:"dVBwvXAdur4", label:"實際行程影片：Kewalo Basin Harbor 出發的 Turtle Canyon 浮潛"}
+    fee:"每人固定收 $1 保育費；24 小時內取消或未到將收費（參考值 up to $94/人）",
+    video:{id:"dVBwvXAdur4", label:"Kewalo Basin Harbor 出發的 Turtle Canyon 浮潛"}
   },
   {
-    id:"makani", day:"8/31", time:"14:00–16:00", type:"water", icon:"⛵",
+    id:"makani", day:"8/31", time:"14:00–16:00", type:"water", icon:"⛵", region:"waikiki", closedDays:[],
     title:"Makani Catamaran Sail",
     addr:"1009 Ala Moana Blvd F31, Honolulu, HI 96814（同樣在 Kewalo Basin Harbor，Makani Kiosk）",
-    hours:"每日 11:00 / 14:00 兩場，<b>全年無休</b>",
-    booking:"需預約 → 電話 <b>(808) 591-9000</b>（無線上系統，視空位而定）",
+    hours:"每日 11:00 / 14:00 兩場，全年無休",
+    booking:"電話預約 <b>(808) 591-9000</b>（無線上系統，視空位而定）",
     bookingBadge:"需預約",
-    fee:"每人固定收 $1 海洋保育費；<b>48 小時內取消</b>信用卡將被收費（零售參考價 up to $143/人）",
-    video:{id:"T_2Dz2WRu8U", label:"Go City 官方介紹影片：Makani Catamaran Sail"}
+    fee:"每人固定收 $1 保育費；48 小時內取消將收費（參考值 up to $143/人）",
+    video:{id:"T_2Dz2WRu8U", label:"Go City 官方介紹：Makani Catamaran Sail"}
   },
   {
-    id:"luau", day:"8/31", time:"17:30–20:00", type:"culture", icon:"🔥",
+    id:"luau", day:"8/31", time:"17:30–20:00", type:"culture", icon:"🔥", region:"waikiki", closedDays:["六"],
     title:"Ka Moana Luau @ Aloha Tower（Premium 名額）",
     addr:"1 Aloha Tower Dr, Honolulu, HI 96813",
-    hours:"週一至週五、週日 17:30–20:00；<span class='closed'>週六公休</span>",
-    booking:"需預約 → <a target='_blank' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
+    hours:"週一至週五、週日 17:30–20:00；週六公休",
+    booking:"<a target='_blank' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
     bookingBadge:"需預約",
-    fee:"<b>24 小時內取消</b>不予退款，視同全額 no-show 收費",
-    video:{id:"xvSD0AzOb_I", label:"Ka Moana Luau 新場地（Aloha Tower）介紹影片"}
+    fee:"24 小時內取消不予退款，視同全額收費",
+    video:{id:"xvSD0AzOb_I", label:"Ka Moana Luau 新場地（Aloha Tower）"}
   },
   {
-    id:"kualoa", day:"9/1", time:"09:20–10:50", type:"nature", icon:"🦕",
+    id:"kualoa", day:"9/1", time:"09:20–10:50", type:"nature", icon:"🦕", region:"windward", closedDays:["日"],
     title:"Kualoa Ranch – Ocean Voyage Adventure",
     addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744",
-    hours:"每日 08:40 / 09:20 / 10:20 / 11:00 / 13:00 / 13:40 / 14:45；<span class='closed'>週日公休</span>（9/7 假日亦休園，不影響本次行程）",
-    booking:"需預約（先付款）→ <a target='_blank' href='https://www.kualoa.com/tours-and-activities'>kualoa.com ↗</a> 選「Ocean Voyage Adventure」選時間人數，現場刷 Go City Pass 後退款",
+    hours:"每日 08:40 / 09:20 / 10:20 / 11:00 / 13:00 / 13:40 / 14:45；週日公休（9/7 假日亦休園）",
+    booking:"<a target='_blank' href='https://www.kualoa.com/tours-and-activities'>kualoa.com ↗</a> 選「Ocean Voyage Adventure」選時間人數，現場刷 Pass 後退款",
     bookingBadge:"需預約",
-    fee:"<b>未出席不予退款</b>（等同全額 no-show，零售參考價 up to $63/人）",
+    fee:"未出席不予退款，等同全額收費（參考值 up to $63/人）",
     video:{id:"l6zOfSTy62o", label:"Kualoa Ranch 官方影片：Ocean Voyage Adventure"}
   },
   {
-    id:"pcc", day:"9/1", time:"約 12:00–18:00", type:"culture", icon:"🌺",
+    id:"pcc", day:"9/1", time:"約 12:00–18:00", type:"culture", icon:"🌺", region:"windward", closedDays:["三","日"],
     title:"Polynesian Cultural Center",
     addr:"55-370 Kamehameha Hwy, Laie, HI 96762",
-    hours:"Islands of Polynesia 週一二四五六 12:15–18:00；<span class='closed'>週三、週日公休</span>",
-    booking:"免預約，主入口噴水池旁 Ticketing Center 刷 Pass 即可；保險起見可先電話 <b>1-844-365-2843</b> 確認名額",
+    hours:"Islands of Polynesia 週一二四五六 12:15–18:00；週三、週日公休",
+    booking:"免預約，主入口噴水池旁 Ticketing Center 刷 Pass；保險起見可先電話 <b>1-844-365-2843</b> 確認",
     bookingBadge:"現場刷卡",
-    fee:"無需預約，故無 no-show 費用；晚間付費大秀 HĀ: Breath of Life 需另外加購",
-    video:{id:"Af06OcBG2gM", label:"PCC Island Villages 園區導覽影片"}
+    fee:"無需預約，無 no-show 費用；晚間付費大秀需另外加購",
+    video:{id:"Af06OcBG2gM", label:"PCC Island Villages 園區導覽"}
   },
   {
-    id:"waimea", day:"9/2", time:"09:00–11:15", type:"nature", icon:"🌿",
+    id:"waimea", day:"9/2", time:"09:00–11:15", type:"nature", icon:"🌿", region:"northshore", closedDays:["一"],
     title:"Waimea Valley",
     addr:"59-864 Kamehameha Hwy, Haleʻiwa, HI 96712",
-    hours:"週二至週日 09:00–16:00；<span class='closed'>週一公休</span>",
+    hours:"週二至週日 09:00–16:00；週一公休",
     booking:"免預約，現場出示 Go City App 掃碼即可入園",
     bookingBadge:"現場刷卡",
     fee:"無需預約，無 no-show 費用",
-    video:{id:"r83YaKgi98E", label:"Waimea Valley 瀑布谷與植物園導覽影片"}
+    video:{id:"r83YaKgi98E", label:"Waimea Valley 瀑布谷與植物園導覽"}
   },
   {
-    id:"hula", day:"9/2", time:"12:00–13:00", type:"culture", icon:"💃",
+    id:"hula", day:"9/2", time:"12:00–13:00", type:"culture", icon:"💃", region:"northshore", closedDays:[],
     title:"Hula Class on the North Shore",
-    addr:"57-571 Kamehameha Hwy, Kahuku, HI 96731（集合點靠近 Waiale'e Beach Park，確切位置預約後另行通知）",
-    hours:"平日固定 <b>12:00</b> 一場；週六日改為 10:00 一場",
-    booking:"需提前 24hr 預約 → Email 或電話 <b>(808) 866-6630</b>",
+    addr:"57-571 Kamehameha Hwy, Kahuku, HI 96731（集合點靠近 Waiale'e Beach Park，確切位置預約後通知）",
+    hours:"平日固定 12:00 一場；週六日改為 10:00",
+    booking:"需提前 24hr：Email 或電話 <b>(808) 866-6630</b>",
     bookingBadge:"需預約",
-    fee:"官方未公布明確 no-show 罰金；<b>天候不佳可能由主辦方取消</b>，出發前建議再次確認",
-    video:{id:"MA91i8kZDQ4", label:"示意影片：Hula 三個基本步伐教學（非本行程實拍）"}
+    fee:"官方未公布明確 no-show 罰金；天候不佳可能由主辦方取消",
+    video:{id:"MA91i8kZDQ4", label:"示意影片：Hula 三個基本步伐（非本行程實拍）"}
   },
   {
-    id:"missouri", day:"9/8", time:"08:00 起（最後入場 15:00）", type:"history", icon:"⚓",
+    id:"missouri", day:"9/8", time:"08:00–15:00", type:"history", icon:"⚓", region:"pearlharbor", closedDays:[],
     title:"Battleship Missouri Memorial",
     addr:"1 Arizona Memorial Rd, Honolulu, HI 96818（Pearl Harbor Visitor Center）",
-    hours:"每日 08:00–16:00，全年無休；<b>需攜帶政府核發相片證件／護照</b>",
-    booking:"免預約，Go City Pass 現場出示掃碼即可；含 35 分鐘導覽（08:00–15:30 場次）",
+    hours:"每日 08:00–16:00（最後入場 15:00），全年無休；需攜帶政府核發相片證件／護照",
+    booking:"免預約，Go City Pass 現場出示掃碼；含 35 分鐘導覽",
     bookingBadge:"現場刷卡",
     fee:"無需預約，無 no-show 費用",
-    video:{id:"BZ8i12GDRBo", label:"Battleship Missouri Memorial 參觀導覽影片"}
+    video:{id:"BZ8i12GDRBo", label:"Battleship Missouri Memorial 參觀導覽"}
   },
   {
-    id:"arizona", day:"9/8", time:"⚠ 不含在 Go City 票內", type:"history", icon:"🎖",
-    title:"USS Arizona Memorial（另外搶票）",
+    id:"arizona", day:"9/8", time:"", type:"history", icon:"🎖", region:"pearlharbor", closedDays:[],
+    title:"USS Arizona Memorial（不含在 Go City 票內，需另外搶票）",
     addr:"同 Pearl Harbor Visitor Center",
     hours:"依 NPS 每日釋出名額而定",
-    booking:"另外搶票 → <a target='_blank' href='https://www.recreation.gov/'>recreation.gov ↗</a>，常提前數週額滿；現場也有候補但常需排隊 1–2 小時",
+    booking:"<a target='_blank' href='https://www.recreation.gov/'>recreation.gov ↗</a> 搶時段票，常提前數週額滿；現場也有候補但常需排隊 1–2 小時",
     bookingBadge:"另外搶票",
     fee:"依 NPS 規則，免費但需準時報到",
     video:null
@@ -342,31 +331,63 @@ const DATA = [
 
 function ytThumb(id){ return `https://img.youtube.com/vi/${id}/hqdefault.jpg`; }
 
+function parseTime(str){
+  const m = str.match(/(\d{1,2}:\d{2}).*?(\d{1,2}:\d{2})/);
+  if(!m) return null;
+  const toMin = t=>{ const [h,mm]=t.split(':').map(Number); return h*60+mm; };
+  return [toMin(m[1]), toMin(m[2])];
+}
+
+// ---------- Island map ----------
+function islandSVG(activeRegions){
+  const zones = Object.keys(REGION_POS).map(key=>{
+    const pos = REGION_POS[key];
+    const active = activeRegions.includes(key);
+    const fill = active ? REGION_COLOR[key] : 'var(--grey-zone)';
+    return `<circle cx="${pos.cx}" cy="${pos.cy}" r="9" fill="${fill}" opacity="${active?1:0.55}"/>`;
+  }).join('');
+  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M30,15 C45,8 65,10 75,22 C85,34 88,50 80,62 C74,72 66,80 55,86 C44,92 32,88 26,78 C18,66 14,50 18,36 C21,26 24,19 30,15 Z"
+      fill="#F3ECD9" stroke="#DCCFA8" stroke-width="1.5"/>
+    ${zones}
+  </svg>`;
+}
+
+function renderIslandBlock(container, activeRegions){
+  const legend = Object.keys(REGION_LABEL).map(key=>{
+    const active = activeRegions.includes(key);
+    return `<span><span class="dot" style="background:${active?REGION_COLOR[key]:'var(--grey-zone)'}"></span>${REGION_LABEL[key]}${active?' ★':''}</span>`;
+  }).join('');
+  container.innerHTML = `<div class="island-map">${islandSVG(activeRegions)}<div class="island-legend">${legend}</div></div>`;
+}
+
+// ---------- Render cards ----------
 function dayOptionsHTML(current){
   return DAYS.map(d=>`<option value="${d}" ${d===current?'selected':''}>搬到 ${d}</option>`).join('');
 }
 
 function renderAll(){
-  DAYS.forEach(d=>{ document.getElementById(`col-${d}`).innerHTML=''; });
+  DAYS.forEach(d=>{
+    document.getElementById(`col-${d}`).innerHTML = '';
+  });
   DATA.forEach(item=>{
     const li = document.createElement('li');
     li.className = `card type-${item.type}`;
     li.dataset.id = item.id;
     li.innerHTML = `
-      <div class="card-top">
-        <span class="card-time">${item.time}</span>
+      <div class="card-head">
+        <span class="card-time">${item.time || '時段依現場而定'}</span>
         <span class="badge ${item.bookingBadge==='現場刷卡'?'free':'book'}">${item.bookingBadge}</span>
       </div>
       <div class="card-title">${item.icon} ${item.title}</div>
-      <div class="info-block">
-        <p><span class="k">📍 地址：</span>${item.addr} — <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.addr)}">Google Maps ↗</a></p>
-        <p><span class="k">🗓 營業：</span>${item.hours}</p>
-        <p><span class="k">🎟 預約：</span>${item.booking}</p>
+      <div class="card-lines">
+        <p><span class="lbl">地點</span>${item.addr} · <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.addr)}">Maps↗</a></p>
+        <p><span class="lbl">營業</span>${item.hours}</p>
+        <p><span class="lbl">預約</span>${item.booking}</p>
       </div>
-      <div class="fee-line">💸 ${item.fee}</div>
+      <div class="fee-line">${item.fee}</div>
       ${item.video? `<a class="video-link" target="_blank" href="https://www.youtube.com/watch?v=${item.video.id}">
-        <img src="${ytThumb(item.video.id)}" alt="video">
-        <span>▶ ${item.video.label}</span>
+        <img src="${ytThumb(item.video.id)}" alt="video"><span>${item.video.label}</span>
       </a>` : ''}
       <div class="card-controls">
         <button class="move-up" title="往上移">▲</button>
@@ -376,7 +397,32 @@ function renderAll(){
     `;
     document.getElementById(`col-${item.day}`).appendChild(li);
   });
+
+  DAYS.forEach(d=>{
+    const regionsToday = [...new Set(DATA.filter(x=>x.day===d).map(x=>x.region))];
+    renderIslandBlock(document.getElementById(`map-${d}`), regionsToday);
+  });
+
+  renderOverview();
   attachControls();
+}
+
+function renderOverview(){
+  const bannerClass = {"8/31":"banner-1","9/1":"banner-2","9/2":"banner-3","9/8":"banner-4"};
+  const html = DAYS.map((d,i)=>{
+    const items = DATA.filter(x=>x.day===d);
+    const regions = [...new Set(items.map(x=>x.region))].map(r=>REGION_LABEL[r]).join(' + ');
+    const hi = items.map(x=>x.icon+' '+x.title.split('（')[0]).join('・');
+    return `<a class="ov-item" href="#day-${d.replace('/','')}">
+      <div class="ov-num" style="background:linear-gradient(135deg, var(--sea), var(--sea-dark));">${DAY_LABEL[d]}</div>
+      <div class="ov-body">
+        <b>${document.getElementById('day-'+d.replace('/','')).querySelector('h2').textContent}</b>
+        <div class="region">📍 ${regions}</div>
+        <div class="hi">${hi}</div>
+      </div>
+    </a>`;
+  }).join('');
+  document.getElementById('overview-list').innerHTML = html;
 }
 
 function attachControls(){
@@ -384,7 +430,13 @@ function attachControls(){
     const id = card.dataset.id;
     card.querySelector('.move-up').addEventListener('click', ()=>moveWithinDay(id,-1));
     card.querySelector('.move-down').addEventListener('click', ()=>moveWithinDay(id,1));
-    card.querySelector('.move-day').addEventListener('change', e=>moveToDay(id, e.target.value));
+    const sel = card.querySelector('.move-day');
+    sel.addEventListener('change', e=>{
+      const newDay = e.target.value;
+      const oldDay = DATA.find(d=>d.id===id).day;
+      if(newDay === oldDay) return;
+      openMoveModal(id, oldDay, newDay, sel);
+    });
   });
 }
 
@@ -402,26 +454,90 @@ function moveWithinDay(id, dir){
   renderAll();
 }
 
-function moveToDay(id, newDay){
+// ---------- Move confirmation modal ----------
+function openMoveModal(id, oldDay, newDay, selectEl){
   const item = DATA.find(d=>d.id===id);
-  item.day = newDay;
-  renderAll();
-  document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('active', b.dataset.day===newDay));
-  document.querySelectorAll('.day-panel').forEach(p=>p.classList.toggle('active', p.dataset.panel===newDay));
+  const weekday = DAY_WEEKDAY[newDay];
+  const others = DATA.filter(d=>d.day===newDay);
+
+  // 1. closed-day check
+  const isClosed = item.closedDays.includes(weekday);
+  const closedCheck = isClosed
+    ? `<div class="check"><span class="icon warn">⚠️</span><span class="warn">${newDay} 是星期${weekday}，此行程<b>公休</b>，搬過去無法成行</span></div>`
+    : `<div class="check"><span class="icon ok">✅</span><span>${newDay}（星期${weekday}）此行程有營業</span></div>`;
+
+  // 2. time overlap check
+  let overlapCheck;
+  const myRange = parseTime(item.time);
+  if(!myRange){
+    overlapCheck = `<div class="check"><span class="icon">ℹ️</span><span>此行程沒有固定時段，略過時間比對</span></div>`;
+  } else {
+    const conflicts = others.filter(o=>{
+      const r = parseTime(o.time);
+      if(!r) return false;
+      return myRange[0] < r[1] && r[0] < myRange[1];
+    });
+    overlapCheck = conflicts.length
+      ? `<div class="check"><span class="icon warn">⚠️</span><span class="warn">跟「${conflicts.map(c=>c.title.split('（')[0]).join('、')}」的時段重疊</span></div>`
+      : `<div class="check"><span class="icon ok">✅</span><span>跟這天其他行程沒有時間衝突</span></div>`;
+  }
+
+  // 3. geography check
+  const otherRegions = [...new Set(others.map(o=>o.region))];
+  let geoCheck;
+  if(otherRegions.length===0){
+    geoCheck = `<div class="check"><span class="icon">ℹ️</span><span>${newDay} 目前還沒有其他行程，沒有地理位置比對對象</span></div>`;
+  } else if(otherRegions.includes(item.region)){
+    geoCheck = `<div class="check"><span class="icon ok">✅</span><span>跟這天其他行程都在 ${REGION_LABEL[item.region]}，順路</span></div>`;
+  } else {
+    geoCheck = `<div class="check"><span class="icon warn">⚠️</span><span class="warn">這天其他行程在 ${otherRegions.map(r=>REGION_LABEL[r]).join('、')}，此行程在 ${REGION_LABEL[item.region]}，跨區可能拉長交通時間</span></div>`;
+  }
+
+  document.getElementById('modal-title').textContent = `搬動「${item.title.split('（')[0]}」→ ${newDay}？`;
+  document.getElementById('modal-checks').innerHTML = closedCheck + overlapCheck + geoCheck;
+
+  const backdrop = document.getElementById('modal-backdrop');
+  backdrop.classList.add('show');
+
+  const confirmBtn = document.getElementById('modal-confirm');
+  const cancelBtn = document.getElementById('modal-cancel');
+
+  const onConfirm = ()=>{
+    item.day = newDay;
+    backdrop.classList.remove('show');
+    renderAll();
+    cleanup();
+  };
+  const onCancel = ()=>{
+    selectEl.value = oldDay;
+    backdrop.classList.remove('show');
+    cleanup();
+  };
+  function cleanup(){
+    confirmBtn.removeEventListener('click', onConfirm);
+    cancelBtn.removeEventListener('click', onCancel);
+  }
+  confirmBtn.addEventListener('click', onConfirm);
+  cancelBtn.addEventListener('click', onCancel);
 }
 
-document.getElementById('tabs').addEventListener('click', e=>{
-  const btn = e.target.closest('button');
-  if(!btn) return;
-  document.querySelectorAll('#tabs button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.day-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelector(`.day-panel[data-panel="${btn.dataset.day}"]`).classList.add('active');
-});
-
-document.getElementById('reset-btn').addEventListener('click', ()=>location.reload());
+// ---------- scrollspy for tabs ----------
+function setupScrollspy(){
+  const sections = DAYS.map(d=>document.getElementById('day-'+d.replace('/','')));
+  const tabs = document.querySelectorAll('#tabs a');
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const day = entry.target.dataset.day;
+        tabs.forEach(t=>t.classList.toggle('active', t.dataset.day===day));
+      }
+    });
+  }, {rootMargin:"-40% 0px -50% 0px"});
+  sections.forEach(s=>obs.observe(s));
+}
 
 renderAll();
+setupScrollspy();
 </script>
 </body>
 </html>
