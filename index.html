@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>歐胡島 Go City 4 日行程圖</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --chart-paper:#EDE6D2;
+    --chart-paper-2:#E4DBC2;
+    --ink:#16323A;
+    --ink-soft:#3E5A61;
+    --route:#B8433B;
+    --route-soft:#D97F72;
+    --sun:#C98A2E;
+    --moon:#4C5B8C;
+    --line:#c9bd9c;
+    --ok:#41694F;
+    --warn:#9C5A1E;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--chart-paper);
+    background-image:
+      linear-gradient(var(--chart-paper-2) 1px, transparent 1px),
+      linear-gradient(90deg, var(--chart-paper-2) 1px, transparent 1px);
+    background-size: 32px 32px;
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+  }
+  .wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px;}
+
+  header.hero{
+    border:1.5px solid var(--ink);
+    border-radius:2px;
+    padding:28px 26px 22px;
+    background:rgba(237,230,210,0.6);
+    position:relative;
+    margin-bottom:22px;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute; inset:6px;
+    border:1px solid var(--ink);
+    opacity:.35;
+    border-radius:2px;
+    pointer-events:none;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--route);
+    margin:0 0 8px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:clamp(28px,5vw,42px);
+    margin:0 0 10px;
+    letter-spacing:-0.01em;
+  }
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:8px 22px;
+    font-size:14px;
+    color:var(--ink-soft);
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .hero-meta b{color:var(--ink);}
+
+  .notice{
+    border-left:3px solid var(--route);
+    background:rgba(184,67,59,0.07);
+    padding:14px 16px;
+    margin:18px 0 24px;
+    font-size:14.5px;
+  }
+  .notice b{color:var(--route);}
+  .notice ul{margin:8px 0 0;padding-left:20px;}
+  .notice li{margin-bottom:4px;}
+
+  nav.tabs{
+    display:flex;
+    gap:6px;
+    flex-wrap:wrap;
+    border-bottom:1.5px solid var(--ink);
+    margin-bottom:0;
+  }
+  nav.tabs button{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13.5px;
+    background:transparent;
+    border:1.5px solid var(--ink);
+    border-bottom:none;
+    border-radius:4px 4px 0 0;
+    padding:10px 16px;
+    cursor:pointer;
+    color:var(--ink-soft);
+    position:relative;
+    top:1.5px;
+  }
+  nav.tabs button.active{
+    background:var(--ink);
+    color:var(--chart-paper);
+    font-weight:600;
+  }
+  nav.tabs button .d{display:block;font-size:10px;opacity:.75;letter-spacing:.08em;}
+
+  .day-panel{display:none; padding-top:28px;}
+  .day-panel.active{display:block;}
+
+  .day-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:6px;
+  }
+  .day-head h2{
+    font-family:'Fraunces', serif;
+    font-size:26px;
+    margin:0;
+  }
+  .status-ok{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ok);
+    border:1px solid var(--ok);
+    border-radius:20px;
+    padding:3px 10px;
+    white-space:nowrap;
+  }
+  .day-sub{color:var(--ink-soft); font-size:14px; margin:0 0 22px;}
+
+  .timeline{
+    position:relative;
+    padding-left:26px;
+    border-left:2px dashed var(--line);
+  }
+  .stop{
+    position:relative;
+    margin-bottom:26px;
+    padding-bottom:4px;
+  }
+  .stop::before{
+    content:"";
+    position:absolute;
+    left:-32px; top:4px;
+    width:11px;height:11px;
+    background:var(--chart-paper);
+    border:2px solid var(--route);
+    border-radius:50%;
+  }
+  .stop.evening::before{ border-color:var(--moon); }
+  .stop-time{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--route);
+    font-weight:600;
+    letter-spacing:.02em;
+  }
+  .stop.evening .stop-time{color:var(--moon);}
+  .stop-title{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:600;
+    margin:2px 0 6px;
+  }
+  .badge{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    padding:2px 8px;
+    border-radius:20px;
+    margin-left:8px;
+    vertical-align:middle;
+    border:1px solid currentColor;
+  }
+  .badge.book{color:var(--warn);}
+  .badge.free{color:var(--ok);}
+  .stop-body{font-size:14.5px;}
+  .stop-body p{margin:0 0 8px;}
+  .meta-row{
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:6px 0;
+    display:flex;flex-wrap:wrap;gap:4px 6px;
+  }
+  .meta-row b{color:var(--ink);}
+  a.map{
+    color:var(--route);
+    text-decoration:none;
+    border-bottom:1px dotted var(--route);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+  }
+  a.map:hover{opacity:.7;}
+  .callout{
+    background:rgba(76,91,140,0.08);
+    border:1px solid rgba(76,91,140,0.35);
+    border-radius:4px;
+    padding:10px 12px;
+    font-size:13px;
+    margin-top:8px;
+  }
+  .callout b{color:var(--moon);}
+  .gap{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin:-10px 0 20px 2px;
+    font-style:italic;
+  }
+
+  table.checklist{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13.5px;
+    margin-top:10px;
+  }
+  table.checklist th, table.checklist td{
+    border:1px solid var(--line);
+    padding:8px 10px;
+    text-align:left;
+    vertical-align:top;
+  }
+  table.checklist th{
+    background:rgba(22,50,58,0.06);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+
+  footer.notes{
+    margin-top:44px;
+    border-top:1.5px solid var(--ink);
+    padding-top:20px;
+  }
+  footer.notes h3{
+    font-family:'Fraunces', serif;
+    font-size:20px;
+    margin:0 0 10px;
+  }
+  footer.notes p{font-size:13.5px; color:var(--ink-soft);}
+  .assumption{
+    background:rgba(201,138,46,0.1);
+    border:1px solid rgba(201,138,46,0.4);
+    padding:12px 14px;
+    border-radius:4px;
+    font-size:13.5px;
+    margin:14px 0;
+  }
+  .assumption b{color:var(--sun);}
+
+  @media (max-width:600px){
+    .wrap{padding:18px 14px 60px;}
+    nav.tabs button{padding:8px 10px; font-size:12px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">Oʻahu · Go City All-Inclusive Pass · 4 Days</p>
+    <h1>歐胡島行程提案</h1>
+    <div class="hero-meta">
+      <span><b>使用天數：</b>4 天（14 日效期內任選不連續日）</span>
+      <span><b>涵蓋日期：</b>8/31、9/1、9/2、9/8</span>
+      <span><b>基地：</b>Waikiki</span>
+    </div>
+  </header>
+
+  <div class="notice">
+    <b>先講重點：</b>下面每個景點都已個別查證「目前公告的營業日 / 時段」與「Go City 頁面上的預約規則」，重點如下——
+    <ul>
+      <li><b>Waimea Valley 週一公休</b>——還好你排在 9/2（三），沒撞到。</li>
+      <li><b>Hula Class（North Shore）</b>不在 Waimea Valley 裡面，而是在 <b>Kahuku</b>（Sunset Beach 與 Turtle Bay 之間），平日只有 <b>12:00</b> 一個場次，且需<b>至少提前 24 小時</b>email/電話預約。</li>
+      <li><b>PCC 週三、週日公休</b>——9/1 是週二，可以去。</li>
+      <li><b>「Premium select」</b>我判斷是指 4 日 All-Inclusive Pass 內附的「1 次 Premium 體驗」名額（多半是二選一 Luau）。我把它排進 8/31 晚上的 <b>Ka Moana Luau @ Aloha Tower</b>，原因與替代方案在下方 8/31 卡片內有說明。</li>
+      <li>珍珠港的 <b>USS Arizona Memorial 免費名額不含在 Go City 票內</b>，須另外上 recreation.gov 搶，且常常提前數週額滿——已在 9/8 卡片內特別註記。</li>
+    </ul>
+  </div>
+
+  <nav class="tabs" id="tabs">
+    <button data-day="d1" class="active">8/31 <span class="d">週一・水上活動</span></button>
+    <button data-day="d2">9/1 <span class="d">週二・古蘭尼＋PCC</span></button>
+    <button data-day="d3">9/2 <span class="d">週三・北海岸</span></button>
+    <button data-day="d4">9/8 <span class="d">週二・珍珠港</span></button>
+  </nav>
+
+  <!-- DAY 1 -->
+  <section class="day-panel active" id="d1">
+    <div class="day-head">
+      <h2>8/31（一）Waikiki 水上日</h2>
+      <span class="status-ok">✓ 三項當日均營業（每日開放）</span>
+    </div>
+    <p class="day-sub">兩個水上行程的集合點都在 <b>Kewalo Basin Harbor</b>（同一個港口），銜接容易；晚上用 Premium 名額收尾。</p>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-time">10:15 – 12:15</div>
+        <div class="stop-title">Waikiki Turtle Canyon Snorkel Cruise <span class="badge book">需預約</span></div>
+        <div class="stop-body">
+          <div class="meta-row"><b>集合：</b>Kewalo Basin Harbor（報到處 1085 Ala Moana Blvd, Suite 104） · <a class="map" href="https://www.google.com/maps/search/?api=1&query=21.293892018669265,-157.85548852883664" target="_blank">Google Maps ↗</a></div>
+          <div class="meta-row"><b>時段：</b>每日 10:15 / 13:00 兩場，全年每天營業</div>
+          <div class="meta-row"><b>預約方式：</b>官方 <a class="map" href="https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co" target="_blank">Honolulu Snorkel Company 網站 ↗</a> 選日期時段人數，輸入 Go City 票號</div>
+          <p>需信用卡預刷作保證金；<b>24 小時內取消或未到會收取 $1/人海洋保育費</b>作為手續費依據。</p>
+        </div>
+      </div>
+
+      <div class="gap">午餐空檔（約 1.5 小時）— 建議就在 Kewalo Basin / Ala Moana 一帶用餐，不用移動</div>
+
+      <div class="stop">
+        <div class="stop-time">14:00 – 16:00</div>
+        <div class="stop-title">Makani Catamaran Sail <span class="badge book">需預約</span></div>
+        <div class="stop-body">
+          <div class="meta-row"><b>集合：</b>同樣在 Kewalo Basin Harbor 的 Makani Kiosk（1009 Ala Moana Blvd F31）· <a class="map" href="https://www.google.com/maps/search/?api=1&query=21.294837129307236,-157.85734963068947" target="_blank">Google Maps ↗</a></div>
+          <div class="meta-row"><b>時段：</b>每日 11:00 / 14:00，全年每天營業</div>
+          <div class="meta-row"><b>預約方式：</b>電話 <b>(808) 591-9000</b>（無線上預約系統，需來電，視空位而定）</div>
+          <p><b>取消規則比雪橇船寬鬆：</b>48 小時前取消不收費。若想升級成日落帆船（+$20/人，含酒水），要在電話預約時當場提出，視空位而定。</p>
+        </div>
+      </div>
+
+      <div class="stop evening">
+        <div class="stop-time">17:30 – 20:00</div>
+        <div class="stop-title">Ka Moana Luau @ Aloha Tower <span class="badge free">Premium 名額</span></div>
+        <div class="stop-body">
+          <div class="meta-row"><b>地點：</b>1 Aloha Tower Dr, Honolulu · <a class="map" href="https://www.google.com/maps/search/?api=1&query=1+Aloha+Tower+Dr+Honolulu+HI+96813" target="_blank">Google Maps ↗</a>（距 Kewalo Basin 車程約 10–15 分鐘）</div>
+          <div class="meta-row"><b>營業日：</b>週一至週五、週日 17:30–20:00；<b style="color:var(--warn)">週六公休</b> —— 8/31 是週一，沒問題</div>
+          <div class="meta-row"><b>預約方式：</b><a class="map" href="https://www.moanaluau.com/reservations" target="_blank">moanaluau.com ↗</a> 用 Go City Pass 連結預約，需 24 小時前取消才可全額退</div>
+          <div class="callout">
+            <b>關於「Premium select」的假設：</b>4 日 All-Inclusive Pass 只附<b>一次</b> Premium 體驗名額（通常二選一：Ka Moana Luau @ Aloha Tower，或 Aloha Kai Luau @ Sea Life Park）。我選 Aloha Tower 這場是因為地理位置就在市區，跟你這天的水上活動同一區，不用再跑到東南角的 Sea Life Park。<br><br>
+            <b>如果你其實是想把 Premium 名額留給別天、或指的是別的體驗</b>（例如升級版日落帆船），這天晚上可以直接留白休息——這樣 8/31 會少掉一個晚場行程，整天步調會鬆很多。你們自己抓一下體力，兩場水上活動＋一場晚宴其實頗滿。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 2 -->
+  <section class="day-panel" id="d2">
+    <div class="day-head">
+      <h2>9/1（二）古蘭尼牧場 ＋ PCC</h2>
+      <span class="status-ok">✓ 兩處週二皆營業</span>
+    </div>
+    <p class="day-sub">兩地相距約 20 分鐘車程，是 Go City 官方推薦的固定組合；古蘭尼牧場早上開、PCC 中午才開，順序抓得剛好。</p>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-time">09:00 抵達（09:20 出發）</div>
+        <div class="stop-title">Kualoa Ranch – Ocean Voyage Adventure <span class="badge book">需預約</span></div>
+        <div class="stop-body">
+          <div class="meta-row"><b>地點：</b>49-560 Kamehameha Hwy, Kaneohe · <a class="map" href="https://www.google.com/maps/search/?api=1&query=21.520792,-157.837278" target="_blank">Google Maps ↗</a></div>
+          <div class="meta-row"><b>內容：</b>1.5 小時（20 分鐘魚池導覽＋45 分鐘 Kaneohe Bay 雙體船，可看 Mokolii 島）</div>
+          <div class="meta-row"><b>週二場次：</b>08:40 / 09:20 / 10:20 / 11:00 / 13:00 / 13:40 / 14:45（每天皆同，僅週日公休）</div>
+          <div class="meta-row"><b>預約方式：</b><a class="map" href="https://www.kualoa.com/tours-and-activities" target="_blank">kualoa.com ↗</a> 選「Ocean Voyage Adventure」→ 選時間人數 → 先付款，到現場刷 Go City Pass 後退款；<b>沒出席不退款</b></div>
+          <p><b>重要：</b>Go City 一天只能免費玩古蘭尼牧場的<b>其中一項</b>（Ocean Voyage Adventure / Kualoa Grown Tour / Secret Island Beach 三選一），選 9:20 場結束約 10:50，時間最好抓。</p>
+        </div>
+      </div>
+
+      <div class="gap">車程約 30–40 分鐘北上至 Laie（PCC），途中可買 Kahuku 蝦車當午餐</div>
+
+      <div class="stop">
+        <div class="stop-time">約 12:00 – 18:00</div>
+        <div class="stop-title">Polynesian Cultural Center <span class="badge free">現場刷卡即可</span></div>
+        <div class="stop-body">
+          <div class="meta-row"><b>地點：</b>55-370 Kamehameha Hwy, Laie · <a class="map" href="https://www.google.com/maps/search/?api=1&query=Polynesian+Cultural+Center+Laie+HI" target="_blank">Google Maps ↗</a></div>
+          <div class="meta-row"><b>週二營業：</b>Islands of Polynesia 12:15–18:00；Huki Canoe Show 13:00–13:20；Hukilau Marketplace 11:00–21:00</div>
+          <div class="meta-row"><b>入場：</b>Go City 官方說法是<b>免預約</b>，主入口噴水池旁 Ticketing Center 出示 Pass 即可</div>
+          <div class="callout"><b>保險起見：</b>PCC 官網另外也留了一支專線 <b>1-844-365-2843</b> 給用多合一票券的旅客先電話確認名額，旺季（暑假尾聲）建議前一天打去問一下比較保險。</div>
+          <p>晚間的付費大秀「HĀ: Breath of Life」（約 19:30 起）<b>不含在基本入場</b>，若想看需另外加購。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 3 -->
+  <section class="day-panel" id="d3">
+    <div class="day-head">
+      <h2>9/2（三）北海岸：瀑布谷 ＋ Hula</h2>
+      <span class="status-ok">✓ Waimea Valley 週三營業，Hula 週三 12:00 有場</span>
+    </div>
+    <p class="day-sub"><b>注意順序：</b>Hula Class 不在 Waimea Valley 園區內，而是在更北邊的 Kahuku（約 25 分鐘車程），且平日只有中午 12:00 一場，所以要先逛 Waimea 再北上，卡準時間。</p>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-time">09:00 – 11:15</div>
+        <div class="stop-title">Waimea Valley <span class="badge free">現場刷卡即可</span></div>
+        <div class="stop-body">
+          <div class="meta-row"><b>地點：</b>59-864 Kamehameha Hwy, Haleʻiwa · <a class="map" href="https://www.google.com/maps/search/?api=1&query=21.636171,-158.054026" target="_blank">Google Maps ↗</a></div>
+          <div class="meta-row"><b>營業時間：</b>週二至週日 09:00–16:00（<b style="color:var(--warn)">週一公休</b>，還好這天是週三）</div>
+          <div class="meta-row"><b>建議停留：</b>2–2.5 小時（步道來回約 30 分鐘＋瀑布戲水，記得帶泳衣毛巾）</div>
+          <p>免預約，Go City App 現場出示掃碼即可入園。</p>
+        </div>
+      </div>
+
+      <div class="gap">車程北上約 20–25 分鐘至 Kahuku，建議 11:40 前抵達</div>
+
+      <div class="stop">
+        <div class="stop-time">12:00 – 13:00</div>
+        <div class="stop-title">Hula Class on the North Shore <span class="badge book">需提前 24 小時預約</span></div>
+        <div class="stop-body">
+          <div class="meta-row"><b>地點：</b>57-571 Kamehameha Hwy, Kahuku（Sunset Beach 與 Turtle Bay 之間，靠近 Waiale'e Beach Park）· <a class="map" href="https://www.google.com/maps/search/?api=1&query=21.693312,-158.019472" target="_blank">Google Maps ↗</a></div>
+          <div class="meta-row"><b>週三場次：</b>僅 <b>12:00</b> 一場（週末才有 10:00 場，平日固定中午）</div>
+          <div class="meta-row"><b>預約方式：</b>email 或電話 <b>(808) 866-6630</b>，<b>須至少提前 24 小時</b>；確切集合點會在預約後另行通知</div>
+          <p>1 小時課程，教三個基本步伐（hela / kao / kaholo）與樂器；<b>天候不佳可能取消</b>，出發前建議再確認一次。</p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-time">13:00 起</div>
+        <div class="stop-title">北海岸自由時間 <span class="badge free">彈性</span></div>
+        <div class="stop-body">
+          <p>課程結束後可就近逛 Turtle Bay / Sunset Beach，或南下 Haleiwa 吃剉冰（Matsumoto's）、逛小鎮，再開車回 Waikiki（車程約 1 小時）。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DAY 4 -->
+  <section class="day-panel" id="d4">
+    <div class="day-head">
+      <h2>9/8（二）珍珠港</h2>
+      <span class="status-ok">✓ 密蘇里號戰艦每日開放</span>
+    </div>
+    <p class="day-sub">建議早點到，安檢排隊耗時，且戰艦最後入場時間是 15:00。</p>
+
+    <div class="timeline">
+      <div class="stop">
+        <div class="stop-time">08:00（建議）</div>
+        <div class="stop-title">抵達 Pearl Harbor Visitor Center</div>
+        <div class="stop-body">
+          <div class="meta-row"><b>地點：</b>1 Arizona Memorial Rd, Honolulu · <a class="map" href="https://www.google.com/maps/search/?api=1&query=Pearl+Harbor+Visitor+Center+Honolulu+HI" target="_blank">Google Maps ↗</a></div>
+          <div class="meta-row"><b>務必攜帶：</b>政府核發相片證件（護照或駕照），國際旅客一定要帶護照正本</div>
+          <div class="callout"><b>包包限制：</b>現場不能帶背包／手提包進入，可付費寄放在遊客中心前的寄物處。</div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-time">全日開放 08:00 – 16:00（最後入場 15:00）</div>
+        <div class="stop-title">Battleship Missouri Memorial <span class="badge free">Go City 免預約</span></div>
+        <div class="stop-body">
+          <div class="meta-row"><b>內容：</b>含 35 分鐘導覽（08:00–15:30 場次），也可自行參觀</div>
+          <div class="meta-row"><b>怎麼去：</b>需搭免費接駁船至 Ford Island，船班從 Pearl Harbor 遊客中心後方、USS Bowfin 潛艇博物館旁出發</div>
+          <div class="meta-row"><b>入場：</b>Go City Pass 現場出示即可，<b>不需另外預約</b>；建議停留 60–90 分鐘</div>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-time">視時間彈性加碼</div>
+        <div class="stop-title">USS Bowfin 潛艇博物館 / 航空博物館 <span class="badge free">Go City 免預約</span></div>
+        <div class="stop-body">
+          <p>兩者都含在 Go City Pass 內、免預約現場刷卡進場，若時間充裕可以順道排進同一天。</p>
+        </div>
+      </div>
+
+      <div class="stop">
+        <div class="stop-title" style="color:var(--warn)">⚠ USS Arizona Memorial（不含在 Go City 票內）</div>
+        <div class="stop-body">
+          <p>USS Arizona 免費名額是<b>國家公園管理局（NPS）另外發放</b>，跟 Go City Pass 無關，需上 <b>recreation.gov</b> 搶時段票，常常<b>提前數週就額滿</b>。如果這趟也想去，建議現在就先上去查看剩餘名額；若沒搶到，現場當日仍有機會候補，但常需排隊 1–2 小時。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="notes">
+    <h3>訂位總覽</h3>
+    <table class="checklist">
+      <tr><th>行程</th><th>是否需預約</th><th>怎麼訂</th><th>取消規則</th></tr>
+      <tr><td>Turtle Canyon Snorkel Cruise</td><td>是</td><td>Honolulu Snorkel Company 官網</td><td>24 小時前</td></tr>
+      <tr><td>Makani Catamaran Sail</td><td>是</td><td>電話 (808) 591-9000</td><td>48 小時前</td></tr>
+      <tr><td>Ka Moana Luau</td><td>是</td><td>moanaluau.com（Go City Pass 連結）</td><td>24 小時前</td></tr>
+      <tr><td>Kualoa Ranch Ocean Voyage</td><td>是</td><td>kualoa.com</td><td>需出席才退款，未到不退</td></tr>
+      <tr><td>PCC</td><td>官方說不用，建議電話再確認</td><td>現場 / 1-844-365-2843</td><td>—</td></tr>
+      <tr><td>Waimea Valley</td><td>否</td><td>現場刷 Pass</td><td>—</td></tr>
+      <tr><td>Hula Class North Shore</td><td>是（至少 24 小時前）</td><td>Email / (808) 866-6630</td><td>天候取消另通知</td></tr>
+      <tr><td>Battleship Missouri Memorial</td><td>否</td><td>現場刷 Pass</td><td>—</td></tr>
+      <tr><td>USS Arizona Memorial（不含票內）</td><td>是，另外搶票</td><td>recreation.gov</td><td>依 NPS 規則</td></tr>
+    </table>
+    <p style="margin-top:16px;">以上營業日／時段是依 Go City 官方頁面與各景點官網目前公告的資訊查證（查詢時間：2026 年 7 月底），實際仍可能因季節、私人包場或天候臨時調整，出發前建議在 Go City App 內再次確認當週時段。</p>
+  </footer>
+
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('#tabs button');
+  const panels = document.querySelectorAll('.day-panel');
+  buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      buttons.forEach(b=>b.classList.remove('active'));
+      panels.forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.day).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
