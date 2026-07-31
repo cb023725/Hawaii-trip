@@ -74,7 +74,7 @@
           <h3 class="font-baloo font-bold text-amber-800">Go City 卡重點提醒</h3>
         </div>
         <ul class="space-y-1.5 text-[13px] text-amber-900 list-disc list-inside leading-relaxed" style="text-wrap:pretty;">
-          <li>4 天效期<b>不需連續</b>，14 天內任選 4 天；成人現售約 <b>$314</b>（官網不時有限時折扣碼，實際請以 gocity.com 當下顯示為準）</li>
+          <li>4 天效期<b>不需連續</b>，14 天內任選 4 天；成人實付約 <b>$279</b>（含 SUMMER 折扣碼，官網原價 $299，實際請以 gocity.com 當下顯示為準）</li>
           <li>多數行程要<b>自己另外向業者預約</b>，App 只負責入場掃碼，不負責訂位</li>
           <li><b>預約時大多會請你留信用卡授權（不會立刻扣款）</b>：只要在該行程規定的時限前取消，就不會被收費；沒取消或沒出現，才會照該行程的規則收費——<b>各行程取消期限不同</b>，詳見各卡片</li>
           <li><b>古蘭尼牧場</b>例外：官網會先刷<b>全額</b>，到現場 Ticket Office 刷歐胡卡後才退款；沒去則不退</li>
@@ -103,7 +103,7 @@
 
     <section data-panel="9/1" class="panel hidden py-4">
       <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-palm to-palm-dark">
-        <h2 class="font-baloo font-bold text-lg">9/1（二）古蘭尼牧場＋文化中心</h2>
+        <h2 class="font-baloo font-bold text-lg">9/1（二）古蘭尼牧場＋玻里尼西亞文化中心</h2>
         <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜兩景點相距約 20–40 分鐘車程</p>
       </div>
       <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-9/1"></div>
@@ -111,7 +111,7 @@
 
       <div class="mt-6 rounded-xl border-2 border-dashed border-violet-300 bg-violet-50/40 p-4">
         <h3 class="font-baloo font-bold text-base text-violet-800 mb-1">🎬 加碼自費行程（可選，不含在 Go City 票內）</h3>
-        <p class="text-[12px] text-violet-700 mb-3">這三個都要另外付費，也都要另外預約。如果想加一個，記得下面已經幫你算好「加了之後 PCC 還剩多少時間」，自己抓時間夠不夠。</p>
+        <p class="text-[12px] text-violet-700 mb-3">這三個都要另外付費，也都要另外預約。如果想加一個，記得下面已經幫你算好「加了之後玻里尼西亞文化中心還剩多少時間」，自己抓時間夠不夠。</p>
         <div id="addon-list" class="flex flex-col gap-3"></div>
       </div>
     </section>
@@ -148,13 +148,13 @@
         </div>
         <div class="flex justify-between text-[13.5px] py-1 border-t border-dashed border-slate-200 mt-1 pt-2">
           <span class="text-slate-500">Go City 4 日 All-Inclusive（成人）</span>
-          <span class="font-baloo font-bold">約 $314</span>
+          <span class="font-baloo font-bold">約 $279</span>
         </div>
         <div class="flex justify-between text-[14.5px] py-2 mt-1 border-t border-slate-200">
           <span class="font-baloo font-bold text-mango-dark">預估省下</span>
           <span class="font-baloo font-bold text-mango-dark" id="compare-savings">$0</span>
         </div>
-        <p class="text-[11px] text-slate-400 mt-2" style="text-wrap:pretty;">票價僅供參考：4 日 All-Inclusive 成人現售約 $314，官網不時會有限時折扣碼（例如目前的 SUMMER 折扣），實際請以 gocity.com 當下公告為準。</p>
+        <p class="text-[11px] text-slate-400 mt-2" style="text-wrap:pretty;">票價僅供參考：4 日 All-Inclusive 成人實付約 $279（含 SUMMER 折扣碼，原價 $299），實際請以 gocity.com 當下公告與你實際下單金額為準。</p>
       </div>
     </section>
 
@@ -218,7 +218,7 @@ const DAY_PHOTOS = {
 
 const TRANSIT = {
   "8/31":{ after:"turtle", label:"⛔ 同一個港口，走過去就到，不用移動" },
-  "9/1":{ after:"kualoa", label:"🚗 自駕車程約 30–40 分鐘北上至 Laie（文化中心）" },
+  "9/1":{ after:"kualoa", label:"🚗 自駕車程約 30–40 分鐘北上至 Laie（玻里尼西亞文化中心）" },
   "9/2":{ after:"waimea", label:"🚗 自駕車程約 20–25 分鐘北上至 Kahuku" },
   "9/8":{ after:"missouri", label:"🚶 同一個園區，搭免費接駁船前往，不需開車" }
 };
@@ -276,11 +276,11 @@ const DATA = [
     value:"約 $63／成人",
     fee:"需先線上付款訂位，現場刷 Go City Pass 後全額退款；若未出席該場次，則不予退還",
     video:{id:"-L14lBjxhVo", label:"Kualoa Ranch 官方影片：Secret Island Beach Activities"},
-    impact:"選 <b>09:30 場（13:00 結束）</b>：車程 30–40 分鐘到文化中心，約 13:40 抵達，文化中心還能玩到 18:00，約 4.5 小時，比較從容 → <b>建議選這場</b>。選 <b>12:30 場（16:00 結束）</b>：抵達文化中心約 16:30–16:40，只剩約 1.5 小時就閉園，會非常趕。"
+    impact:"選 <b>09:30 場（13:00 結束）</b>：車程 30–40 分鐘到玻里尼西亞文化中心，約 13:40 抵達，玻里尼西亞文化中心還能玩到 18:00，約 4.5 小時，比較從容 → <b>建議選這場</b>。選 <b>12:30 場（16:00 結束）</b>：抵達玻里尼西亞文化中心約 16:30–16:40，只剩約 1.5 小時就閉園，會非常趕。"
   },
   {
     id:"pcc", day:"9/1", time:"約 12:00–18:00", type:"culture", region:"windward", closedDays:["三","日"],
-    title:"文化中心（Polynesian Cultural Center）",
+    title:"玻里尼西亞文化中心（Polynesian Cultural Center）",
     what:"整個園區重現太平洋各島嶼（大溪地、東加、斐濟等）的傳統村落與歌舞表演，像走進一座活的博物館。",
     addr:"55-370 Kamehameha Hwy, Laie, HI 96762",
     geo:"21.6417,-157.9213",
@@ -349,7 +349,7 @@ const ADDONS = [
     time:"90 分鐘・每 20 分鐘一班，08:20–15:20（每日）",
     price:"US$59.95＋稅／成人",
     what:"復古校車開進 Ka'a'awa 山谷，停靠《侏儸紀公園》《LOST》等 250+ 部電影取景點，最容易入門的一團。",
-    impact:"如果排在神秘島（09:30–13:00）之後，最早只能接 13:40 場，90 分鐘結束約 15:10，到文化中心時間變成約 15:40，<b>文化中心只剩 2 小時多</b>，比不加這團少了約 2 小時。",
+    impact:"如果排在神秘島（09:30–13:00）之後，最早只能接 13:40 場，90 分鐘結束約 15:10，到玻里尼西亞文化中心時間變成約 15:40，<b>玻里尼西亞文化中心只剩 2 小時多</b>，比不加這團少了約 2 小時。",
     video:{id:"IF2tEJN7P5Y", label:"Kualoa Ranch 官方影片：Movie Site Tour"}
   },
   {
@@ -357,7 +357,7 @@ const ADDONS = [
     time:"2.5 小時・時段以官網當日開放為準（多為上午場）",
     price:"US$149.95＋稅／成人",
     what:"深入古蘭尼牧場、Hakipu'u、Ka'a'awa 三個山谷，比電影場景團走得更深、停留景點更多的加強版。",
-    impact:"接在神秘島（09:30–13:00）之後，最快約 13:20 出發，2.5 小時結束約 15:50，到文化中心約 16:20，<b>文化中心只剩不到 2 小時</b>，晚上大秀基本上看不到。",
+    impact:"接在神秘島（09:30–13:00）之後，最快約 13:20 出發，2.5 小時結束約 15:50，到玻里尼西亞文化中心約 16:20，<b>玻里尼西亞文化中心只剩不到 2 小時</b>，晚上大秀基本上看不到。",
     video:{id:"-ZGhCqdoQTQ", label:"Jurassic Adventure Tour Highlights | Kualoa Ranch"}
   },
   {
@@ -365,7 +365,7 @@ const ADDONS = [
     time:"2 小時・時段依官網當日開放為準（自駕須年滿 21 歲）",
     price:"US$154.95＋稅／成人起（多人共乘 UTV）",
     what:"自己開多人座 UTV 衝進山谷小徑，是三個加購裡最刺激的一個，熱門時段常常提前 2–3 週就被訂光。",
-    impact:"接在神秘島之後最快約 13:20 出發，2 小時結束約 15:20，到文化中心約 15:50，<b>文化中心剩約 2 小時</b>，只夠快速逛完主要村落。",
+    impact:"接在神秘島之後最快約 13:20 出發，2 小時結束約 15:20，到玻里尼西亞文化中心約 15:50，<b>玻里尼西亞文化中心剩約 2 小時</b>，只夠快速逛完主要村落。",
     video:{id:"Z5psAh5Rr3M", label:"Kualoa Ranch 官方影片：UTV Raptor Tour"}
   }
 ];
@@ -565,7 +565,7 @@ function cardHTML(item){
         ${item.value && item.included!==false ? `<div class="detail-row"><span class="detail-lbl">現值</span><span class="detail-val">單獨購票約 ${item.value}（已含在 Go City 票內）</span></div>` : ''}
       </div>
       <div class="mt-2 bg-amber-50 text-amber-800 text-[12px] rounded-md px-2.5 py-1.5">${item.fee}</div>
-      ${item.impact? `<div class="mt-2 bg-indigo-50 text-indigo-800 text-[12px] rounded-md px-2.5 py-1.5"><b>⏱ 影響後面文化中心的時間：</b>${item.impact}</div>` : ''}
+      ${item.impact? `<div class="mt-2 bg-indigo-50 text-indigo-800 text-[12px] rounded-md px-2.5 py-1.5"><b>⏱ 影響後面玻里尼西亞文化中心的時間：</b>${item.impact}</div>` : ''}
       ${item.note? `<div class="mt-2 bg-sky-50 text-sky-800 text-[12px] rounded-md px-2.5 py-1.5"><b>💡 補充：</b>${item.note}</div>` : ''}
       ${item.video? `<a target="_blank" href="https://www.youtube.com/watch?v=${item.video.id}" class="mt-2 flex items-center gap-2 bg-sky-50 rounded-md px-2 py-1.5">
         <img src="${ytThumb(item.video.id)}" class="w-14 h-8 object-cover rounded" alt="video">
@@ -645,7 +645,7 @@ function updateCompareSum(){
   let sum = 0;
   document.querySelectorAll('.compare-check:checked').forEach(cb=>{ sum += parseFloat(cb.dataset.value)||0; });
   document.getElementById('compare-sum').textContent = '$'+sum.toFixed(0);
-  const savings = sum - 314;
+  const savings = sum - 279;
   const savingsEl = document.getElementById('compare-savings');
   savingsEl.textContent = (savings>0? '$'+savings.toFixed(0) : '$0（單獨買票反而較便宜或差不多）');
 }
@@ -660,7 +660,7 @@ function renderAddons(){
       <div class="font-baloo font-bold text-[15.5px] mb-1">${a.title}</div>
       <p class="text-[12.5px] text-slate-500 italic mb-2">${a.what}</p>
       <p class="text-[13px] text-slate-700 font-bold mb-2">💵 ${a.price}</p>
-      <div class="bg-indigo-50 text-indigo-800 text-[12px] rounded-md px-2.5 py-1.5"><b>⏱ 加了之後 PCC 時間：</b>${a.impact}</div>
+      <div class="bg-indigo-50 text-indigo-800 text-[12px] rounded-md px-2.5 py-1.5"><b>⏱ 加了之後玻里尼西亞文化中心時間：</b>${a.impact}</div>
       <a target="_blank" href="https://www.youtube.com/watch?v=${a.video.id}" class="mt-2 flex items-center gap-2 bg-sky-50 rounded-md px-2 py-1.5">
         <img src="${ytThumb(a.video.id)}" class="w-14 h-8 object-cover rounded" alt="video">
         <span class="text-[11px] font-semibold leading-tight">${a.video.label}</span>
