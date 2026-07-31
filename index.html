@@ -8,46 +8,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --sea:#0FB5A6; --sea-dark:#0A7F76;
-    --hibiscus:#FF5C7A; --hibiscus-dark:#E23F5F;
-    --sun:#FFC93C; --leaf:#2E9C6B; --indigo:#5B6BC0;
-    --sand:#FFF8EC; --card:#FFFFFF;
-    --ink:#2B2140; --ink-soft:#6B6280; --line:#F0E4D0;
-    --grey-zone:#DDD6C8;
+    --mango:#FF7A3D; --mango-dark:#E5601F;
+    --ocean:#0093C4; --ocean-dark:#00688F;
+    --magenta:#E5387D; --magenta-dark:#C21F63;
+    --palm:#2FA84F; --palm-dark:#1F8038;
+    --navy:#2E3A6E; --navy-dark:#212A54;
+    --cream:#FFF6EA; --card:#FFFFFF;
+    --ink:#26314D; --ink-soft:#6B7290; --line:#F1E3CC;
+    --grey-zone:#E3DBC8;
   }
   *{box-sizing:border-box;}
   body{
-    margin:0; background:var(--sand);
-    background-image:radial-gradient(circle at 90% 0%, rgba(255,201,60,0.16), transparent 40%),
-                      radial-gradient(circle at 0% 20%, rgba(15,181,166,0.11), transparent 35%);
-    color:var(--ink); font-family:'Nunito', sans-serif; line-height:1.5; -webkit-font-smoothing:antialiased;
+    margin:0; background:var(--cream);
+    background-image:radial-gradient(circle at 92% 0%, rgba(255,122,61,0.16), transparent 40%),
+                      radial-gradient(circle at 0% 25%, rgba(0,147,196,0.12), transparent 38%);
+    color:var(--ink); font-family:'Nunito', sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:640px; margin:0 auto; padding:0 0 60px;}
+  .wrap{max-width:640px; margin:0 auto; padding:0 0 70px;}
 
   header.hero{
-    background:linear-gradient(135deg, var(--sea) 0%, var(--sea-dark) 55%, #0C6560 100%);
-    color:#fff; padding:24px 20px 30px; border-radius:0 0 26px 26px; position:relative; overflow:hidden;
+    background:linear-gradient(135deg, var(--mango) 0%, var(--magenta) 60%, var(--magenta-dark) 100%);
+    color:#fff; padding:24px 20px 28px; border-radius:0 0 26px 26px; position:relative; overflow:hidden;
   }
-  header.hero::after{content:"🌴"; position:absolute; right:14px; top:8px; font-size:42px; opacity:.32; transform:rotate(10deg);}
-  .eyebrow{font-family:'Baloo 2',sans-serif; font-size:12.5px; letter-spacing:.06em; opacity:.85; margin:0 0 4px;}
+  header.hero::after{content:"🌺"; position:absolute; right:14px; top:8px; font-size:42px; opacity:.32; transform:rotate(10deg);}
+  .eyebrow{font-family:'Baloo 2',sans-serif; font-size:12.5px; letter-spacing:.06em; opacity:.9; margin:0 0 4px;}
   h1{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:27px; margin:0 0 10px;}
   .hero-chips{display:flex; flex-wrap:wrap; gap:6px;}
-  .chip{background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.4); border-radius:20px; padding:4px 12px; font-size:12px; font-weight:600;}
+  .chip{background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.45); border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700;}
   .wave{display:block; width:100%; height:22px; margin-top:-2px;}
 
   main{padding:0 14px;}
 
-  .card.notice{
-    background:#fff; border:2px dashed var(--sea); border-radius:16px; padding:14px 16px; margin:16px 0; font-size:13px;
-  }
-  .card.notice b{color:var(--sea-dark);}
-  .card.notice ul{margin:6px 0 0; padding-left:18px;}
-  .card.notice li{margin-bottom:4px;}
+  .box{background:#fff; border-radius:16px; padding:14px 16px; margin:16px 0; font-size:13px; box-shadow:0 2px 8px rgba(38,49,77,0.06);}
+  .box.tips{border:2px dashed var(--ocean);}
+  .box.tips b{color:var(--ocean-dark);}
+  .box ul{margin:6px 0 0; padding-left:18px;}
+  .box li{margin-bottom:4px;}
 
   nav.tabs{
     position:sticky; top:0; z-index:20;
     display:flex; gap:8px; overflow-x:auto; padding:10px 14px;
-    background:rgba(255,248,236,0.95); backdrop-filter:blur(3px);
+    background:rgba(255,246,234,0.95); backdrop-filter:blur(3px);
     -webkit-overflow-scrolling:touch; border-bottom:1px solid var(--line);
   }
   nav.tabs::-webkit-scrollbar{display:none;}
@@ -56,92 +57,95 @@
     background:#fff; color:var(--ink-soft); border:2px solid var(--line); border-radius:20px;
     padding:6px 14px; cursor:pointer; white-space:nowrap; text-decoration:none;
   }
-  nav.tabs a.active{background:var(--hibiscus); border-color:var(--hibiscus); color:#fff;}
+  nav.tabs a.active{background:var(--magenta); border-color:var(--magenta); color:#fff;}
 
   /* overview */
-  section.overview{margin:16px 0 22px;}
-  section.overview h2{font-family:'Baloo 2',sans-serif; font-size:19px; margin:0 0 10px;}
+  section.overview{margin:16px 0 24px;}
+  section.overview h2{font-family:'Baloo 2',sans-serif; font-size:19px; margin:0 0 4px;}
+  section.overview .stay-note{font-size:12.5px; color:var(--ink-soft); margin:0 0 12px;}
+  .overview-map{display:flex; justify-content:center; margin-bottom:14px;}
+  .overview-map svg{width:220px; height:auto;}
   .ov-list{display:flex; flex-direction:column; gap:10px;}
   .ov-item{
     display:flex; gap:12px; align-items:flex-start; background:#fff; border-radius:14px; padding:12px 13px;
-    box-shadow:0 2px 8px rgba(43,33,64,0.06); text-decoration:none; color:var(--ink);
+    box-shadow:0 2px 8px rgba(38,49,77,0.06); text-decoration:none; color:var(--ink); cursor:pointer;
   }
   .ov-num{
-    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13px; color:#fff;
-    width:38px; height:38px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
-    text-align:center; line-height:1.1;
+    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:12.5px; color:#fff;
+    width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    text-align:center; line-height:1.15;
   }
   .ov-body b{font-family:'Baloo 2',sans-serif; font-size:14.5px; display:block; margin-bottom:2px;}
   .ov-body .region{font-size:11.5px; color:var(--ink-soft);}
   .ov-body .hi{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
 
-  /* island map */
-  .island-map{display:flex; align-items:center; gap:10px; margin:10px 0 14px;}
-  .island-map svg{width:96px; height:auto; flex-shrink:0;}
-  .island-legend{font-size:11.5px; color:var(--ink-soft); display:flex; flex-direction:column; gap:3px;}
-  .island-legend .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px;}
-
-  .day-banner{border-radius:18px; padding:14px 17px; margin:26px 0 10px; color:#fff; scroll-margin-top:60px;}
+  /* day section */
+  .day-banner{border-radius:18px; padding:14px 17px; margin:26px 0 4px; color:#fff; scroll-margin-top:58px;}
   .day-banner h2{font-family:'Baloo 2',sans-serif; font-size:19px; margin:0 0 2px;}
-  .day-banner .sub{font-size:12.5px; opacity:.92; margin:0;}
-  .banner-1{background:linear-gradient(135deg,#0FB5A6,#0A7F76);}
-  .banner-2{background:linear-gradient(135deg,#2E9C6B,#1F7350);}
-  .banner-3{background:linear-gradient(135deg,#FF5C7A,#E23F5F);}
-  .banner-4{background:linear-gradient(135deg,#5B6BC0,#3F4C99);}
+  .day-banner .sub{font-size:12.5px; opacity:.94; margin:0;}
+  .banner-1{background:linear-gradient(135deg,var(--ocean),var(--ocean-dark));}
+  .banner-2{background:linear-gradient(135deg,var(--palm),var(--palm-dark));}
+  .banner-3{background:linear-gradient(135deg,var(--magenta),var(--magenta-dark));}
+  .banner-4{background:linear-gradient(135deg,var(--navy),var(--navy-dark));}
+
+  .day-photos{display:flex; gap:8px; overflow-x:auto; margin:10px 0; -webkit-overflow-scrolling:touch;}
+  .day-photos img, .day-photos .illus{
+    width:150px; height:100px; object-fit:cover; border-radius:12px; flex-shrink:0;
+    box-shadow:0 2px 6px rgba(38,49,77,0.12);
+  }
+  .day-photos .illus{display:flex; align-items:center; justify-content:center; font-size:34px; color:#fff;}
+  .photo-caption{font-size:10.5px; color:var(--ink-soft); text-align:center;}
+
+  .island-mini{display:flex; align-items:center; gap:10px; margin:8px 0 14px;}
+  .island-mini svg{width:80px; height:auto; flex-shrink:0;}
+  .island-legend{font-size:11px; color:var(--ink-soft); display:flex; flex-direction:column; gap:2px;}
+  .island-legend .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px;}
 
   .card-list{list-style:none; margin:0 0 6px; padding:0; display:flex; flex-direction:column; gap:10px;}
 
   .card{
-    background:var(--card); border-radius:14px; padding:12px 14px;
-    box-shadow:0 2px 8px rgba(43,33,64,0.06); border-left:5px solid var(--sea); font-size:13px;
+    background:var(--card); border-radius:14px; padding:13px 14px;
+    box-shadow:0 2px 8px rgba(38,49,77,0.06); border-left:5px solid var(--ocean); font-size:13px;
   }
-  .card.type-water{border-left-color:var(--sea);}
-  .card.type-culture{border-left-color:var(--hibiscus);}
-  .card.type-nature{border-left-color:var(--leaf);}
-  .card.type-history{border-left-color:var(--indigo);}
+  .card.type-water{border-left-color:var(--ocean);}
+  .card.type-culture{border-left-color:var(--magenta);}
+  .card.type-nature{border-left-color:var(--palm);}
+  .card.type-history{border-left-color:var(--navy);}
 
   .card-head{display:flex; align-items:center; justify-content:space-between; gap:8px;}
-  .card-time{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:13.5px; color:var(--hibiscus-dark);}
+  .card-time{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:14px; color:var(--mango-dark); background:#FFF1E6; padding:2px 10px; border-radius:8px;}
   .badge{font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px;}
-  .badge.book{background:#FFE9C7; color:#9C5A1E;}
+  .badge.book{background:#FFE3C2; color:#9C5A1E;}
   .badge.free{background:#DCF2E6; color:#1F7350;}
-  .card-title{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:15.5px; margin:4px 0 6px;}
+  .card-title{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16px; margin:6px 0 4px;}
+  .card-what{font-size:12.5px; color:var(--ink-soft); margin:0 0 8px; font-style:italic;}
 
   .card-lines p{margin:3px 0; color:var(--ink-soft);}
   .card-lines .lbl{color:var(--ink); font-weight:700; margin-right:2px;}
-  .card-lines a{color:var(--sea-dark); font-weight:700; text-decoration:none; border-bottom:2px solid rgba(15,181,166,.3);}
-  .closed{color:var(--hibiscus-dark); font-weight:700;}
+  .card-lines a{color:var(--ocean-dark); font-weight:700; text-decoration:none; border-bottom:2px solid rgba(0,147,196,.3);}
+  .closed{color:var(--magenta-dark); font-weight:700;}
   .fee-line{margin-top:7px; background:#FFF3E0; border-radius:9px; padding:6px 9px; font-size:12px; color:#9C5A1E;}
 
-  .video-link{margin-top:8px; display:flex; align-items:center; gap:8px; text-decoration:none; background:#F5F2FF; border-radius:9px; padding:5px 7px;}
+  .video-link{margin-top:8px; display:flex; align-items:center; gap:8px; text-decoration:none; background:#EFF6FA; border-radius:9px; padding:5px 7px;}
   .video-link img{width:52px; height:30px; object-fit:cover; border-radius:5px; flex-shrink:0;}
   .video-link span{font-size:11px; color:var(--ink); font-weight:600; line-height:1.25;}
 
   .card-controls{display:flex; align-items:center; gap:5px; margin-top:9px; padding-top:8px; border-top:1px dashed var(--line);}
-  .card-controls button{font-family:'Baloo 2',sans-serif; font-size:12px; background:var(--sand); border:1px solid var(--line); border-radius:7px; width:26px; height:26px; cursor:pointer; color:var(--ink);}
+  .card-controls button{font-family:'Baloo 2',sans-serif; font-size:12px; background:var(--cream); border:1px solid var(--line); border-radius:7px; width:26px; height:26px; cursor:pointer; color:var(--ink);}
   .card-controls select{font-size:11.5px; border-radius:7px; border:1px solid var(--line); padding:4px 6px; background:#fff; color:var(--ink-soft); margin-left:auto;}
 
   /* modal */
-  .modal-backdrop{
-    position:fixed; inset:0; background:rgba(43,33,64,0.45); display:none;
-    align-items:center; justify-content:center; z-index:100; padding:16px;
-  }
+  .modal-backdrop{position:fixed; inset:0; background:rgba(38,49,77,0.5); display:none; align-items:center; justify-content:center; z-index:100; padding:16px;}
   .modal-backdrop.show{display:flex;}
-  .modal{
-    background:#fff; border-radius:18px; padding:20px; max-width:400px; width:100%;
-    box-shadow:0 10px 30px rgba(0,0,0,.2);
-  }
+  .modal{background:#fff; border-radius:18px; padding:20px; max-width:400px; width:100%; box-shadow:0 10px 30px rgba(0,0,0,.2);}
   .modal h3{font-family:'Baloo 2',sans-serif; font-size:17px; margin:0 0 10px;}
   .modal .check{display:flex; gap:8px; align-items:flex-start; margin-bottom:9px; font-size:13px;}
-  .modal .check .icon{flex-shrink:0;}
-  .modal .ok{color:var(--leaf);}
-  .modal .warn{color:var(--hibiscus-dark); font-weight:700;}
+  .modal .ok{color:var(--palm);}
+  .modal .warn{color:var(--magenta-dark); font-weight:700;}
   .modal-actions{display:flex; gap:8px; margin-top:16px;}
-  .modal-actions button{
-    flex:1; font-family:'Baloo 2',sans-serif; font-size:13.5px; font-weight:600; padding:9px; border-radius:10px; border:none; cursor:pointer;
-  }
-  .btn-cancel{background:var(--sand); color:var(--ink);}
-  .btn-confirm{background:var(--hibiscus); color:#fff;}
+  .modal-actions button{flex:1; font-family:'Baloo 2',sans-serif; font-size:13.5px; font-weight:600; padding:9px; border-radius:10px; border:none; cursor:pointer;}
+  .btn-cancel{background:var(--cream); color:var(--ink);}
+  .btn-confirm{background:var(--mango); color:#fff;}
 
   footer.notes{margin:30px 14px 0; font-size:12px; color:var(--ink-soft); text-align:center;}
 </style>
@@ -154,19 +158,19 @@
     <div class="hero-chips">
       <span class="chip">4 天／14 日效期</span>
       <span class="chip">8/31・9/1・9/2・9/8</span>
-      <span class="chip">基地 Waikiki</span>
+      <span class="chip">住宿：Waikiki 威基基</span>
     </div>
   </header>
-  <svg class="wave" viewBox="0 0 500 22" preserveAspectRatio="none"><path d="M0,8 C120,22 380,-4 500,8 L500,22 L0,22 Z" fill="#FFF8EC"/></svg>
+  <svg class="wave" viewBox="0 0 500 22" preserveAspectRatio="none"><path d="M0,8 C120,22 380,-4 500,8 L500,22 L0,22 Z" fill="#FFF6EA"/></svg>
 
   <main>
-    <div class="card notice">
+    <div class="box tips">
       <b>🎫 Go City 卡使用小提醒：</b>
       <ul>
         <li>下載 Go City App 並輸入訂單編號，四天效期<b>不需連續</b>，14 天內任選 4 天使用即可</li>
-        <li>多數行程要<b>自己另外向業者預約</b>（官網／電話），Go City App 本身不負責訂位，只負責入場掃碼</li>
-        <li>現場入場時打開 App 出示 QR Code 給工作人員掃描即可，需要預約的行程記得同時附上票號</li>
-        <li>各行程取消規則不同，時間快到前建議直接跟業者確認一次，避免被收取 no-show 費用</li>
+        <li>多數行程要<b>自己另外向業者預約</b>（官網／電話），App 本身不負責訂位，只負責入場掃碼</li>
+        <li>現場入場打開 App 出示 QR Code 給工作人員掃描即可，需預約的行程記得同時附上票號</li>
+        <li>各行程取消規則不同，快到之前建議直接跟業者確認一次，避免被收 no-show 費用</li>
       </ul>
     </div>
 
@@ -179,35 +183,41 @@
 
     <section class="overview">
       <h2>行程概覽</h2>
+      <p class="stay-note">📍 這 4 天都以 <b>Waikiki（威基基）</b>為住宿基地，早上出發、晚上回來睡覺；下面地圖上的房子圖示就是你住的地方，其他顏色的點是每天活動的所在區域。</p>
+      <div class="overview-map" id="overview-map"></div>
       <div class="ov-list" id="overview-list"></div>
     </section>
 
     <section class="day-banner banner-1" id="day-831" data-day="8/31">
       <h2>8/31（一）Waikiki 水上日</h2>
-      <p class="sub">兩個水上行程集合點都在 Kewalo Basin Harbor，銜接超順</p>
+      <p class="sub">今天不用跑遠，兩個行程都在住的附近的港口出發</p>
     </section>
-    <div id="map-8/31"></div>
+    <div class="day-photos" id="photos-8/31"></div>
+    <div class="island-mini" id="map-8/31"></div>
     <ul class="card-list" id="col-8/31"></ul>
 
     <section class="day-banner banner-2" id="day-91" data-day="9/1">
       <h2>9/1（二）古蘭尼牧場＋PCC</h2>
-      <p class="sub">兩地車程約 20–30 分鐘，牧場早開、PCC 中午開，順序剛好</p>
+      <p class="sub">今天要開車往東北邊跑，兩個景點相距約 20–30 分鐘車程</p>
     </section>
-    <div id="map-9/1"></div>
+    <div class="day-photos" id="photos-9/1"></div>
+    <div class="island-mini" id="map-9/1"></div>
     <ul class="card-list" id="col-9/1"></ul>
 
     <section class="day-banner banner-3" id="day-92" data-day="9/2">
       <h2>9/2（三）北海岸：瀑布谷＋Hula</h2>
-      <p class="sub">先逛 Waimea 再北上 Kahuku，卡準 Hula 中午 12 點場</p>
+      <p class="sub">今天跑到島的最北邊，是四天裡離住宿最遠的一天</p>
     </section>
-    <div id="map-9/2"></div>
+    <div class="day-photos" id="photos-9/2"></div>
+    <div class="island-mini" id="map-9/2"></div>
     <ul class="card-list" id="col-9/2"></ul>
 
     <section class="day-banner banner-4" id="day-98" data-day="9/8">
       <h2>9/8（二）珍珠港</h2>
-      <p class="sub">建議提早到，安檢排隊耗時，最後入場 15:00</p>
+      <p class="sub">今天在住宿的西邊，是歷史景點，跟前面三天的玩樂步調不同</p>
     </section>
-    <div id="map-9/8"></div>
+    <div class="day-photos" id="photos-9/8"></div>
+    <div class="island-mini" id="map-9/8"></div>
     <ul class="card-list" id="col-9/8"></ul>
   </main>
 
@@ -228,28 +238,37 @@
 
 <script>
 const DAYS = ["8/31","9/1","9/2","9/8"];
+const DAY_ID = {"8/31":"day-831","9/1":"day-91","9/2":"day-92","9/8":"day-98"};
 const DAY_WEEKDAY = {"8/31":"一","9/1":"二","9/2":"三","9/8":"二"};
-const DAY_LABEL = {"8/31":"8/31（一）","9/1":"9/1（二）","9/2":"9/2（三）","9/8":"9/8（二）"};
-const REGION_LABEL = {waikiki:"Waikiki／市區", windward:"東岸 Windward", northshore:"北海岸 North Shore", pearlharbor:"珍珠港"};
-const REGION_COLOR = {waikiki:"var(--sea)", windward:"var(--leaf)", northshore:"var(--sun)", pearlharbor:"var(--indigo)"};
-const REGION_POS = {
-  northshore:{cx:52, cy:26}, windward:{cx:74, cy:56}, pearlharbor:{cx:34, cy:66}, waikiki:{cx:50, cy:78}
+const REGION_LABEL = {waikiki:"Waikiki", windward:"東岸 Windward", northshore:"北海岸", pearlharbor:"珍珠港"};
+const REGION_COLOR = {waikiki:"var(--ocean)", windward:"var(--palm)", northshore:"var(--mango)", pearlharbor:"var(--navy)"};
+// positions on the 200x140 island viewBox
+const REGION_POS = { northshore:{cx:75,cy:22}, windward:{cx:150,cy:55}, pearlharbor:{cx:48,cy:82}, waikiki:{cx:95,cy:104} };
+const HOME_POS = {cx:95, cy:104};
+
+const DAY_PHOTOS = {
+  "8/31":[{url:"https://images.unsplash.com/photo-1507876466758-bc54f384809c?q=80&w=800&auto=format&fit=crop", cap:"Waikiki 海灘"}],
+  "9/1":[{url:"https://images.unsplash.com/photo-1633511090690-0b7f2fec0e8d?q=80&w=800&auto=format&fit=crop", cap:"歐胡島東岸山景（Kualoa 一帶示意）"}],
+  "9/2":[{url:"https://images.unsplash.com/photo-1633511090690-0b7f2fec0e8d?q=80&w=800&auto=format&fit=crop", cap:"歐胡島山谷景色示意"}],
+  "9/8":[]
 };
 
 const DATA = [
   {
-    id:"turtle", day:"8/31", time:"10:15–12:15", type:"water", icon:"🐢", region:"waikiki", closedDays:[],
-    title:"Waikiki Turtle Canyon Snorkel Cruise",
+    id:"turtle", day:"8/31", time:"10:15–12:15", type:"water", region:"waikiki", closedDays:[],
+    title:"Turtle Canyon 海龜浮潛",
+    what:"搭船出海到近岸淺水區，跟綠蠵龜一起浮潛。不太會游泳也沒關係，全程有救生衣跟教練陪同。",
     addr:"1085 Ala Moana Blvd, Suite 104, Honolulu, HI 96814（Kewalo Basin Harbor 報到處）",
     hours:"每日 10:15 / 13:00 兩場，全年無休",
     booking:"官網訂位 <a target='_blank' href='https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co'>↗</a>（選日期時段人數，輸入 Go City 票號）",
     bookingBadge:"需預約",
     fee:"每人固定收 $1 保育費；24 小時內取消或未到將收費（參考值 up to $94/人）",
-    video:{id:"dVBwvXAdur4", label:"Kewalo Basin Harbor 出發的 Turtle Canyon 浮潛"}
+    video:{id:"dVBwvXAdur4", label:"Kewalo Basin Harbor 出發的 Turtle Canyon 浮潛實況"}
   },
   {
-    id:"makani", day:"8/31", time:"14:00–16:00", type:"water", icon:"⛵", region:"waikiki", closedDays:[],
-    title:"Makani Catamaran Sail",
+    id:"makani", day:"8/31", time:"14:00–16:00", type:"water", region:"waikiki", closedDays:[],
+    title:"Makani 雙體帆船出海",
+    what:"坐大型雙體帆船出海放鬆吹風看海岸線，不用下水，比較像是海上觀光兜風。",
     addr:"1009 Ala Moana Blvd F31, Honolulu, HI 96814（同樣在 Kewalo Basin Harbor，Makani Kiosk）",
     hours:"每日 11:00 / 14:00 兩場，全年無休",
     booking:"電話預約 <b>(808) 591-9000</b>（無線上系統，視空位而定）",
@@ -258,8 +277,9 @@ const DATA = [
     video:{id:"T_2Dz2WRu8U", label:"Go City 官方介紹：Makani Catamaran Sail"}
   },
   {
-    id:"luau", day:"8/31", time:"17:30–20:00", type:"culture", icon:"🔥", region:"waikiki", closedDays:["六"],
-    title:"Ka Moana Luau @ Aloha Tower（Premium 名額）",
+    id:"luau", day:"8/31", time:"17:30–20:00", type:"culture", region:"waikiki", closedDays:["六"],
+    title:"Ka Moana 傳統夏威夷晚宴秀（Premium 名額）",
+    what:"傳統夏威夷歌舞秀＋吃到飽自助餐晚宴，約 2.5 小時，很多人心中的「必體驗」行程。",
     addr:"1 Aloha Tower Dr, Honolulu, HI 96813",
     hours:"週一至週五、週日 17:30–20:00；週六公休",
     booking:"<a target='_blank' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
@@ -268,8 +288,9 @@ const DATA = [
     video:{id:"xvSD0AzOb_I", label:"Ka Moana Luau 新場地（Aloha Tower）"}
   },
   {
-    id:"kualoa", day:"9/1", time:"09:20–10:50", type:"nature", icon:"🦕", region:"windward", closedDays:["日"],
-    title:"Kualoa Ranch – Ocean Voyage Adventure",
+    id:"kualoa", day:"9/1", time:"09:20–10:50", type:"nature", region:"windward", closedDays:["日"],
+    title:"Kualoa 牧場：海灣遊船",
+    what:"電影《侏儸紀公園》等好萊塢片取景的私人牧場。這個行程是坐船遊覽海灣＋看古代魚塭，不下水。",
     addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744",
     hours:"每日 08:40 / 09:20 / 10:20 / 11:00 / 13:00 / 13:40 / 14:45；週日公休（9/7 假日亦休園）",
     booking:"<a target='_blank' href='https://www.kualoa.com/tours-and-activities'>kualoa.com ↗</a> 選「Ocean Voyage Adventure」選時間人數，現場刷 Pass 後退款",
@@ -278,18 +299,20 @@ const DATA = [
     video:{id:"l6zOfSTy62o", label:"Kualoa Ranch 官方影片：Ocean Voyage Adventure"}
   },
   {
-    id:"pcc", day:"9/1", time:"約 12:00–18:00", type:"culture", icon:"🌺", region:"windward", closedDays:["三","日"],
-    title:"Polynesian Cultural Center",
+    id:"pcc", day:"9/1", time:"約 12:00–18:00", type:"culture", region:"windward", closedDays:["三","日"],
+    title:"玻里尼西亞文化中心 PCC",
+    what:"整個園區重現太平洋各島嶼（大溪地、東加、斐濟等）的傳統村落與歌舞表演，像走進一座活的博物館。",
     addr:"55-370 Kamehameha Hwy, Laie, HI 96762",
-    hours:"Islands of Polynesia 週一二四五六 12:15–18:00；週三、週日公休",
+    hours:"週一二四五六 12:15–18:00；週三、週日公休",
     booking:"免預約，主入口噴水池旁 Ticketing Center 刷 Pass；保險起見可先電話 <b>1-844-365-2843</b> 確認",
     bookingBadge:"現場刷卡",
     fee:"無需預約，無 no-show 費用；晚間付費大秀需另外加購",
     video:{id:"Af06OcBG2gM", label:"PCC Island Villages 園區導覽"}
   },
   {
-    id:"waimea", day:"9/2", time:"09:00–11:15", type:"nature", icon:"🌿", region:"northshore", closedDays:["一"],
-    title:"Waimea Valley",
+    id:"waimea", day:"9/2", time:"09:00–11:15", type:"nature", region:"northshore", closedDays:["一"],
+    title:"Waimea 瀑布谷",
+    what:"植物園＋一段好走的鋪面步道，走到底有瀑布可以下水游泳，記得帶泳衣毛巾。",
     addr:"59-864 Kamehameha Hwy, Haleʻiwa, HI 96712",
     hours:"週二至週日 09:00–16:00；週一公休",
     booking:"免預約，現場出示 Go City App 掃碼即可入園",
@@ -298,18 +321,20 @@ const DATA = [
     video:{id:"r83YaKgi98E", label:"Waimea Valley 瀑布谷與植物園導覽"}
   },
   {
-    id:"hula", day:"9/2", time:"12:00–13:00", type:"culture", icon:"💃", region:"northshore", closedDays:[],
-    title:"Hula Class on the North Shore",
+    id:"hula", day:"9/2", time:"12:00–13:00", type:"culture", region:"northshore", closedDays:[],
+    title:"夏威夷草裙舞體驗課",
+    what:"跟著當地老師學夏威夷 Hula 舞的基本步伐，一小時體驗課，適合完全沒跳過舞的人。",
     addr:"57-571 Kamehameha Hwy, Kahuku, HI 96731（集合點靠近 Waiale'e Beach Park，確切位置預約後通知）",
     hours:"平日固定 12:00 一場；週六日改為 10:00",
     booking:"需提前 24hr：Email 或電話 <b>(808) 866-6630</b>",
     bookingBadge:"需預約",
     fee:"官方未公布明確 no-show 罰金；天候不佳可能由主辦方取消",
-    video:{id:"MA91i8kZDQ4", label:"示意影片：Hula 三個基本步伐（非本行程實拍）"}
+    video:{id:"MA91i8kZDQ4", label:"示意影片：Hula 三個基本步伐教學（非本行程實拍）"}
   },
   {
-    id:"missouri", day:"9/8", time:"08:00–15:00", type:"history", icon:"⚓", region:"pearlharbor", closedDays:[],
-    title:"Battleship Missouri Memorial",
+    id:"missouri", day:"9/8", time:"08:00–15:00", type:"history", region:"pearlharbor", closedDays:[],
+    title:"密蘇里號戰艦紀念館",
+    what:"二戰時日本簽署投降文件的那艘戰艦，現在停在珍珠港開放參觀，含導覽。",
     addr:"1 Arizona Memorial Rd, Honolulu, HI 96818（Pearl Harbor Visitor Center）",
     hours:"每日 08:00–16:00（最後入場 15:00），全年無休；需攜帶政府核發相片證件／護照",
     booking:"免預約，Go City Pass 現場出示掃碼；含 35 分鐘導覽",
@@ -318,8 +343,9 @@ const DATA = [
     video:{id:"BZ8i12GDRBo", label:"Battleship Missouri Memorial 參觀導覽"}
   },
   {
-    id:"arizona", day:"9/8", time:"", type:"history", icon:"🎖", region:"pearlharbor", closedDays:[],
-    title:"USS Arizona Memorial（不含在 Go City 票內，需另外搶票）",
+    id:"arizona", day:"9/8", time:"", type:"history", region:"pearlharbor", closedDays:[],
+    title:"亞利桑那號紀念碑（不含在票內）",
+    what:"紀念珍珠港事變中沉船罹難者的紀念碑，蓋在海上，需要搭船才能到達。",
     addr:"同 Pearl Harbor Visitor Center",
     hours:"依 NPS 每日釋出名額而定",
     booking:"<a target='_blank' href='https://www.recreation.gov/'>recreation.gov ↗</a> 搶時段票，常提前數週額滿；現場也有候補但常需排隊 1–2 小時",
@@ -338,38 +364,77 @@ function parseTime(str){
   return [toMin(m[1]), toMin(m[2])];
 }
 
-// ---------- Island map ----------
-function islandSVG(activeRegions){
+// ---------- Island illustration (hand-drawn style Oahu) ----------
+const ISLAND_PATH = `M18,58 C15,45 25,30 40,22 C55,14 75,10 95,12 C115,10 135,15 152,28
+  C165,38 168,50 162,62 C158,75 148,90 130,102 C115,112 98,116 82,112
+  C70,109 60,104 52,96 C46,90 42,84 44,78 C46,72 52,70 58,74
+  C54,80 56,86 62,88 C70,90 76,84 72,76 C68,68 58,64 48,66
+  C36,68 24,72 18,70 C14,66 16,62 18,58 Z`;
+
+function islandSVG(activeRegions, opts){
+  opts = opts || {};
+  const showAllDots = !!opts.showAllDayDots;
   const zones = Object.keys(REGION_POS).map(key=>{
     const pos = REGION_POS[key];
     const active = activeRegions.includes(key);
     const fill = active ? REGION_COLOR[key] : 'var(--grey-zone)';
-    return `<circle cx="${pos.cx}" cy="${pos.cy}" r="9" fill="${fill}" opacity="${active?1:0.55}"/>`;
+    const r = active ? 10 : 7;
+    return `<circle cx="${pos.cx}" cy="${pos.cy}" r="${r}" fill="${fill}" opacity="${active?1:0.6}" stroke="#fff" stroke-width="1.5"/>`;
   }).join('');
-  return `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    <path d="M30,15 C45,8 65,10 75,22 C85,34 88,50 80,62 C74,72 66,80 55,86 C44,92 32,88 26,78 C18,66 14,50 18,36 C21,26 24,19 30,15 Z"
-      fill="#F3ECD9" stroke="#DCCFA8" stroke-width="1.5"/>
+  const home = `<g>
+    <circle cx="${HOME_POS.cx}" cy="${HOME_POS.cy}" r="4.5" fill="#fff" stroke="var(--mango-dark)" stroke-width="2"/>
+    <text x="${HOME_POS.cx}" y="${HOME_POS.cy-10}" font-size="9" text-anchor="middle" fill="var(--mango-dark)" font-weight="700">🏠</text>
+  </g>`;
+  return `<svg viewBox="0 0 180 125" xmlns="http://www.w3.org/2000/svg">
+    <path d="${ISLAND_PATH}" fill="#F7EFDD" stroke="#DCCFA8" stroke-width="2.2" stroke-linejoin="round"/>
     ${zones}
+    ${home}
   </svg>`;
 }
 
-function renderIslandBlock(container, activeRegions){
+function renderIslandMini(container, activeRegions){
   const legend = Object.keys(REGION_LABEL).map(key=>{
     const active = activeRegions.includes(key);
-    return `<span><span class="dot" style="background:${active?REGION_COLOR[key]:'var(--grey-zone)'}"></span>${REGION_LABEL[key]}${active?' ★':''}</span>`;
+    return `<span><span class="dot" style="background:${active?REGION_COLOR[key]:'var(--grey-zone)'}"></span>${REGION_LABEL[key]}${active?' ★ 今天在這':''}</span>`;
   }).join('');
-  container.innerHTML = `<div class="island-map">${islandSVG(activeRegions)}<div class="island-legend">${legend}</div></div>`;
+  container.innerHTML = `${islandSVG(activeRegions)}<div class="island-legend">${legend}</div>`;
+  container.style.display='flex'; container.style.gap='10px'; container.style.alignItems='center';
 }
 
-// ---------- Render cards ----------
+function renderOverviewMap(){
+  // show all 4 zones colored (each represents a day) with day-number labels
+  const dayColorForRegion = {};
+  DAYS.forEach(d=>{
+    const regions = [...new Set(DATA.filter(x=>x.day===d).map(x=>x.region))];
+    regions.forEach(r=>{ if(!dayColorForRegion[r]) dayColorForRegion[r]=d; });
+  });
+  const zones = Object.keys(REGION_POS).map(key=>{
+    const pos = REGION_POS[key];
+    const dayLabel = dayColorForRegion[key];
+    const fill = dayLabel ? REGION_COLOR[key] : 'var(--grey-zone)';
+    return `<g>
+      <circle cx="${pos.cx}" cy="${pos.cy}" r="11" fill="${fill}" stroke="#fff" stroke-width="2"/>
+      ${dayLabel? `<text x="${pos.cx}" y="${pos.cy+3.5}" font-size="8.5" text-anchor="middle" fill="#fff" font-weight="700">${dayLabel}</text>`:''}
+    </g>`;
+  }).join('');
+  const home = `<g>
+    <circle cx="${HOME_POS.cx}" cy="${HOME_POS.cy}" r="5" fill="#fff" stroke="var(--mango-dark)" stroke-width="2.5"/>
+    <text x="${HOME_POS.cx+16}" y="${HOME_POS.cy+3}" font-size="9" fill="var(--mango-dark)" font-weight="700">🏠住這</text>
+  </g>`;
+  document.getElementById('overview-map').innerHTML = `<svg viewBox="0 0 190 125" xmlns="http://www.w3.org/2000/svg">
+    <path d="${ISLAND_PATH}" fill="#F7EFDD" stroke="#DCCFA8" stroke-width="2.2" stroke-linejoin="round"/>
+    ${zones}${home}
+  </svg>`;
+}
+
+// ---------- Render ----------
 function dayOptionsHTML(current){
   return DAYS.map(d=>`<option value="${d}" ${d===current?'selected':''}>搬到 ${d}</option>`).join('');
 }
 
 function renderAll(){
-  DAYS.forEach(d=>{
-    document.getElementById(`col-${d}`).innerHTML = '';
-  });
+  DAYS.forEach(d=>{ document.getElementById(`col-${d}`).innerHTML=''; });
+
   DATA.forEach(item=>{
     const li = document.createElement('li');
     li.className = `card type-${item.type}`;
@@ -379,7 +444,8 @@ function renderAll(){
         <span class="card-time">${item.time || '時段依現場而定'}</span>
         <span class="badge ${item.bookingBadge==='現場刷卡'?'free':'book'}">${item.bookingBadge}</span>
       </div>
-      <div class="card-title">${item.icon} ${item.title}</div>
+      <div class="card-title">${item.title}</div>
+      <div class="card-what">${item.what}</div>
       <div class="card-lines">
         <p><span class="lbl">地點</span>${item.addr} · <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.addr)}">Maps↗</a></p>
         <p><span class="lbl">營業</span>${item.hours}</p>
@@ -390,8 +456,8 @@ function renderAll(){
         <img src="${ytThumb(item.video.id)}" alt="video"><span>${item.video.label}</span>
       </a>` : ''}
       <div class="card-controls">
-        <button class="move-up" title="往上移">▲</button>
-        <button class="move-down" title="往下移">▼</button>
+        <button type="button" class="move-up" title="往上移">▲</button>
+        <button type="button" class="move-down" title="往下移">▼</button>
         <select class="move-day">${dayOptionsHTML(item.day)}</select>
       </div>
     `;
@@ -400,23 +466,38 @@ function renderAll(){
 
   DAYS.forEach(d=>{
     const regionsToday = [...new Set(DATA.filter(x=>x.day===d).map(x=>x.region))];
-    renderIslandBlock(document.getElementById(`map-${d}`), regionsToday);
+    renderIslandMini(document.getElementById(`map-${d}`), regionsToday);
+
+    const photoWrap = document.getElementById(`photos-${d}`);
+    const photos = DAY_PHOTOS[d];
+    if(photos && photos.length){
+      photoWrap.innerHTML = photos.map(p=>`<div><img src="${p.url}" alt="${p.cap}"><div class="photo-caption">${p.cap}</div></div>`).join('');
+    } else {
+      photoWrap.innerHTML = `<div><div class="illus" style="background:linear-gradient(135deg,var(--navy),var(--navy-dark));">⚓</div><div class="photo-caption">示意圖（尚無授權實景照片）</div></div>`;
+    }
   });
 
+  renderOverviewMap();
   renderOverview();
   attachControls();
 }
 
 function renderOverview(){
-  const bannerClass = {"8/31":"banner-1","9/1":"banner-2","9/2":"banner-3","9/8":"banner-4"};
-  const html = DAYS.map((d,i)=>{
+  const bannerGrad = {
+    "8/31":"linear-gradient(135deg, var(--ocean), var(--ocean-dark))",
+    "9/1":"linear-gradient(135deg, var(--palm), var(--palm-dark))",
+    "9/2":"linear-gradient(135deg, var(--magenta), var(--magenta-dark))",
+    "9/8":"linear-gradient(135deg, var(--navy), var(--navy-dark))"
+  };
+  const html = DAYS.map(d=>{
     const items = DATA.filter(x=>x.day===d);
     const regions = [...new Set(items.map(x=>x.region))].map(r=>REGION_LABEL[r]).join(' + ');
-    const hi = items.map(x=>x.icon+' '+x.title.split('（')[0]).join('・');
-    return `<a class="ov-item" href="#day-${d.replace('/','')}">
-      <div class="ov-num" style="background:linear-gradient(135deg, var(--sea), var(--sea-dark));">${DAY_LABEL[d]}</div>
+    const hi = items.map(x=>x.title).join('・');
+    const dayTitle = document.getElementById(DAY_ID[d]).querySelector('h2').textContent;
+    return `<a class="ov-item" href="#${DAY_ID[d]}" data-jump="${d}">
+      <div class="ov-num" style="background:${bannerGrad[d]};">${d}</div>
       <div class="ov-body">
-        <b>${document.getElementById('day-'+d.replace('/','')).querySelector('h2').textContent}</b>
+        <b>${dayTitle}</b>
         <div class="region">📍 ${regions}</div>
         <div class="hi">${hi}</div>
       </div>
@@ -431,11 +512,12 @@ function attachControls(){
     card.querySelector('.move-up').addEventListener('click', ()=>moveWithinDay(id,-1));
     card.querySelector('.move-down').addEventListener('click', ()=>moveWithinDay(id,1));
     const sel = card.querySelector('.move-day');
-    sel.addEventListener('change', e=>{
-      const newDay = e.target.value;
-      const oldDay = DATA.find(d=>d.id===id).day;
+    sel.addEventListener('change', function(){
+      const newDay = this.value;
+      const item = DATA.find(d=>d.id===id);
+      const oldDay = item.day;
       if(newDay === oldDay) return;
-      openMoveModal(id, oldDay, newDay, sel);
+      openMoveModal(id, oldDay, newDay, this);
     });
   });
 }
@@ -454,23 +536,20 @@ function moveWithinDay(id, dir){
   renderAll();
 }
 
-// ---------- Move confirmation modal ----------
 function openMoveModal(id, oldDay, newDay, selectEl){
   const item = DATA.find(d=>d.id===id);
   const weekday = DAY_WEEKDAY[newDay];
   const others = DATA.filter(d=>d.day===newDay);
 
-  // 1. closed-day check
   const isClosed = item.closedDays.includes(weekday);
   const closedCheck = isClosed
-    ? `<div class="check"><span class="icon warn">⚠️</span><span class="warn">${newDay} 是星期${weekday}，此行程<b>公休</b>，搬過去無法成行</span></div>`
-    : `<div class="check"><span class="icon ok">✅</span><span>${newDay}（星期${weekday}）此行程有營業</span></div>`;
+    ? `<div class="check"><span>⚠️</span><span class="warn">${newDay} 是星期${weekday}，此行程<b>公休</b>，搬過去無法成行</span></div>`
+    : `<div class="check"><span>✅</span><span>${newDay}（星期${weekday}）此行程有營業</span></div>`;
 
-  // 2. time overlap check
   let overlapCheck;
   const myRange = parseTime(item.time);
   if(!myRange){
-    overlapCheck = `<div class="check"><span class="icon">ℹ️</span><span>此行程沒有固定時段，略過時間比對</span></div>`;
+    overlapCheck = `<div class="check"><span>ℹ️</span><span>此行程沒有固定時段，略過時間比對</span></div>`;
   } else {
     const conflicts = others.filter(o=>{
       const r = parseTime(o.time);
@@ -478,53 +557,64 @@ function openMoveModal(id, oldDay, newDay, selectEl){
       return myRange[0] < r[1] && r[0] < myRange[1];
     });
     overlapCheck = conflicts.length
-      ? `<div class="check"><span class="icon warn">⚠️</span><span class="warn">跟「${conflicts.map(c=>c.title.split('（')[0]).join('、')}」的時段重疊</span></div>`
-      : `<div class="check"><span class="icon ok">✅</span><span>跟這天其他行程沒有時間衝突</span></div>`;
+      ? `<div class="check"><span>⚠️</span><span class="warn">跟「${conflicts.map(c=>c.title).join('、')}」時段重疊</span></div>`
+      : `<div class="check"><span>✅</span><span>跟這天其他行程沒有時間衝突</span></div>`;
   }
 
-  // 3. geography check
   const otherRegions = [...new Set(others.map(o=>o.region))];
   let geoCheck;
   if(otherRegions.length===0){
-    geoCheck = `<div class="check"><span class="icon">ℹ️</span><span>${newDay} 目前還沒有其他行程，沒有地理位置比對對象</span></div>`;
+    geoCheck = `<div class="check"><span>ℹ️</span><span>${newDay} 目前還沒有其他行程，沒有地理位置比對對象</span></div>`;
   } else if(otherRegions.includes(item.region)){
-    geoCheck = `<div class="check"><span class="icon ok">✅</span><span>跟這天其他行程都在 ${REGION_LABEL[item.region]}，順路</span></div>`;
+    geoCheck = `<div class="check"><span>✅</span><span>跟這天其他行程都在 ${REGION_LABEL[item.region]}，順路</span></div>`;
   } else {
-    geoCheck = `<div class="check"><span class="icon warn">⚠️</span><span class="warn">這天其他行程在 ${otherRegions.map(r=>REGION_LABEL[r]).join('、')}，此行程在 ${REGION_LABEL[item.region]}，跨區可能拉長交通時間</span></div>`;
+    geoCheck = `<div class="check"><span>⚠️</span><span class="warn">這天其他行程在 ${otherRegions.map(r=>REGION_LABEL[r]).join('、')}，此行程在 ${REGION_LABEL[item.region]}，跨區可能拉長交通時間</span></div>`;
   }
 
-  document.getElementById('modal-title').textContent = `搬動「${item.title.split('（')[0]}」→ ${newDay}？`;
+  document.getElementById('modal-title').textContent = `搬動「${item.title}」→ ${newDay}？`;
   document.getElementById('modal-checks').innerHTML = closedCheck + overlapCheck + geoCheck;
 
   const backdrop = document.getElementById('modal-backdrop');
   backdrop.classList.add('show');
-
   const confirmBtn = document.getElementById('modal-confirm');
   const cancelBtn = document.getElementById('modal-cancel');
 
-  const onConfirm = ()=>{
+  function cleanup(){
+    confirmBtn.removeEventListener('click', onConfirm);
+    cancelBtn.removeEventListener('click', onCancel);
+  }
+  function onConfirm(){
     item.day = newDay;
     backdrop.classList.remove('show');
     renderAll();
     cleanup();
-  };
-  const onCancel = ()=>{
+  }
+  function onCancel(){
     selectEl.value = oldDay;
     backdrop.classList.remove('show');
     cleanup();
-  };
-  function cleanup(){
-    confirmBtn.removeEventListener('click', onConfirm);
-    cancelBtn.removeEventListener('click', onCancel);
   }
   confirmBtn.addEventListener('click', onConfirm);
   cancelBtn.addEventListener('click', onCancel);
 }
 
-// ---------- scrollspy for tabs ----------
+// ---------- smooth scroll for tab + overview links ----------
+function smoothJump(targetId){
+  const el = document.getElementById(targetId);
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+document.addEventListener('click', e=>{
+  const a = e.target.closest('a[href^="#day-"]');
+  if(!a) return;
+  e.preventDefault();
+  smoothJump(a.getAttribute('href').slice(1));
+});
+
+// ---------- scrollspy ----------
 function setupScrollspy(){
-  const sections = DAYS.map(d=>document.getElementById('day-'+d.replace('/','')));
+  const sections = DAYS.map(d=>document.getElementById(DAY_ID[d]));
   const tabs = document.querySelectorAll('#tabs a');
+  if(!('IntersectionObserver' in window)) return;
   const obs = new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
       if(entry.isIntersecting){
@@ -532,8 +622,8 @@ function setupScrollspy(){
         tabs.forEach(t=>t.classList.toggle('active', t.dataset.day===day));
       }
     });
-  }, {rootMargin:"-40% 0px -50% 0px"});
-  sections.forEach(s=>obs.observe(s));
+  }, {rootMargin:"-35% 0px -55% 0px"});
+  sections.forEach(s=>{ if(s) obs.observe(s); });
 }
 
 renderAll();
