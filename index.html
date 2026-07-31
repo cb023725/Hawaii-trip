@@ -58,7 +58,7 @@
   <nav id="tabs" class="sticky top-0 z-20 flex gap-2 overflow-x-auto no-scrollbar px-3 py-2.5 bg-cream/95 backdrop-blur border-b border-amber-100">
     <button data-tab="intro" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">行前提醒</button>
     <button data-tab="8/31" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">8/31（一）</button>
-    <button data-tab="9/1" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/1（二）古蘭尼＋文化中心</button>
+    <button data-tab="9/1" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/1（二）</button>
     <button data-tab="9/2" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/2（三）</button>
     <button data-tab="9/8" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/8（二）</button>
     <button data-tab="compare" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">💰 值不值得</button>
@@ -71,13 +71,14 @@
       <div class="rounded-xl border-l-4 border-amber-400 bg-amber-50 p-4 shadow-sm mb-4">
         <div class="flex items-center gap-2 mb-2">
           <span class="text-xl">🎫</span>
-          <h3 class="font-baloo font-bold text-amber-800">Go City 卡使用小提醒</h3>
+          <h3 class="font-baloo font-bold text-amber-800">Go City 卡重點提醒</h3>
         </div>
-        <ul class="space-y-1.5 text-[13px] text-amber-900 list-disc list-inside leading-relaxed">
-          <li>下載 <b>Go City App</b> 並輸入訂單編號，四天效期<b>不需連續</b>，14 天內任選 4 天使用即可</li>
-          <li>多數行程要<b>自己另外向業者預約</b>（官網／電話），App 本身不負責訂位，只負責入場掃碼</li>
-          <li>現場入場打開 App 出示 QR Code 給工作人員掃描即可，需預約的行程記得同時附上票號</li>
-          <li>各行程取消規則不同，快到之前建議直接跟業者確認一次，避免被收 no-show 費用</li>
+        <ul class="space-y-1.5 text-[13px] text-amber-900 list-disc list-inside leading-relaxed" style="text-wrap:pretty;">
+          <li>4 天效期<b>不需連續</b>，14 天內任選 4 天；成人現售約 <b>$314</b>（官網不時有限時折扣碼，實際請以 gocity.com 當下顯示為準）</li>
+          <li>多數行程要<b>自己另外向業者預約</b>，App 只負責入場掃碼，不負責訂位</li>
+          <li><b>預約時大多會請你留信用卡授權（不會立刻扣款）</b>：只要在該行程規定的時限前取消，就不會被收費；沒取消或沒出現，才會照該行程的規則收費——<b>各行程取消期限不同</b>，詳見各卡片</li>
+          <li><b>古蘭尼牧場</b>例外：官網會先刷<b>全額</b>，到現場 Ticket Office 刷歐胡卡後才退款；沒去則不退</li>
+          <li><b>古蘭尼牧場一天只能選一種</b>：神秘島 Secret Island Beach／Kualoa Grown Tour（農場導覽）／Ocean Voyage Adventure（海灣遊船）三選一（本行程選神秘島）</li>
         </ul>
       </div>
 
@@ -153,7 +154,7 @@
           <span class="font-baloo font-bold text-mango-dark">預估省下</span>
           <span class="font-baloo font-bold text-mango-dark" id="compare-savings">$0</span>
         </div>
-        <p class="text-[11px] text-slate-400 mt-2" style="text-wrap:pretty;">票價僅供參考，實際金額請以 gocity.com 當下公告為準；4 日票近期公開售價約為 $314／成人（不同通路與促銷會有落差）。</p>
+        <p class="text-[11px] text-slate-400 mt-2" style="text-wrap:pretty;">票價僅供參考：4 日 All-Inclusive 成人現售約 $314，官網不時會有限時折扣碼（例如目前的 SUMMER 折扣），實際請以 gocity.com 當下公告為準。</p>
       </div>
     </section>
 
@@ -203,12 +204,10 @@ const DAY_GRADIENT = {
   "9/2":"from-magenta to-magenta-dark","9/8":"from-navy to-navy-dark"
 };
 const REGION_LABEL = {waikiki:"Waikiki", windward:"東岸 Windward", northshore:"北海岸", pearlharbor:"珍珠港／機場"};
-const REGION_COLOR = {waikiki:"#0B6E8C", windward:"#1F6F4A", northshore:"#E4A70C", pearlharbor:"#33415C"};
-const REGION_POS = { northshore:{cx:80,cy:14}, windward:{cx:158,cy:50}, pearlharbor:{cx:60,cy:96}, waikiki:{cx:98,cy:106} };
-const HOME_POS = {cx:98, cy:106};
-const AIRPORT_POS = {cx:70, cy:88};
 const TYPE_BORDER = {water:"border-ocean", culture:"border-magenta", nature:"border-palm", history:"border-navy"};
 const TYPE_DOT = {water:"bg-ocean", culture:"bg-magenta", nature:"bg-palm", history:"bg-navy"};
+const TYPE_COLOR = {water:'#0B6E8C', culture:'#C81E4B', nature:'#1F6F4A', history:'#33415C'};
+const DAY_PIN_COLOR = {"8/31":'#0B6E8C', "9/1":'#1F6F4A', "9/2":'#C81E4B', "9/8":'#33415C'};
 
 const DAY_PHOTOS = {
   "8/31":[{url:"https://images.unsplash.com/photo-1507876466758-bc54f384809c?q=80&w=800&auto=format&fit=crop", cap:"Waikiki 海灘"}],
@@ -228,9 +227,10 @@ const TRANSIT_2 = { "8/31": { after:"makani", label:"🚗 自駕車程約 10–1
 const DATA = [
   {
     id:"turtle", day:"8/31", time:"10:15–12:15", type:"water", region:"waikiki", closedDays:[],
-    title:"Turtle Canyon 海龜浮潛",
-    what:"搭船出海到近岸淺水區，跟綠蠵龜一起浮潛。不太會游泳也沒關係，全程有救生衣跟教練陪同。",
+    title:"海龜浮潛（Waikiki Turtle Canyon Snorkel Cruise）",
+    what:"搭乘雙體船 Lola 出海 2 小時，到淺水區跟綠蠵龜一起浮潛。救生員隨行、保證看得到海龜、浮潛裝備與各尺寸救生衣（含嬰兒）現場都有提供，不會游泳也能參加。",
     addr:"1085 Ala Moana Blvd, Suite 104, Honolulu, HI 96814（Kewalo Basin Harbor 報到處）",
+    geo:"21.293892,-157.855489",
     hours:"每日 10:15 / 13:00 兩場，全年無休",
     booking:"官網訂位 <a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co'>↗</a>（選日期時段人數，輸入 Go City 票號）",
     bookingBadge:"需預約",
@@ -240,9 +240,10 @@ const DATA = [
   },
   {
     id:"makani", day:"8/31", time:"14:00–16:00", type:"water", region:"waikiki", closedDays:[],
-    title:"Makani 雙體帆船出海",
+    title:"雙體帆船出海（Makani Catamaran Sail）",
     what:"坐大型雙體帆船出海放鬆吹風看海岸線，不用下水，比較像是海上觀光兜風。",
     addr:"1009 Ala Moana Blvd F31, Honolulu, HI 96814（同樣在 Kewalo Basin Harbor，Makani Kiosk）",
+    geo:"21.294837,-157.857350",
     hours:"每日 11:00 / 14:00 兩場，全年無休",
     booking:"電話預約 <b>(808) 591-9000</b>（無線上系統，視空位而定）",
     bookingBadge:"需預約",
@@ -252,20 +253,23 @@ const DATA = [
   },
   {
     id:"luau", day:"8/31", time:"17:30–20:00", type:"culture", region:"waikiki", closedDays:["六"],
-    title:"Ka Moana 傳統夏威夷晚宴秀（Premium 名額）",
-    what:"傳統夏威夷歌舞秀＋吃到飽自助餐晚宴，約 2.5 小時，很多人心中的「必體驗」行程。",
+    title:"傳統夏威夷晚宴秀（Ka Moana Luau at Aloha Tower，Premium 名額）",
+    what:"到場先戴貝殼花環迎賓，中段是編織／刺青貼紙／草裙舞／烏克麗麗等體驗活動，接著吃到飽自助晚餐＋2 張飲料券，最後看傳統歌舞秀，約 2.5 小時，是很多人心中的「必體驗」。",
     addr:"1 Aloha Tower Dr, Honolulu, HI 96813",
+    geo:"21.3067,-157.8677",
     hours:"週一至週五、週日 17:30–20:00；週六公休",
     booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
     bookingBadge:"需預約",
+    value:"約 $169／成人",
     fee:"24 小時內取消不予退款，視同全額收費",
     video:{id:"xvSD0AzOb_I", label:"Ka Moana Luau 新場地（Aloha Tower）"}
   },
   {
     id:"kualoa", day:"9/1", time:"09:30–13:00", type:"nature", region:"windward", closedDays:[],
-    title:"古蘭尼牧場：神秘島 Secret Island Beach",
+    title:"古蘭尼牧場：神秘島（Kualoa Ranch: Secret Island Beach）",
     what:"電影《侏儸紀公園》等好萊塢片取景的私人牧場。這個行程是到牧場自己的私人沙灘（神秘島）玩水上活動（獨木舟／立槳／浮潛），含園區接駁車與魚塭遊船，不用另外找地方下水。",
     addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744",
+    geo:"21.520742,-157.839467",
     hours:"分 Morning Adventure 09:30 或 Afternoon Adventure 12:30，每次 3.5 小時，全年開放（僅耶誕節、元旦公休）",
     booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.kualoa.com/tours-and-activities/secret-island-beach-adventure'>kualoa.com ↗</a> 選「Kualoa Secret Island Beach (Half-Day)」選時間人數，現場刷 Pass 後退款；報到需提前 45 分鐘",
     bookingBadge:"需預約",
@@ -276,20 +280,23 @@ const DATA = [
   },
   {
     id:"pcc", day:"9/1", time:"約 12:00–18:00", type:"culture", region:"windward", closedDays:["三","日"],
-    title:"文化中心（Islands of Polynesia 園區）",
+    title:"文化中心（Polynesian Cultural Center）",
     what:"整個園區重現太平洋各島嶼（大溪地、東加、斐濟等）的傳統村落與歌舞表演，像走進一座活的博物館。",
     addr:"55-370 Kamehameha Hwy, Laie, HI 96762",
+    geo:"21.6417,-157.9213",
     hours:"週一二四五六 12:15–18:00；週三、週日公休",
     booking:"免預約，主入口噴水池旁 Ticketing Center 刷 Pass；保險起見可先電話 <b>1-844-365-2843</b> 確認",
     bookingBadge:"現場刷卡",
+    value:"約 $95／成人",
     fee:"無需預約，無 no-show 費用；晚間付費大秀需另外加購",
     video:{id:"Af06OcBG2gM", label:"PCC Island Villages 園區導覽"}
   },
   {
     id:"waimea", day:"9/2", time:"09:00–11:15", type:"nature", region:"northshore", closedDays:["一"],
-    title:"Waimea 瀑布谷",
+    title:"瀑布谷（Waimea Valley）",
     what:"植物園＋一段好走的鋪面步道，走到底有瀑布可以下水游泳，記得帶泳衣毛巾。",
     addr:"59-864 Kamehameha Hwy, Haleʻiwa, HI 96712",
+    geo:"21.636171,-158.054026",
     hours:"週二至週日 09:00–16:00；週一公休",
     booking:"免預約，現場出示 Go City App 掃碼即可入園",
     bookingBadge:"現場刷卡",
@@ -299,9 +306,10 @@ const DATA = [
   },
   {
     id:"hula", day:"9/2", time:"12:00–13:00", type:"culture", region:"northshore", closedDays:[],
-    title:"夏威夷草裙舞體驗課",
+    title:"草裙舞體驗課（Hula Class on the North Shore）",
     what:"跟著當地老師學夏威夷 Hula 舞的基本步伐，一小時體驗課，適合完全沒跳過舞的人。",
     addr:"57-571 Kamehameha Hwy, Kahuku, HI 96731（集合點靠近 Waiale'e Beach Park，確切位置預約後通知）",
+    geo:"21.693312,-158.019472",
     hours:"平日固定 12:00 一場；週六日改為 10:00",
     booking:"需提前 24hr：Email 或電話 <b>(808) 866-6630</b>",
     bookingBadge:"需預約",
@@ -310,9 +318,10 @@ const DATA = [
   },
   {
     id:"missouri", day:"9/8", time:"13:00–15:00（最後入場）", type:"history", region:"pearlharbor", closedDays:[],
-    title:"密蘇里號戰艦紀念館",
+    title:"密蘇里號戰艦紀念館（Battleship Missouri Memorial）",
     what:"二戰時日本簽署投降文件的那艘戰艦，現在停在珍珠港開放參觀，含導覽。因為這天下午才從機場過來，只安排這一個景點。",
     addr:"1 Arizona Memorial Rd, Honolulu, HI 96818（Pearl Harbor Visitor Center）",
+    geo:"21.3444,-157.9539",
     hours:"每日 08:00–16:00（最後入場 15:00），全年無休；需攜帶政府核發相片證件／護照",
     booking:"免預約，Go City Pass 現場出示掃碼；含 35 分鐘導覽",
     bookingBadge:"現場刷卡",
@@ -322,9 +331,10 @@ const DATA = [
   },
   {
     id:"arizona", day:"9/8", time:"", type:"history", region:"pearlharbor", closedDays:[], included:false,
-    title:"亞利桑那號紀念碑（本次時間有限，暫不安排）",
+    title:"亞利桑那號紀念碑（USS Arizona Memorial，本次時間有限，暫不安排）",
     what:"紀念珍珠港事變中沉船罹難者的紀念碑，蓋在海上需搭船，通常建議留一整個上午才夠悠閒排隊＋參觀。這次下午才到，時間排不進去，先列在這裡備查。",
     addr:"同 Pearl Harbor Visitor Center",
+    geo:"21.3646,-157.9524",
     hours:"依 NPS 每日釋出名額而定",
     booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.recreation.gov/'>recreation.gov ↗</a>（若之後想安排，需另外搶時段票，常提前數週額滿）",
     bookingBadge:"本次不排",
@@ -335,7 +345,7 @@ const DATA = [
 
 const ADDONS = [
   {
-    title:"電影場景 Movie Sites & Ranch Tour",
+    title:"電影場景（Movie Sites & Ranch Tour）",
     time:"90 分鐘・每 20 分鐘一班，08:20–15:20（每日）",
     price:"US$59.95＋稅／成人",
     what:"復古校車開進 Ka'a'awa 山谷，停靠《侏儸紀公園》《LOST》等 250+ 部電影取景點，最容易入門的一團。",
@@ -343,7 +353,7 @@ const ADDONS = [
     video:{id:"IF2tEJN7P5Y", label:"Kualoa Ranch 官方影片：Movie Site Tour"}
   },
   {
-    title:"侏儸紀冒險 Jurassic Adventure Tour",
+    title:"侏儸紀冒險（Jurassic Adventure Tour）",
     time:"2.5 小時・時段以官網當日開放為準（多為上午場）",
     price:"US$149.95＋稅／成人",
     what:"深入古蘭尼牧場、Hakipu'u、Ka'a'awa 三個山谷，比電影場景團走得更深、停留景點更多的加強版。",
@@ -351,7 +361,7 @@ const ADDONS = [
     video:{id:"-ZGhCqdoQTQ", label:"Jurassic Adventure Tour Highlights | Kualoa Ranch"}
   },
   {
-    title:"ATV／UTV Raptor 越野體驗",
+    title:"越野體驗（ATV／UTV Raptor Tour）",
     time:"2 小時・時段依官網當日開放為準（自駕須年滿 21 歲）",
     price:"US$154.95＋稅／成人起（多人共乘 UTV）",
     what:"自己開多人座 UTV 衝進山谷小徑，是三個加購裡最刺激的一個，熱門時段常常提前 2–3 週就被訂光。",
@@ -369,98 +379,122 @@ function parseTime(str){
 }
 
 // ---------- Island illustration ----------
-const ISLAND_PATH = `M10,38 C8,30 14,22 22,18 C32,13 38,11 45,10 C55,8 60,7 68,8
-  C82,8 96,7 108,9 C114,10 118,13 122,16 C128,20 132,22 135,26
-  C138,29 140,31 142,34 C146,38 149,40 150,42 C152,46 147,49 148,52
-  C149,56 158,54 165,55 C172,56 178,57 178,58 C178,60 172,64 168,68
-  C163,73 162,76 160,80 C157,86 153,90 150,94 C146,99 142,101 138,104
-  C130,107 121,108 112,108 C106,108 102,108 98,108 C92,108 88,107 85,106
-  C79,104 75,102 72,100 C66,96 61,94 60,92 C59,90 62,89 65,90
-  C68,91 70,94 68,97 C64,101 56,99 52,98 C44,99 36,100 30,100
-  C24,100 20,97 18,92 C14,84 12,72 10,60 C9,52 9,45 10,38 Z`;
-
-function mapChrome(){
-  const graticule = `
-    <g stroke="#C7D6D9" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.7">
-      <line x1="-8" y1="30" x2="184" y2="30"/>
-      <line x1="-8" y1="65" x2="184" y2="65"/>
-      <line x1="-8" y1="100" x2="184" y2="100"/>
-      <line x1="40" y1="-8" x2="40" y2="118"/>
-      <line x1="90" y1="-8" x2="90" y2="118"/>
-      <line x1="140" y1="-8" x2="140" y2="118"/>
-    </g>`;
-  const placeLabels = `
-    <g font-size="6" fill="#5B6472" font-family="Nunito, sans-serif">
-      <text x="46" y="6">Haleʻiwa</text>
-      <text x="90" y="5">Kahuku</text>
-      <text x="124" y="14">Laie</text>
-      <text x="156" y="42">Kaneohe</text>
-      <text x="38" y="90">Pearl Harbor</text>
-      <text x="82" y="115">Honolulu</text>
-      <text x="86" y="103">Waikiki</text>
-    </g>`;
-  const compass = `
-    <g transform="translate(170,10)">
-      <line x1="0" y1="7" x2="0" y2="-7" stroke="#5B6472" stroke-width="1.3"/>
-      <polygon points="0,-7 -2.6,0 2.6,0" fill="#5B6472"/>
-      <text x="0" y="14" font-size="6" text-anchor="middle" fill="#5B6472" font-weight="700">N</text>
-    </g>`;
-  return graticule + placeLabels + compass;
+// ---------- Real-geography projection ----------
+const GEO_BOX = {minLong:-158.30, maxLong:-157.65, minLat:21.25, maxLat:21.72, W:190, H:118};
+function geoToXY(lat, lon){
+  const x = (lon - GEO_BOX.minLong) / (GEO_BOX.maxLong - GEO_BOX.minLong) * GEO_BOX.W;
+  const y = (GEO_BOX.maxLat - lat) / (GEO_BOX.maxLat - GEO_BOX.minLat) * GEO_BOX.H;
+  return {x, y};
+}
+function geoStrToXY(str){
+  const parts = str.split(',');
+  return geoToXY(parseFloat(parts[0]), parseFloat(parts[1]));
 }
 
-function islandSVG(activeRegions){
-  const zones = Object.keys(REGION_POS).map(key=>{
-    const pos = REGION_POS[key];
-    const active = activeRegions.includes(key);
-    const fill = active ? REGION_COLOR[key] : 'var(--grey-zone)';
-    const r = active ? 10 : 7;
-    return `<circle cx="${pos.cx}" cy="${pos.cy}" r="${r}" fill="${fill}" opacity="${active?1:0.55}" stroke="#fff" stroke-width="1.5"/>`;
+const COASTLINE_LL = [
+  [21.5711,-158.2483],
+  [21.5928,-158.1000],
+  [21.6389,-158.0619],
+  [21.6795,-158.0400],
+  [21.7139,-157.9836],
+  [21.6459,-157.9226],
+  [21.5619,-157.8792],
+  [21.5236,-157.8394],
+  [21.4470,-157.7480],
+  [21.3400,-157.7150],
+  [21.3106,-157.6494],
+  [21.2690,-157.6938],
+  [21.2620,-157.8058],
+  [21.2793,-157.8294],
+  [21.3067,-157.8677],
+  [21.3646,-157.9524],
+  [21.3187,-158.1197],
+  [21.4472,-158.1858],
+];
+
+function coastlinePath(){
+  const pts = COASTLINE_LL.map(function(ll){ return geoToXY(ll[0], ll[1]); });
+  const n = pts.length;
+  let d = "M" + pts[0].x.toFixed(1) + "," + pts[0].y.toFixed(1) + " ";
+  for(let i=0;i<n;i++){
+    const p0 = pts[(i-1+n)%n], p1 = pts[i], p2 = pts[(i+1)%n], p3 = pts[(i+2)%n];
+    const cp1x = p1.x + (p2.x-p0.x)/6, cp1y = p1.y + (p2.y-p0.y)/6;
+    const cp2x = p2.x - (p3.x-p1.x)/6, cp2y = p2.y - (p3.y-p1.y)/6;
+    d += "C" + cp1x.toFixed(1) + "," + cp1y.toFixed(1) + " " + cp2x.toFixed(1) + "," + cp2y.toFixed(1) + " " + p2.x.toFixed(1) + "," + p2.y.toFixed(1) + " ";
+  }
+  return d + "Z";
+}
+const ISLAND_PATH = coastlinePath();
+
+const PLACE_LABELS = [
+  ["Haleiwa",21.5928,-158.1000,-4,-4],
+  ["Kahuku",21.7139,-157.9836,4,-4],
+  ["Laie",21.6459,-157.9226,6,-2],
+  ["Kaneohe",21.4180,-157.7994,6,2],
+  ["Waikiki",21.2793,-157.8294,4,10],
+  ["Honolulu",21.3067,-157.8677,-22,4],
+  ["Pearl Harbor",21.3646,-157.9524,-30,2]
+];
+
+const WAIKIKI_LL = [21.2793,-157.8294];
+const AIRPORT_LL = [21.3245,-157.9251];
+const HOME_EMOJI = String.fromCodePoint(127968);
+const PLANE_EMOJI = String.fromCodePoint(9992,65039);
+
+function mapChrome(){
+  const placeLabels = PLACE_LABELS.map(function(item){
+    const name=item[0], lat=item[1], lon=item[2], dx=item[3], dy=item[4];
+    const p = geoToXY(lat,lon);
+    return '<text x="' + (p.x+dx) + '" y="' + (p.y+dy) + '" font-size="6" fill="#5B6472" font-family="Nunito, sans-serif">' + name + '</text>';
   }).join('');
-  return `<svg viewBox="-8 -8 192 126" class="w-full h-auto">
-    <rect x="-8" y="-8" width="192" height="126" fill="var(--map-sea)"/>
-    <path d="${ISLAND_PATH}" fill="var(--map-land)" stroke="#C9BC98" stroke-width="2" stroke-linejoin="round"/>
-    ${mapChrome()}
-    ${zones}
-  </svg>`;
+  const compass = '<g transform="translate(175,10)"><line x1="0" y1="7" x2="0" y2="-7" stroke="#5B6472" stroke-width="1.3"/><polygon points="0,-7 -2.6,0 2.6,0" fill="#5B6472"/><text x="0" y="14" font-size="6" text-anchor="middle" fill="#5B6472" font-weight="700">N</text></g>';
+  return placeLabels + compass;
+}
+
+function pinSVG(cx, cy, color, scale, opacity){
+  return '<g transform="translate(' + cx + ',' + cy + ') scale(' + scale + ') translate(-12,-23)" opacity="' + opacity + '">'
+    + '<path d="M12 0C7 0 3 4 3 9c0 6.5 9 14 9 14s9-7.5 9-14c0-5-4-9-9-9z" fill="' + color + '" stroke="#fff" stroke-width="1"/>'
+    + '<circle cx="12" cy="9" r="3.4" fill="#fff"/></g>';
+}
+
+function routeLineSVG(points){
+  if(points.length<2) return '';
+  const d = points.map(function(p,i){ return (i===0?'M':'L') + p.x.toFixed(1) + ',' + p.y.toFixed(1); }).join(' ');
+  return '<path d="' + d + '" fill="none" stroke="#5B6472" stroke-width="1" stroke-dasharray="3,2" opacity="0.7"/>';
+}
+
+function islandSVG(day){
+  const items = DATA.filter(function(x){ return x.day===day; });
+  const pts = items.map(function(it){ return geoStrToXY(it.geo); });
+  const pins = items.map(function(it,i){
+    const p = pts[i];
+    return pinSVG(p.x, p.y, TYPE_COLOR[it.type], 0.95, 0.92)
+      + '<text x="' + p.x + '" y="' + (p.y-15.5) + '" font-size="6.5" text-anchor="middle" fill="#fff" font-weight="700">' + (i+1) + '</text>';
+  }).join('');
+  const lodgeLL = day==='9/8' ? AIRPORT_LL : WAIKIKI_LL;
+  const lodgeIcon = day==='9/8' ? PLANE_EMOJI : HOME_EMOJI;
+  const lodgePos = geoToXY(lodgeLL[0], lodgeLL[1]);
+  const lodgePin = pinSVG(lodgePos.x, lodgePos.y, '#B9860A', 0.8, 0.85) + '<text x="' + lodgePos.x + '" y="' + (lodgePos.y-14) + '" font-size="7" text-anchor="middle">' + lodgeIcon + '</text>';
+  return '<svg viewBox="-8 -8 202 130" class="w-full h-auto"><rect x="-8" y="-8" width="202" height="130" fill="var(--map-sea)"/><path d="' + ISLAND_PATH + '" fill="var(--map-land)" stroke="#C9BC98" stroke-width="2" stroke-linejoin="round"/>' + mapChrome() + routeLineSVG(pts) + pins + lodgePin + '</svg>';
 }
 
 function overviewIslandSVG(){
-  const dayColorForRegion = {};
-  DAYS.forEach(d=>{
-    const regions = [...new Set(DATA.filter(x=>x.day===d).map(x=>x.region))];
-    regions.forEach(r=>{ if(!dayColorForRegion[r]) dayColorForRegion[r]=d; });
-  });
-  const zones = Object.keys(REGION_POS).map(key=>{
-    const pos = REGION_POS[key];
-    const dayLabel = dayColorForRegion[key];
-    const fill = dayLabel ? REGION_COLOR[key] : 'var(--grey-zone)';
-    return `<g>
-      <circle cx="${pos.cx}" cy="${pos.cy}" r="12" fill="${fill}" stroke="#fff" stroke-width="2"/>
-      ${dayLabel? `<text x="${pos.cx}" y="${pos.cy+3.5}" font-size="8" text-anchor="middle" fill="#fff" font-weight="700">${dayLabel}</text>`:''}
-    </g>`;
+  const dayPins = DATA.filter(function(x){ return x.included!==false; }).map(function(it){
+    const p = geoStrToXY(it.geo);
+    const d = it.day;
+    return '<g>' + pinSVG(p.x, p.y, DAY_PIN_COLOR[d], 0.85, 0.88) + '<text x="' + p.x + '" y="' + (p.y-14.5) + '" font-size="6" text-anchor="middle" fill="#fff" font-weight="700">' + d + '</text></g>';
   }).join('');
-  const home = `<g>
-    <circle cx="${HOME_POS.cx}" cy="${HOME_POS.cy-16}" r="8" fill="#fff" stroke="var(--mango-dark)" stroke-width="2"/>
-    <text x="${HOME_POS.cx}" y="${HOME_POS.cy-13}" font-size="9" text-anchor="middle">🏠</text>
-  </g>`;
-  const airport = `<g>
-    <circle cx="${AIRPORT_POS.cx}" cy="${AIRPORT_POS.cy}" r="8" fill="#fff" stroke="var(--navy-dark)" stroke-width="2"/>
-    <text x="${AIRPORT_POS.cx}" y="${AIRPORT_POS.cy+3}" font-size="9" text-anchor="middle">✈️</text>
-  </g>`;
-  return `<svg viewBox="-8 -8 196 126" class="w-full h-auto">
-    <rect x="-8" y="-8" width="196" height="126" fill="var(--map-sea)"/>
-    <path d="${ISLAND_PATH}" fill="var(--map-land)" stroke="#C9BC98" stroke-width="2" stroke-linejoin="round"/>
-    ${mapChrome()}
-    ${zones}${home}${airport}
-  </svg>`;
+  const waikikiPos = geoToXY(WAIKIKI_LL[0], WAIKIKI_LL[1]);
+  const airportPos = geoToXY(AIRPORT_LL[0], AIRPORT_LL[1]);
+  const home = pinSVG(waikikiPos.x, waikikiPos.y-18, '#B9860A', 0.85, 0.9) + '<text x="' + waikikiPos.x + '" y="' + (waikikiPos.y-31) + '" font-size="8" text-anchor="middle">' + HOME_EMOJI + '</text>';
+  const airport = pinSVG(airportPos.x, airportPos.y, '#232D42', 0.85, 0.9) + '<text x="' + airportPos.x + '" y="' + (airportPos.y-14) + '" font-size="8" text-anchor="middle">' + PLANE_EMOJI + '</text>';
+  return '<svg viewBox="-8 -8 202 130" class="w-full h-auto"><rect x="-8" y="-8" width="202" height="130" fill="var(--map-sea)"/><path d="' + ISLAND_PATH + '" fill="var(--map-land)" stroke="#C9BC98" stroke-width="2" stroke-linejoin="round"/>' + mapChrome() + dayPins + home + airport + '</svg>';
 }
 
-function regionLegendHTML(activeRegions){
-  return Object.keys(REGION_LABEL).map(key=>{
-    const active = activeRegions.includes(key);
-    return `<span class="flex items-center gap-1.5 text-[11px] ${active?'text-slate-700 font-bold':'text-slate-400'}">
-      <span class="w-2 h-2 rounded-full inline-block" style="background:${active?REGION_COLOR[key]:'var(--grey-zone)'}"></span>${REGION_LABEL[key]}${active?' ★':''}
-    </span>`;
+function regionLegendHTML(day){
+  const items = DATA.filter(function(x){ return x.day===day; });
+  return items.map(function(it,i){
+    return '<span class="flex items-center gap-1.5 text-[11px] text-slate-700"><span class="w-4 h-4 rounded-full inline-flex items-center justify-center font-bold text-white" style="background:' + TYPE_COLOR[it.type] + ';font-size:9px;">' + (i+1) + '</span>' + it.title + '</span>';
   }).join('');
 }
 
@@ -525,13 +559,14 @@ function cardHTML(item){
       <div class="font-baloo font-bold text-[16px] mb-1" style="text-wrap:balance;">${item.title}</div>
       <p class="text-[12.5px] text-slate-500 italic mb-2" style="text-wrap:pretty;">${item.what}</p>
       <div class="text-[13px] text-slate-500 space-y-1.5">
-        <div class="detail-row"><span class="detail-lbl">地點</span><span class="detail-val">${item.addr} · <a target="_blank" class="text-ocean-dark font-bold underline" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.addr)}">Maps↗</a></span></div>
+        <div class="detail-row"><span class="detail-lbl">地點</span><span class="detail-val">${item.addr} · <a target="_blank" class="text-ocean-dark font-bold underline" href="https://www.google.com/maps/search/?api=1&query=${item.geo ? item.geo : encodeURIComponent(item.addr)}">Maps↗</a></span></div>
         <div class="detail-row"><span class="detail-lbl">營業</span><span class="detail-val">${item.hours}</span></div>
         <div class="detail-row"><span class="detail-lbl">預約</span><span class="detail-val">${item.booking}</span></div>
         ${item.value && item.included!==false ? `<div class="detail-row"><span class="detail-lbl">現值</span><span class="detail-val">單獨購票約 ${item.value}（已含在 Go City 票內）</span></div>` : ''}
       </div>
       <div class="mt-2 bg-amber-50 text-amber-800 text-[12px] rounded-md px-2.5 py-1.5">${item.fee}</div>
-      ${item.impact? `<div class="mt-2 bg-indigo-50 text-indigo-800 text-[12px] rounded-md px-2.5 py-1.5"><b>⏱ 影響後面 PCC 的時間：</b>${item.impact}</div>` : ''}
+      ${item.impact? `<div class="mt-2 bg-indigo-50 text-indigo-800 text-[12px] rounded-md px-2.5 py-1.5"><b>⏱ 影響後面文化中心的時間：</b>${item.impact}</div>` : ''}
+      ${item.note? `<div class="mt-2 bg-sky-50 text-sky-800 text-[12px] rounded-md px-2.5 py-1.5"><b>💡 補充：</b>${item.note}</div>` : ''}
       ${item.video? `<a target="_blank" href="https://www.youtube.com/watch?v=${item.video.id}" class="mt-2 flex items-center gap-2 bg-sky-50 rounded-md px-2 py-1.5">
         <img src="${ytThumb(item.video.id)}" class="w-14 h-8 object-cover rounded" alt="video">
         <span class="text-[11px] font-semibold leading-tight">${item.video.label}</span>
@@ -734,13 +769,12 @@ document.getElementById('map-fab').addEventListener('click', ()=>{
   const modalBackdrop = document.getElementById('map-modal-backdrop');
   const title = document.getElementById('map-modal-title');
   const content = document.getElementById('map-modal-content');
-  if(activeTab === 'intro'){
+  if(activeTab === 'intro' || activeTab === 'compare'){
     title.textContent = '歐胡島全覽：四天活動範圍';
     content.innerHTML = overviewIslandSVG();
   } else {
-    const regions = [...new Set(DATA.filter(x=>x.day===activeTab).map(x=>x.region))];
     title.textContent = `${activeTab} 活動範圍・住宿：${DAY_LODGING[activeTab]}`;
-    content.innerHTML = islandSVG(regions) + `<div class="flex flex-wrap gap-3 mt-3 justify-center">${regionLegendHTML(regions)}</div>`;
+    content.innerHTML = islandSVG(activeTab) + `<div class="flex flex-col gap-1.5 mt-3">${regionLegendHTML(activeTab)}</div>`;
   }
   modalBackdrop.classList.remove('hidden'); modalBackdrop.classList.add('flex');
 });
