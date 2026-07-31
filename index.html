@@ -5,246 +5,174 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>歐胡島 4 日行程手冊</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { baloo: ['"Fraunces"','serif'], nunito: ['Nunito','sans-serif'] },
+        colors: {
+          mango: '#E4A70C', 'mango-dark': '#B9860A',
+          ocean: '#0B6E8C', 'ocean-dark': '#084F63',
+          magenta: '#C81E4B', 'magenta-dark': '#93123A',
+          palm: '#1F6F4A', 'palm-dark': '#154F35',
+          navy: '#33415C', 'navy-dark': '#232D42',
+          cream: '#FBF3E1'
+        }
+      }
+    }
+  }
+</script>
 <style>
+  body{ font-family:'Nunito', sans-serif; background:#FBF3E1; }
+  .font-baloo{ font-family:'Fraunces', serif; }
+  .no-scrollbar::-webkit-scrollbar{ display:none; }
+  .no-scrollbar{ -ms-overflow-style:none; scrollbar-width:none; }
   :root{
-    --mango:#FF7A3D; --mango-dark:#E5601F;
-    --ocean:#0093C4; --ocean-dark:#00688F;
-    --magenta:#E5387D; --magenta-dark:#C21F63;
-    --palm:#2FA84F; --palm-dark:#1F8038;
-    --navy:#2E3A6E; --navy-dark:#212A54;
-    --cream:#FFF6EA; --card:#FFFFFF;
-    --ink:#26314D; --ink-soft:#6B7290; --line:#F1E3CC;
-    --grey-zone:#E3DBC8;
+    --ocean:#0B6E8C; --palm:#1F6F4A; --mango:#E4A70C; --navy:#33415C; --grey-zone:#D8CFB8; --mango-dark:#B9860A;
+    --map-sea:#DCE8EA; --map-land:#EDE6D1;
   }
-  *{box-sizing:border-box;}
-  body{
-    margin:0; background:var(--cream);
-    background-image:radial-gradient(circle at 92% 0%, rgba(255,122,61,0.16), transparent 40%),
-                      radial-gradient(circle at 0% 25%, rgba(0,147,196,0.12), transparent 38%);
-    color:var(--ink); font-family:'Nunito', sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased;
-  }
-  .wrap{max-width:640px; margin:0 auto; padding:0 0 70px;}
-
-  header.hero{
-    background:linear-gradient(135deg, var(--mango) 0%, var(--magenta) 60%, var(--magenta-dark) 100%);
-    color:#fff; padding:24px 20px 28px; border-radius:0 0 26px 26px; position:relative; overflow:hidden;
-  }
-  header.hero::after{content:"🌺"; position:absolute; right:14px; top:8px; font-size:42px; opacity:.32; transform:rotate(10deg);}
-  .eyebrow{font-family:'Baloo 2',sans-serif; font-size:12.5px; letter-spacing:.06em; opacity:.9; margin:0 0 4px;}
-  h1{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:27px; margin:0 0 10px;}
-  .hero-chips{display:flex; flex-wrap:wrap; gap:6px;}
-  .chip{background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.45); border-radius:20px; padding:4px 12px; font-size:12px; font-weight:700;}
-  .wave{display:block; width:100%; height:22px; margin-top:-2px;}
-
-  main{padding:0 14px;}
-
-  .box{background:#fff; border-radius:16px; padding:14px 16px; margin:16px 0; font-size:13px; box-shadow:0 2px 8px rgba(38,49,77,0.06);}
-  .box.tips{border:2px dashed var(--ocean);}
-  .box.tips b{color:var(--ocean-dark);}
-  .box ul{margin:6px 0 0; padding-left:18px;}
-  .box li{margin-bottom:4px;}
-
-  nav.tabs{
-    position:sticky; top:0; z-index:20;
-    display:flex; gap:8px; overflow-x:auto; padding:10px 14px;
-    background:rgba(255,246,234,0.95); backdrop-filter:blur(3px);
-    -webkit-overflow-scrolling:touch; border-bottom:1px solid var(--line);
-  }
-  nav.tabs::-webkit-scrollbar{display:none;}
-  nav.tabs a{
-    flex:0 0 auto; font-family:'Baloo 2',sans-serif; font-size:13.5px; font-weight:600;
-    background:#fff; color:var(--ink-soft); border:2px solid var(--line); border-radius:20px;
-    padding:6px 14px; cursor:pointer; white-space:nowrap; text-decoration:none;
-  }
-  nav.tabs a.active{background:var(--magenta); border-color:var(--magenta); color:#fff;}
-
-  /* overview */
-  section.overview{margin:16px 0 24px;}
-  section.overview h2{font-family:'Baloo 2',sans-serif; font-size:19px; margin:0 0 4px;}
-  section.overview .stay-note{font-size:12.5px; color:var(--ink-soft); margin:0 0 12px;}
-  .overview-map{display:flex; justify-content:center; margin-bottom:14px;}
-  .overview-map svg{width:220px; height:auto;}
-  .ov-list{display:flex; flex-direction:column; gap:10px;}
-  .ov-item{
-    display:flex; gap:12px; align-items:flex-start; background:#fff; border-radius:14px; padding:12px 13px;
-    box-shadow:0 2px 8px rgba(38,49,77,0.06); text-decoration:none; color:var(--ink); cursor:pointer;
-  }
-  .ov-num{
-    font-family:'Baloo 2',sans-serif; font-weight:700; font-size:12.5px; color:#fff;
-    width:40px; height:40px; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
-    text-align:center; line-height:1.15;
-  }
-  .ov-body b{font-family:'Baloo 2',sans-serif; font-size:14.5px; display:block; margin-bottom:2px;}
-  .ov-body .region{font-size:11.5px; color:var(--ink-soft);}
-  .ov-body .hi{font-size:12.5px; color:var(--ink-soft); margin-top:2px;}
-
-  /* day section */
-  .day-banner{border-radius:18px; padding:14px 17px; margin:26px 0 4px; color:#fff; scroll-margin-top:58px;}
-  .day-banner h2{font-family:'Baloo 2',sans-serif; font-size:19px; margin:0 0 2px;}
-  .day-banner .sub{font-size:12.5px; opacity:.94; margin:0;}
-  .banner-1{background:linear-gradient(135deg,var(--ocean),var(--ocean-dark));}
-  .banner-2{background:linear-gradient(135deg,var(--palm),var(--palm-dark));}
-  .banner-3{background:linear-gradient(135deg,var(--magenta),var(--magenta-dark));}
-  .banner-4{background:linear-gradient(135deg,var(--navy),var(--navy-dark));}
-
-  .day-photos{display:flex; gap:8px; overflow-x:auto; margin:10px 0; -webkit-overflow-scrolling:touch;}
-  .day-photos img, .day-photos .illus{
-    width:150px; height:100px; object-fit:cover; border-radius:12px; flex-shrink:0;
-    box-shadow:0 2px 6px rgba(38,49,77,0.12);
-  }
-  .day-photos .illus{display:flex; align-items:center; justify-content:center; font-size:34px; color:#fff;}
-  .photo-caption{font-size:10.5px; color:var(--ink-soft); text-align:center;}
-
-  .island-mini{display:flex; align-items:center; gap:10px; margin:8px 0 14px;}
-  .island-mini svg{width:80px; height:auto; flex-shrink:0;}
-  .island-legend{font-size:11px; color:var(--ink-soft); display:flex; flex-direction:column; gap:2px;}
-  .island-legend .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:5px;}
-
-  .card-list{list-style:none; margin:0 0 6px; padding:0; display:flex; flex-direction:column; gap:10px;}
-
-  .card{
-    background:var(--card); border-radius:14px; padding:13px 14px;
-    box-shadow:0 2px 8px rgba(38,49,77,0.06); border-left:5px solid var(--ocean); font-size:13px;
-  }
-  .card.type-water{border-left-color:var(--ocean);}
-  .card.type-culture{border-left-color:var(--magenta);}
-  .card.type-nature{border-left-color:var(--palm);}
-  .card.type-history{border-left-color:var(--navy);}
-
-  .card-head{display:flex; align-items:center; justify-content:space-between; gap:8px;}
-  .card-time{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:14px; color:var(--mango-dark); background:#FFF1E6; padding:2px 10px; border-radius:8px;}
-  .badge{font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px;}
-  .badge.book{background:#FFE3C2; color:#9C5A1E;}
-  .badge.free{background:#DCF2E6; color:#1F7350;}
-  .card-title{font-family:'Baloo 2',sans-serif; font-weight:700; font-size:16px; margin:6px 0 4px;}
-  .card-what{font-size:12.5px; color:var(--ink-soft); margin:0 0 8px; font-style:italic;}
-
-  .card-lines p{margin:3px 0; color:var(--ink-soft);}
-  .card-lines .lbl{color:var(--ink); font-weight:700; margin-right:2px;}
-  .card-lines a{color:var(--ocean-dark); font-weight:700; text-decoration:none; border-bottom:2px solid rgba(0,147,196,.3);}
-  .closed{color:var(--magenta-dark); font-weight:700;}
-  .fee-line{margin-top:7px; background:#FFF3E0; border-radius:9px; padding:6px 9px; font-size:12px; color:#9C5A1E;}
-
-  .video-link{margin-top:8px; display:flex; align-items:center; gap:8px; text-decoration:none; background:#EFF6FA; border-radius:9px; padding:5px 7px;}
-  .video-link img{width:52px; height:30px; object-fit:cover; border-radius:5px; flex-shrink:0;}
-  .video-link span{font-size:11px; color:var(--ink); font-weight:600; line-height:1.25;}
-
-  .card-controls{display:flex; align-items:center; gap:5px; margin-top:9px; padding-top:8px; border-top:1px dashed var(--line);}
-  .card-controls button{font-family:'Baloo 2',sans-serif; font-size:12px; background:var(--cream); border:1px solid var(--line); border-radius:7px; width:26px; height:26px; cursor:pointer; color:var(--ink);}
-  .card-controls select{font-size:11.5px; border-radius:7px; border:1px solid var(--line); padding:4px 6px; background:#fff; color:var(--ink-soft); margin-left:auto;}
-
-  /* modal */
-  .modal-backdrop{position:fixed; inset:0; background:rgba(38,49,77,0.5); display:none; align-items:center; justify-content:center; z-index:100; padding:16px;}
-  .modal-backdrop.show{display:flex;}
-  .modal{background:#fff; border-radius:18px; padding:20px; max-width:400px; width:100%; box-shadow:0 10px 30px rgba(0,0,0,.2);}
-  .modal h3{font-family:'Baloo 2',sans-serif; font-size:17px; margin:0 0 10px;}
-  .modal .check{display:flex; gap:8px; align-items:flex-start; margin-bottom:9px; font-size:13px;}
-  .modal .ok{color:var(--palm);}
-  .modal .warn{color:var(--magenta-dark); font-weight:700;}
-  .modal-actions{display:flex; gap:8px; margin-top:16px;}
-  .modal-actions button{flex:1; font-family:'Baloo 2',sans-serif; font-size:13.5px; font-weight:600; padding:9px; border-radius:10px; border:none; cursor:pointer;}
-  .btn-cancel{background:var(--cream); color:var(--ink);}
-  .btn-confirm{background:var(--mango); color:#fff;}
-
-  footer.notes{margin:30px 14px 0; font-size:12px; color:var(--ink-soft); text-align:center;}
 </style>
 </head>
-<body>
+<body class="text-slate-800">
+<div class="max-w-xl mx-auto pb-16">
 
-  <header class="hero">
-    <p class="eyebrow">OʻAHU · GO CITY ALL-INCLUSIVE · 4 DAYS</p>
-    <h1>🌴 歐胡島行程手冊</h1>
-    <div class="hero-chips">
-      <span class="chip">4 天／14 日效期</span>
-      <span class="chip">8/31・9/1・9/2・9/8</span>
-      <span class="chip">住宿：Waikiki 威基基</span>
+  <!-- HERO -->
+  <header class="bg-gradient-to-br from-mango via-magenta to-magenta-dark text-white px-5 pt-6 pb-8 rounded-b-2xl relative overflow-hidden">
+    <span class="absolute right-4 top-3 text-3xl opacity-25">🌺</span>
+    <p class="font-baloo text-xs tracking-wide opacity-90 mb-1">OʻAHU · GO CITY ALL-INCLUSIVE · 4 DAYS</p>
+    <h1 class="font-baloo font-bold text-2xl mb-3">歐胡島行程手冊</h1>
+    <div class="flex flex-wrap gap-1.5">
+      <span class="bg-white/15 border border-white/40 rounded-lg px-3 py-1 text-xs font-bold">4 天／14 日效期</span>
+      <span class="bg-white/15 border border-white/40 rounded-lg px-3 py-1 text-xs font-bold">8/31・9/1・9/2・9/8</span>
     </div>
   </header>
-  <svg class="wave" viewBox="0 0 500 22" preserveAspectRatio="none"><path d="M0,8 C120,22 380,-4 500,8 L500,22 L0,22 Z" fill="#FFF6EA"/></svg>
 
-  <main>
-    <div class="box tips">
-      <b>🎫 Go City 卡使用小提醒：</b>
-      <ul>
-        <li>下載 Go City App 並輸入訂單編號，四天效期<b>不需連續</b>，14 天內任選 4 天使用即可</li>
-        <li>多數行程要<b>自己另外向業者預約</b>（官網／電話），App 本身不負責訂位，只負責入場掃碼</li>
-        <li>現場入場打開 App 出示 QR Code 給工作人員掃描即可，需預約的行程記得同時附上票號</li>
-        <li>各行程取消規則不同，快到之前建議直接跟業者確認一次，避免被收 no-show 費用</li>
-      </ul>
-    </div>
+  <!-- STICKY TABS -->
+  <nav id="tabs" class="sticky top-0 z-20 flex gap-2 overflow-x-auto no-scrollbar px-3 py-2.5 bg-cream/95 backdrop-blur border-b border-amber-100">
+    <button data-tab="intro" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">行前提醒</button>
+    <button data-tab="8/31" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">8/31（一）</button>
+    <button data-tab="9/1" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/1（二）</button>
+    <button data-tab="9/2" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/2（三）</button>
+    <button data-tab="9/8" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/8（二）</button>
+  </nav>
 
-    <nav class="tabs" id="tabs">
-      <a href="#day-831" data-day="8/31" class="active">8/31（一）</a>
-      <a href="#day-91" data-day="9/1">9/1（二）</a>
-      <a href="#day-92" data-day="9/2">9/2（三）</a>
-      <a href="#day-98" data-day="9/8">9/8（二）</a>
-    </nav>
+  <main class="px-3">
 
-    <section class="overview">
-      <h2>行程概覽</h2>
-      <p class="stay-note">📍 這 4 天都以 <b>Waikiki（威基基）</b>為住宿基地，早上出發、晚上回來睡覺；下面地圖上的房子圖示就是你住的地方，其他顏色的點是每天活動的所在區域。</p>
-      <div class="overview-map" id="overview-map"></div>
-      <div class="ov-list" id="overview-list"></div>
+    <!-- INTRO PANEL -->
+    <section data-panel="intro" class="panel py-4">
+      <div class="rounded-xl border-l-4 border-amber-400 bg-amber-50 p-4 shadow-sm mb-4">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="text-xl">🎫</span>
+          <h3 class="font-baloo font-bold text-amber-800">Go City 卡使用小提醒</h3>
+        </div>
+        <ul class="space-y-1.5 text-[13px] text-amber-900 list-disc list-inside leading-relaxed">
+          <li>下載 <b>Go City App</b> 並輸入訂單編號，四天效期<b>不需連續</b>，14 天內任選 4 天使用即可</li>
+          <li>多數行程要<b>自己另外向業者預約</b>（官網／電話），App 本身不負責訂位，只負責入場掃碼</li>
+          <li>現場入場打開 App 出示 QR Code 給工作人員掃描即可，需預約的行程記得同時附上票號</li>
+          <li>各行程取消規則不同，快到之前建議直接跟業者確認一次，避免被收 no-show 費用</li>
+        </ul>
+      </div>
+
+      <!-- Reference-style map -->
+      <div class="rounded-xl bg-white shadow-sm p-4 mb-4">
+        <h3 class="font-baloo font-bold text-base mb-1">🗺️ 歐胡島行程總覽</h3>
+        <p class="text-[12.5px] text-slate-500 mb-3">前 3 晚住 <b class="text-slate-700">Waikiki（自駕）</b>；最後一晚從機場直接去珍珠港，改住<b class="text-slate-700">機場附近</b>，這天不租車。</p>
+        <div id="overview-map" class="mb-3"></div>
+        <div id="overview-list" class="flex flex-col gap-2"></div>
+      </div>
     </section>
 
-    <section class="day-banner banner-1" id="day-831" data-day="8/31">
-      <h2>8/31（一）Waikiki 水上日</h2>
-      <p class="sub">今天不用跑遠，兩個行程都在住的附近的港口出發</p>
+    <!-- DAY PANELS (populated by JS) -->
+    <section data-panel="8/31" class="panel hidden py-4">
+      <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-ocean to-ocean-dark">
+        <h2 class="font-baloo font-bold text-lg">8/31（一）Waikiki 水上日</h2>
+        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜兩個行程都在住的附近港口出發</p>
+      </div>
+      <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-8/31"></div>
+      <div class="timeline" id="timeline-8/31"></div>
     </section>
-    <div class="day-photos" id="photos-8/31"></div>
-    <div class="island-mini" id="map-8/31"></div>
-    <ul class="card-list" id="col-8/31"></ul>
 
-    <section class="day-banner banner-2" id="day-91" data-day="9/1">
-      <h2>9/1（二）古蘭尼牧場＋PCC</h2>
-      <p class="sub">今天要開車往東北邊跑，兩個景點相距約 20–30 分鐘車程</p>
+    <section data-panel="9/1" class="panel hidden py-4">
+      <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-palm to-palm-dark">
+        <h2 class="font-baloo font-bold text-lg">9/1（二）古蘭尼牧場＋PCC</h2>
+        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜兩景點相距約 20–40 分鐘車程</p>
+      </div>
+      <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-9/1"></div>
+      <div class="timeline" id="timeline-9/1"></div>
     </section>
-    <div class="day-photos" id="photos-9/1"></div>
-    <div class="island-mini" id="map-9/1"></div>
-    <ul class="card-list" id="col-9/1"></ul>
 
-    <section class="day-banner banner-3" id="day-92" data-day="9/2">
-      <h2>9/2（三）北海岸：瀑布谷＋Hula</h2>
-      <p class="sub">今天跑到島的最北邊，是四天裡離住宿最遠的一天</p>
+    <section data-panel="9/2" class="panel hidden py-4">
+      <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-magenta to-magenta-dark">
+        <h2 class="font-baloo font-bold text-lg">9/2（三）北海岸：瀑布谷＋Hula</h2>
+        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜今天跑到島的最北邊，離住宿最遠</p>
+      </div>
+      <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-9/2"></div>
+      <div class="timeline" id="timeline-9/2"></div>
     </section>
-    <div class="day-photos" id="photos-9/2"></div>
-    <div class="island-mini" id="map-9/2"></div>
-    <ul class="card-list" id="col-9/2"></ul>
 
-    <section class="day-banner banner-4" id="day-98" data-day="9/8">
-      <h2>9/8（二）珍珠港</h2>
-      <p class="sub">今天在住宿的西邊，是歷史景點，跟前面三天的玩樂步調不同</p>
+    <section data-panel="9/8" class="panel hidden py-4">
+      <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-navy to-navy-dark">
+        <h2 class="font-baloo font-bold text-lg">9/8（二）珍珠港（機場進出）</h2>
+        <p class="text-[12.5px] opacity-90">🚕 搭計程車／Uber，不租車・住宿改在機場附近｜從機場直接前往，只排下午</p>
+      </div>
+      <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-9/8"></div>
+      <div class="timeline" id="timeline-9/8"></div>
     </section>
-    <div class="day-photos" id="photos-9/8"></div>
-    <div class="island-mini" id="map-9/8"></div>
-    <ul class="card-list" id="col-9/8"></ul>
+
   </main>
 
-  <footer class="notes">
+  <footer class="mt-8 mx-4 text-[11.5px] text-slate-400 text-center">
     營業日／時段查證時間：2026 年 7 月底，依 Go City 及各景點官網公告內容。實際仍可能季節性調整，出發前建議在 Go City App 內再次確認。
   </footer>
+</div>
 
-  <div class="modal-backdrop" id="modal-backdrop">
-    <div class="modal">
-      <h3 id="modal-title"></h3>
-      <div id="modal-checks"></div>
-      <div class="modal-actions">
-        <button class="btn-cancel" id="modal-cancel">取消</button>
-        <button class="btn-confirm" id="modal-confirm">確定搬動</button>
-      </div>
+<!-- Floating map button -->
+<button id="map-fab" class="fixed bottom-5 right-5 z-30 bg-ocean hover:bg-ocean-dark text-white rounded-full w-14 h-14 shadow-lg flex items-center justify-center text-2xl">🗺️</button>
+
+<!-- Map modal -->
+<div id="map-modal-backdrop" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-40 p-4">
+  <div class="bg-white rounded-xl p-5 max-w-sm w-full shadow-xl">
+    <div class="flex justify-between items-center mb-3">
+      <h3 class="font-baloo font-bold text-base" id="map-modal-title">歐胡島地圖</h3>
+      <button id="map-modal-close" class="text-slate-400 text-xl leading-none">✕</button>
+    </div>
+    <div id="map-modal-content"></div>
+  </div>
+</div>
+
+<!-- Move-day confirmation modal -->
+<div id="modal-backdrop" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-40 p-4">
+  <div class="bg-white rounded-xl p-5 max-w-sm w-full shadow-xl">
+    <h3 class="font-baloo font-bold text-base mb-3" id="modal-title"></h3>
+    <div id="modal-checks" class="space-y-2 text-[13px]"></div>
+    <div class="flex gap-2 mt-4">
+      <button id="modal-cancel" class="flex-1 font-baloo font-semibold text-sm bg-cream rounded-lg py-2">取消</button>
+      <button id="modal-confirm" class="flex-1 font-baloo font-semibold text-sm bg-mango text-white rounded-lg py-2">確定搬動</button>
     </div>
   </div>
+</div>
 
 <script>
 const DAYS = ["8/31","9/1","9/2","9/8"];
-const DAY_ID = {"8/31":"day-831","9/1":"day-91","9/2":"day-92","9/8":"day-98"};
 const DAY_WEEKDAY = {"8/31":"一","9/1":"二","9/2":"三","9/8":"二"};
-const REGION_LABEL = {waikiki:"Waikiki", windward:"東岸 Windward", northshore:"北海岸", pearlharbor:"珍珠港"};
-const REGION_COLOR = {waikiki:"var(--ocean)", windward:"var(--palm)", northshore:"var(--mango)", pearlharbor:"var(--navy)"};
-// positions on the 200x140 island viewBox
+const DAY_TITLE = {
+  "8/31":"8/31（一）Waikiki 水上日","9/1":"9/1（二）古蘭尼牧場＋PCC",
+  "9/2":"9/2（三）北海岸：瀑布谷＋Hula","9/8":"9/8（二）珍珠港（機場進出）"
+};
+const DAY_LODGING = {"8/31":"Waikiki 威基基","9/1":"Waikiki 威基基","9/2":"Waikiki 威基基","9/8":"機場附近（Airport Area）"};
+const DAY_GRADIENT = {
+  "8/31":"from-ocean to-ocean-dark","9/1":"from-palm to-palm-dark",
+  "9/2":"from-magenta to-magenta-dark","9/8":"from-navy to-navy-dark"
+};
+const REGION_LABEL = {waikiki:"Waikiki", windward:"東岸 Windward", northshore:"北海岸", pearlharbor:"珍珠港／機場"};
+const REGION_COLOR = {waikiki:"#0B6E8C", windward:"#1F6F4A", northshore:"#E4A70C", pearlharbor:"#33415C"};
 const REGION_POS = { northshore:{cx:75,cy:22}, windward:{cx:150,cy:55}, pearlharbor:{cx:48,cy:82}, waikiki:{cx:95,cy:104} };
 const HOME_POS = {cx:95, cy:104};
+const AIRPORT_POS = {cx:60, cy:92};
+const TYPE_BORDER = {water:"border-ocean", culture:"border-magenta", nature:"border-palm", history:"border-navy"};
+const TYPE_DOT = {water:"bg-ocean", culture:"bg-magenta", nature:"bg-palm", history:"bg-navy"};
 
 const DAY_PHOTOS = {
   "8/31":[{url:"https://images.unsplash.com/photo-1507876466758-bc54f384809c?q=80&w=800&auto=format&fit=crop", cap:"Waikiki 海灘"}],
@@ -253,6 +181,14 @@ const DAY_PHOTOS = {
   "9/8":[]
 };
 
+const TRANSIT = {
+  "8/31":{ after:"turtle", label:"⛔ 同一個港口，走過去就到，不用移動" },
+  "9/1":{ after:"kualoa", label:"🚗 自駕車程約 30–40 分鐘北上至 Laie（PCC）" },
+  "9/2":{ after:"waimea", label:"🚗 自駕車程約 20–25 分鐘北上至 Kahuku" },
+  "9/8":{ after:"missouri", label:"🚶 同一個園區，搭免費接駁船前往，不需開車" }
+};
+const TRANSIT_2 = { "8/31": { after:"makani", label:"🚗 自駕車程約 10–15 分鐘至 Aloha Tower" } };
+
 const DATA = [
   {
     id:"turtle", day:"8/31", time:"10:15–12:15", type:"water", region:"waikiki", closedDays:[],
@@ -260,7 +196,7 @@ const DATA = [
     what:"搭船出海到近岸淺水區，跟綠蠵龜一起浮潛。不太會游泳也沒關係，全程有救生衣跟教練陪同。",
     addr:"1085 Ala Moana Blvd, Suite 104, Honolulu, HI 96814（Kewalo Basin Harbor 報到處）",
     hours:"每日 10:15 / 13:00 兩場，全年無休",
-    booking:"官網訂位 <a target='_blank' href='https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co'>↗</a>（選日期時段人數，輸入 Go City 票號）",
+    booking:"官網訂位 <a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co'>↗</a>（選日期時段人數，輸入 Go City 票號）",
     bookingBadge:"需預約",
     fee:"每人固定收 $1 保育費；24 小時內取消或未到將收費（參考值 up to $94/人）",
     video:{id:"dVBwvXAdur4", label:"Kewalo Basin Harbor 出發的 Turtle Canyon 浮潛實況"}
@@ -282,7 +218,7 @@ const DATA = [
     what:"傳統夏威夷歌舞秀＋吃到飽自助餐晚宴，約 2.5 小時，很多人心中的「必體驗」行程。",
     addr:"1 Aloha Tower Dr, Honolulu, HI 96813",
     hours:"週一至週五、週日 17:30–20:00；週六公休",
-    booking:"<a target='_blank' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
+    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
     bookingBadge:"需預約",
     fee:"24 小時內取消不予退款，視同全額收費",
     video:{id:"xvSD0AzOb_I", label:"Ka Moana Luau 新場地（Aloha Tower）"}
@@ -293,7 +229,7 @@ const DATA = [
     what:"電影《侏儸紀公園》等好萊塢片取景的私人牧場。這個行程是坐船遊覽海灣＋看古代魚塭，不下水。",
     addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744",
     hours:"每日 08:40 / 09:20 / 10:20 / 11:00 / 13:00 / 13:40 / 14:45；週日公休（9/7 假日亦休園）",
-    booking:"<a target='_blank' href='https://www.kualoa.com/tours-and-activities'>kualoa.com ↗</a> 選「Ocean Voyage Adventure」選時間人數，現場刷 Pass 後退款",
+    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.kualoa.com/tours-and-activities'>kualoa.com ↗</a> 選「Ocean Voyage Adventure」選時間人數，現場刷 Pass 後退款",
     bookingBadge:"需預約",
     fee:"未出席不予退款，等同全額收費（參考值 up to $63/人）",
     video:{id:"l6zOfSTy62o", label:"Kualoa Ranch 官方影片：Ocean Voyage Adventure"}
@@ -332,9 +268,9 @@ const DATA = [
     video:{id:"MA91i8kZDQ4", label:"示意影片：Hula 三個基本步伐教學（非本行程實拍）"}
   },
   {
-    id:"missouri", day:"9/8", time:"08:00–15:00", type:"history", region:"pearlharbor", closedDays:[],
+    id:"missouri", day:"9/8", time:"13:00–15:00（最後入場）", type:"history", region:"pearlharbor", closedDays:[],
     title:"密蘇里號戰艦紀念館",
-    what:"二戰時日本簽署投降文件的那艘戰艦，現在停在珍珠港開放參觀，含導覽。",
+    what:"二戰時日本簽署投降文件的那艘戰艦，現在停在珍珠港開放參觀，含導覽。因為這天下午才從機場過來，只安排這一個景點。",
     addr:"1 Arizona Memorial Rd, Honolulu, HI 96818（Pearl Harbor Visitor Center）",
     hours:"每日 08:00–16:00（最後入場 15:00），全年無休；需攜帶政府核發相片證件／護照",
     booking:"免預約，Go City Pass 現場出示掃碼；含 35 分鐘導覽",
@@ -344,19 +280,18 @@ const DATA = [
   },
   {
     id:"arizona", day:"9/8", time:"", type:"history", region:"pearlharbor", closedDays:[],
-    title:"亞利桑那號紀念碑（不含在票內）",
-    what:"紀念珍珠港事變中沉船罹難者的紀念碑，蓋在海上，需要搭船才能到達。",
+    title:"亞利桑那號紀念碑（本次時間有限，暫不安排）",
+    what:"紀念珍珠港事變中沉船罹難者的紀念碑，蓋在海上需搭船，通常建議留一整個上午才夠悠閒排隊＋參觀。這次下午才到，時間排不進去，先列在這裡備查。",
     addr:"同 Pearl Harbor Visitor Center",
     hours:"依 NPS 每日釋出名額而定",
-    booking:"<a target='_blank' href='https://www.recreation.gov/'>recreation.gov ↗</a> 搶時段票，常提前數週額滿；現場也有候補但常需排隊 1–2 小時",
-    bookingBadge:"另外搶票",
+    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.recreation.gov/'>recreation.gov ↗</a>（若之後想安排，需另外搶時段票，常提前數週額滿）",
+    bookingBadge:"本次不排",
     fee:"依 NPS 規則，免費但需準時報到",
     video:null
   }
 ];
 
 function ytThumb(id){ return `https://img.youtube.com/vi/${id}/hqdefault.jpg`; }
-
 function parseTime(str){
   const m = str.match(/(\d{1,2}:\d{2}).*?(\d{1,2}:\d{2})/);
   if(!m) return null;
@@ -364,45 +299,29 @@ function parseTime(str){
   return [toMin(m[1]), toMin(m[2])];
 }
 
-// ---------- Island illustration (hand-drawn style Oahu) ----------
+// ---------- Island illustration ----------
 const ISLAND_PATH = `M18,58 C15,45 25,30 40,22 C55,14 75,10 95,12 C115,10 135,15 152,28
   C165,38 168,50 162,62 C158,75 148,90 130,102 C115,112 98,116 82,112
   C70,109 60,104 52,96 C46,90 42,84 44,78 C46,72 52,70 58,74
   C54,80 56,86 62,88 C70,90 76,84 72,76 C68,68 58,64 48,66
   C36,68 24,72 18,70 C14,66 16,62 18,58 Z`;
 
-function islandSVG(activeRegions, opts){
-  opts = opts || {};
-  const showAllDots = !!opts.showAllDayDots;
+function islandSVG(activeRegions){
   const zones = Object.keys(REGION_POS).map(key=>{
     const pos = REGION_POS[key];
     const active = activeRegions.includes(key);
     const fill = active ? REGION_COLOR[key] : 'var(--grey-zone)';
     const r = active ? 10 : 7;
-    return `<circle cx="${pos.cx}" cy="${pos.cy}" r="${r}" fill="${fill}" opacity="${active?1:0.6}" stroke="#fff" stroke-width="1.5"/>`;
+    return `<circle cx="${pos.cx}" cy="${pos.cy}" r="${r}" fill="${fill}" opacity="${active?1:0.55}" stroke="#fff" stroke-width="1.5"/>`;
   }).join('');
-  const home = `<g>
-    <circle cx="${HOME_POS.cx}" cy="${HOME_POS.cy}" r="4.5" fill="#fff" stroke="var(--mango-dark)" stroke-width="2"/>
-    <text x="${HOME_POS.cx}" y="${HOME_POS.cy-10}" font-size="9" text-anchor="middle" fill="var(--mango-dark)" font-weight="700">🏠</text>
-  </g>`;
-  return `<svg viewBox="0 0 180 125" xmlns="http://www.w3.org/2000/svg">
-    <path d="${ISLAND_PATH}" fill="#F7EFDD" stroke="#DCCFA8" stroke-width="2.2" stroke-linejoin="round"/>
+  return `<svg viewBox="-6 -6 192 137" class="w-full h-auto">
+    <rect x="-6" y="-6" width="192" height="137" fill="var(--map-sea)"/>
+    <path d="${ISLAND_PATH}" fill="var(--map-land)" stroke="#C9BC98" stroke-width="2" stroke-linejoin="round"/>
     ${zones}
-    ${home}
   </svg>`;
 }
 
-function renderIslandMini(container, activeRegions){
-  const legend = Object.keys(REGION_LABEL).map(key=>{
-    const active = activeRegions.includes(key);
-    return `<span><span class="dot" style="background:${active?REGION_COLOR[key]:'var(--grey-zone)'}"></span>${REGION_LABEL[key]}${active?' ★ 今天在這':''}</span>`;
-  }).join('');
-  container.innerHTML = `${islandSVG(activeRegions)}<div class="island-legend">${legend}</div>`;
-  container.style.display='flex'; container.style.gap='10px'; container.style.alignItems='center';
-}
-
-function renderOverviewMap(){
-  // show all 4 zones colored (each represents a day) with day-number labels
+function overviewIslandSVG(){
   const dayColorForRegion = {};
   DAYS.forEach(d=>{
     const regions = [...new Set(DATA.filter(x=>x.day===d).map(x=>x.region))];
@@ -413,109 +332,154 @@ function renderOverviewMap(){
     const dayLabel = dayColorForRegion[key];
     const fill = dayLabel ? REGION_COLOR[key] : 'var(--grey-zone)';
     return `<g>
-      <circle cx="${pos.cx}" cy="${pos.cy}" r="11" fill="${fill}" stroke="#fff" stroke-width="2"/>
-      ${dayLabel? `<text x="${pos.cx}" y="${pos.cy+3.5}" font-size="8.5" text-anchor="middle" fill="#fff" font-weight="700">${dayLabel}</text>`:''}
+      <circle cx="${pos.cx}" cy="${pos.cy}" r="12" fill="${fill}" stroke="#fff" stroke-width="2"/>
+      ${dayLabel? `<text x="${pos.cx}" y="${pos.cy+3.5}" font-size="8" text-anchor="middle" fill="#fff" font-weight="700">${dayLabel}</text>`:''}
     </g>`;
   }).join('');
   const home = `<g>
-    <circle cx="${HOME_POS.cx}" cy="${HOME_POS.cy}" r="5" fill="#fff" stroke="var(--mango-dark)" stroke-width="2.5"/>
-    <text x="${HOME_POS.cx+16}" y="${HOME_POS.cy+3}" font-size="9" fill="var(--mango-dark)" font-weight="700">🏠住這</text>
+    <circle cx="${HOME_POS.cx}" cy="${HOME_POS.cy-16}" r="8" fill="#fff" stroke="var(--mango-dark)" stroke-width="2"/>
+    <text x="${HOME_POS.cx}" y="${HOME_POS.cy-13}" font-size="9" text-anchor="middle">🏠</text>
   </g>`;
-  document.getElementById('overview-map').innerHTML = `<svg viewBox="0 0 190 125" xmlns="http://www.w3.org/2000/svg">
-    <path d="${ISLAND_PATH}" fill="#F7EFDD" stroke="#DCCFA8" stroke-width="2.2" stroke-linejoin="round"/>
-    ${zones}${home}
+  const airport = `<g>
+    <circle cx="${AIRPORT_POS.cx}" cy="${AIRPORT_POS.cy}" r="8" fill="#fff" stroke="var(--navy-dark)" stroke-width="2"/>
+    <text x="${AIRPORT_POS.cx}" y="${AIRPORT_POS.cy+3}" font-size="9" text-anchor="middle">✈️</text>
+  </g>`;
+  return `<svg viewBox="-6 -6 200 137" class="w-full h-auto">
+    <rect x="-6" y="-6" width="200" height="137" fill="var(--map-sea)"/>
+    <path d="${ISLAND_PATH}" fill="var(--map-land)" stroke="#C9BC98" stroke-width="2" stroke-linejoin="round"/>
+    ${zones}${home}${airport}
   </svg>`;
 }
 
-// ---------- Render ----------
+function regionLegendHTML(activeRegions){
+  return Object.keys(REGION_LABEL).map(key=>{
+    const active = activeRegions.includes(key);
+    return `<span class="flex items-center gap-1.5 text-[11px] ${active?'text-slate-700 font-bold':'text-slate-400'}">
+      <span class="w-2 h-2 rounded-full inline-block" style="background:${active?REGION_COLOR[key]:'var(--grey-zone)'}"></span>${REGION_LABEL[key]}${active?' ★':''}
+    </span>`;
+  }).join('');
+}
+
+// ---------- Tabs ----------
+function setActiveTab(tab){
+  document.querySelectorAll('#tabs .tab-btn').forEach(btn=>{
+    const isActive = btn.dataset.tab === tab;
+    btn.classList.toggle('bg-magenta', isActive);
+    btn.classList.toggle('border-magenta', isActive);
+    btn.classList.toggle('text-white', isActive);
+    btn.classList.toggle('bg-white', !isActive);
+    btn.classList.toggle('border-amber-100', !isActive);
+    btn.classList.toggle('text-slate-500', !isActive);
+  });
+  document.querySelectorAll('.panel').forEach(p=>{
+    p.classList.toggle('hidden', p.dataset.panel !== tab);
+  });
+  window.scrollTo({top:0, behavior:'instant'});
+}
+document.getElementById('tabs').addEventListener('click', e=>{
+  const btn = e.target.closest('.tab-btn');
+  if(!btn) return;
+  setActiveTab(btn.dataset.tab);
+});
+
+// ---------- Overview list ----------
+function renderOverview(){
+  document.getElementById('overview-map').innerHTML = overviewIslandSVG();
+  const html = DAYS.map(d=>{
+    const items = DATA.filter(x=>x.day===d);
+    const hi = items.map(x=>x.title.split('（')[0]).join('・');
+    return `<button data-jump="${d}" class="overview-item text-left flex gap-3 items-start bg-cream rounded-xl p-3">
+      <div class="font-baloo font-bold text-[11px] text-white w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 text-center leading-tight bg-gradient-to-br ${DAY_GRADIENT[d]}">${d}</div>
+      <div>
+        <b class="font-baloo text-[14.5px] block mb-0.5">${DAY_TITLE[d]}</b>
+        <div class="text-[11.5px] text-slate-500">🛏 住宿：${DAY_LODGING[d]}</div>
+        <div class="text-[12.5px] text-slate-500 mt-0.5">${hi}</div>
+      </div>
+    </button>`;
+  }).join('');
+  document.getElementById('overview-list').innerHTML = html;
+  document.querySelectorAll('.overview-item').forEach(btn=>{
+    btn.addEventListener('click', ()=>setActiveTab(btn.dataset.jump));
+  });
+}
+
+// ---------- Timeline render per day ----------
 function dayOptionsHTML(current){
   return DAYS.map(d=>`<option value="${d}" ${d===current?'selected':''}>搬到 ${d}</option>`).join('');
 }
 
-function renderAll(){
-  DAYS.forEach(d=>{ document.getElementById(`col-${d}`).innerHTML=''; });
-
-  DATA.forEach(item=>{
-    const li = document.createElement('li');
-    li.className = `card type-${item.type}`;
-    li.dataset.id = item.id;
-    li.innerHTML = `
-      <div class="card-head">
-        <span class="card-time">${item.time || '時段依現場而定'}</span>
-        <span class="badge ${item.bookingBadge==='現場刷卡'?'free':'book'}">${item.bookingBadge}</span>
+function cardHTML(item){
+  return `
+    <div class="bg-white rounded-xl shadow-sm p-4 border-l-4 ${TYPE_BORDER[item.type]}">
+      <div class="flex items-center justify-between gap-2 mb-1.5">
+        <span class="font-baloo font-bold text-[13.5px] text-mango-dark bg-amber-50 rounded-md px-2.5 py-0.5">${item.time || '時段依現場而定'}</span>
+        <span class="text-[10px] font-bold rounded-md px-2.5 py-0.5 ${item.bookingBadge==='現場刷卡'?'bg-emerald-100 text-emerald-700':(item.bookingBadge==='本次不排'?'bg-slate-100 text-slate-500':'bg-amber-100 text-amber-700')}">${item.bookingBadge}</span>
       </div>
-      <div class="card-title">${item.title}</div>
-      <div class="card-what">${item.what}</div>
-      <div class="card-lines">
-        <p><span class="lbl">地點</span>${item.addr} · <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.addr)}">Maps↗</a></p>
-        <p><span class="lbl">營業</span>${item.hours}</p>
-        <p><span class="lbl">預約</span>${item.booking}</p>
+      <div class="font-baloo font-bold text-[16px] mb-1">${item.title}</div>
+      <p class="text-[12.5px] text-slate-500 italic mb-2">${item.what}</p>
+      <div class="text-[13px] text-slate-500 space-y-1">
+        <p><span class="text-slate-700 font-bold">地點</span> ${item.addr} · <a target="_blank" class="text-ocean-dark font-bold underline" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.addr)}">Maps↗</a></p>
+        <p><span class="text-slate-700 font-bold">營業</span> ${item.hours}</p>
+        <p><span class="text-slate-700 font-bold">預約</span> ${item.booking}</p>
       </div>
-      <div class="fee-line">${item.fee}</div>
-      ${item.video? `<a class="video-link" target="_blank" href="https://www.youtube.com/watch?v=${item.video.id}">
-        <img src="${ytThumb(item.video.id)}" alt="video"><span>${item.video.label}</span>
+      <div class="mt-2 bg-amber-50 text-amber-800 text-[12px] rounded-md px-2.5 py-1.5">${item.fee}</div>
+      ${item.video? `<a target="_blank" href="https://www.youtube.com/watch?v=${item.video.id}" class="mt-2 flex items-center gap-2 bg-sky-50 rounded-md px-2 py-1.5">
+        <img src="${ytThumb(item.video.id)}" class="w-14 h-8 object-cover rounded" alt="video">
+        <span class="text-[11px] font-semibold leading-tight">${item.video.label}</span>
       </a>` : ''}
-      <div class="card-controls">
-        <button type="button" class="move-up" title="往上移">▲</button>
-        <button type="button" class="move-down" title="往下移">▼</button>
-        <select class="move-day">${dayOptionsHTML(item.day)}</select>
+      <div class="flex items-center gap-1.5 mt-2.5 pt-2.5 border-t border-dashed border-slate-200">
+        <button type="button" data-act="up" data-id="${item.id}" class="w-6 h-6 rounded-md border border-slate-200 bg-cream text-xs">▲</button>
+        <button type="button" data-act="down" data-id="${item.id}" class="w-6 h-6 rounded-md border border-slate-200 bg-cream text-xs">▼</button>
+        <select data-id="${item.id}" class="move-day ml-auto text-[11.5px] border border-slate-200 rounded-md px-1.5 py-1 text-slate-500">${dayOptionsHTML(item.day)}</select>
       </div>
-    `;
-    document.getElementById(`col-${item.day}`).appendChild(li);
+    </div>
+  `;
+}
+
+function renderTimeline(day){
+  const container = document.getElementById(`timeline-${day}`);
+  const items = DATA.filter(x=>x.day===day);
+  let html = `<div class="relative border-l-2 border-dashed border-slate-300 ml-4 pl-6 space-y-6 py-2">`;
+  items.forEach((item)=>{
+    html += `<div class="relative">
+      <span class="absolute -left-[31px] top-2 w-3.5 h-3.5 rounded-full ring-4 ring-cream ${TYPE_DOT[item.type]}"></span>
+      ${cardHTML(item)}
+    </div>`;
+    if(TRANSIT[day] && TRANSIT[day].after === item.id){
+      html += `<div class="relative -my-3"><span class="absolute -left-[27px] top-1 text-[13px]">🚗</span><p class="text-[12px] text-slate-400 italic pl-1">${TRANSIT[day].label}</p></div>`;
+    }
+    if(TRANSIT_2[day] && TRANSIT_2[day].after === item.id){
+      html += `<div class="relative -my-3"><span class="absolute -left-[27px] top-1 text-[13px]">🚗</span><p class="text-[12px] text-slate-400 italic pl-1">${TRANSIT_2[day].label}</p></div>`;
+    }
   });
+  html += `</div>`;
+  container.innerHTML = html;
+}
 
+function renderAll(){
   DAYS.forEach(d=>{
-    const regionsToday = [...new Set(DATA.filter(x=>x.day===d).map(x=>x.region))];
-    renderIslandMini(document.getElementById(`map-${d}`), regionsToday);
-
+    renderTimeline(d);
     const photoWrap = document.getElementById(`photos-${d}`);
     const photos = DAY_PHOTOS[d];
     if(photos && photos.length){
-      photoWrap.innerHTML = photos.map(p=>`<div><img src="${p.url}" alt="${p.cap}"><div class="photo-caption">${p.cap}</div></div>`).join('');
+      photoWrap.innerHTML = photos.map(p=>`<div class="flex-none"><img src="${p.url}" alt="${p.cap}" class="w-36 h-24 object-cover rounded-lg shadow"><p class="text-[10px] text-slate-400 text-center mt-1">${p.cap}</p></div>`).join('');
     } else {
-      photoWrap.innerHTML = `<div><div class="illus" style="background:linear-gradient(135deg,var(--navy),var(--navy-dark));">⚓</div><div class="photo-caption">示意圖（尚無授權實景照片）</div></div>`;
+      photoWrap.innerHTML = `<div class="flex-none"><div class="w-36 h-24 rounded-lg shadow bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center text-3xl text-white">⚓</div><p class="text-[10px] text-slate-400 text-center mt-1">示意圖（尚無授權實景照片）</p></div>`;
     }
   });
-
-  renderOverviewMap();
   renderOverview();
-  attachControls();
+  attachCardControls();
 }
 
-function renderOverview(){
-  const bannerGrad = {
-    "8/31":"linear-gradient(135deg, var(--ocean), var(--ocean-dark))",
-    "9/1":"linear-gradient(135deg, var(--palm), var(--palm-dark))",
-    "9/2":"linear-gradient(135deg, var(--magenta), var(--magenta-dark))",
-    "9/8":"linear-gradient(135deg, var(--navy), var(--navy-dark))"
-  };
-  const html = DAYS.map(d=>{
-    const items = DATA.filter(x=>x.day===d);
-    const regions = [...new Set(items.map(x=>x.region))].map(r=>REGION_LABEL[r]).join(' + ');
-    const hi = items.map(x=>x.title).join('・');
-    const dayTitle = document.getElementById(DAY_ID[d]).querySelector('h2').textContent;
-    return `<a class="ov-item" href="#${DAY_ID[d]}" data-jump="${d}">
-      <div class="ov-num" style="background:${bannerGrad[d]};">${d}</div>
-      <div class="ov-body">
-        <b>${dayTitle}</b>
-        <div class="region">📍 ${regions}</div>
-        <div class="hi">${hi}</div>
-      </div>
-    </a>`;
-  }).join('');
-  document.getElementById('overview-list').innerHTML = html;
-}
-
-function attachControls(){
-  document.querySelectorAll('.card').forEach(card=>{
-    const id = card.dataset.id;
-    card.querySelector('.move-up').addEventListener('click', ()=>moveWithinDay(id,-1));
-    card.querySelector('.move-down').addEventListener('click', ()=>moveWithinDay(id,1));
-    const sel = card.querySelector('.move-day');
+function attachCardControls(){
+  document.querySelectorAll('[data-act="up"]').forEach(b=>b.addEventListener('click', ()=>moveWithinDay(b.dataset.id,-1)));
+  document.querySelectorAll('[data-act="down"]').forEach(b=>b.addEventListener('click', ()=>moveWithinDay(b.dataset.id,1)));
+  document.querySelectorAll('.move-day').forEach(sel=>{
     sel.addEventListener('change', function(){
-      const newDay = this.value;
+      const id = this.dataset.id;
       const item = DATA.find(d=>d.id===id);
       const oldDay = item.day;
+      const newDay = this.value;
       if(newDay === oldDay) return;
       openMoveModal(id, oldDay, newDay, this);
     });
@@ -543,13 +507,13 @@ function openMoveModal(id, oldDay, newDay, selectEl){
 
   const isClosed = item.closedDays.includes(weekday);
   const closedCheck = isClosed
-    ? `<div class="check"><span>⚠️</span><span class="warn">${newDay} 是星期${weekday}，此行程<b>公休</b>，搬過去無法成行</span></div>`
-    : `<div class="check"><span>✅</span><span>${newDay}（星期${weekday}）此行程有營業</span></div>`;
+    ? `<div class="flex gap-2"><span>⚠️</span><span class="text-magenta-dark font-bold">${newDay} 是星期${weekday}，此行程公休，搬過去無法成行</span></div>`
+    : `<div class="flex gap-2"><span>✅</span><span>${newDay}（星期${weekday}）此行程有營業</span></div>`;
 
   let overlapCheck;
   const myRange = parseTime(item.time);
   if(!myRange){
-    overlapCheck = `<div class="check"><span>ℹ️</span><span>此行程沒有固定時段，略過時間比對</span></div>`;
+    overlapCheck = `<div class="flex gap-2"><span>ℹ️</span><span>此行程沒有固定時段，略過時間比對</span></div>`;
   } else {
     const conflicts = others.filter(o=>{
       const r = parseTime(o.time);
@@ -557,25 +521,25 @@ function openMoveModal(id, oldDay, newDay, selectEl){
       return myRange[0] < r[1] && r[0] < myRange[1];
     });
     overlapCheck = conflicts.length
-      ? `<div class="check"><span>⚠️</span><span class="warn">跟「${conflicts.map(c=>c.title).join('、')}」時段重疊</span></div>`
-      : `<div class="check"><span>✅</span><span>跟這天其他行程沒有時間衝突</span></div>`;
+      ? `<div class="flex gap-2"><span>⚠️</span><span class="text-magenta-dark font-bold">跟「${conflicts.map(c=>c.title).join('、')}」時段重疊</span></div>`
+      : `<div class="flex gap-2"><span>✅</span><span>跟這天其他行程沒有時間衝突</span></div>`;
   }
 
   const otherRegions = [...new Set(others.map(o=>o.region))];
   let geoCheck;
   if(otherRegions.length===0){
-    geoCheck = `<div class="check"><span>ℹ️</span><span>${newDay} 目前還沒有其他行程，沒有地理位置比對對象</span></div>`;
+    geoCheck = `<div class="flex gap-2"><span>ℹ️</span><span>${newDay} 目前還沒有其他行程，沒有地理位置比對對象</span></div>`;
   } else if(otherRegions.includes(item.region)){
-    geoCheck = `<div class="check"><span>✅</span><span>跟這天其他行程都在 ${REGION_LABEL[item.region]}，順路</span></div>`;
+    geoCheck = `<div class="flex gap-2"><span>✅</span><span>跟這天其他行程都在 ${REGION_LABEL[item.region]}，順路</span></div>`;
   } else {
-    geoCheck = `<div class="check"><span>⚠️</span><span class="warn">這天其他行程在 ${otherRegions.map(r=>REGION_LABEL[r]).join('、')}，此行程在 ${REGION_LABEL[item.region]}，跨區可能拉長交通時間</span></div>`;
+    geoCheck = `<div class="flex gap-2"><span>⚠️</span><span class="text-magenta-dark font-bold">這天其他行程在 ${otherRegions.map(r=>REGION_LABEL[r]).join('、')}，此行程在 ${REGION_LABEL[item.region]}，跨區可能拉長交通時間</span></div>`;
   }
 
   document.getElementById('modal-title').textContent = `搬動「${item.title}」→ ${newDay}？`;
   document.getElementById('modal-checks').innerHTML = closedCheck + overlapCheck + geoCheck;
 
   const backdrop = document.getElementById('modal-backdrop');
-  backdrop.classList.add('show');
+  backdrop.classList.remove('hidden'); backdrop.classList.add('flex');
   const confirmBtn = document.getElementById('modal-confirm');
   const cancelBtn = document.getElementById('modal-cancel');
 
@@ -585,49 +549,48 @@ function openMoveModal(id, oldDay, newDay, selectEl){
   }
   function onConfirm(){
     item.day = newDay;
-    backdrop.classList.remove('show');
+    backdrop.classList.add('hidden'); backdrop.classList.remove('flex');
     renderAll();
+    setActiveTab(newDay);
     cleanup();
   }
   function onCancel(){
     selectEl.value = oldDay;
-    backdrop.classList.remove('show');
+    backdrop.classList.add('hidden'); backdrop.classList.remove('flex');
     cleanup();
   }
   confirmBtn.addEventListener('click', onConfirm);
   cancelBtn.addEventListener('click', onCancel);
 }
 
-// ---------- smooth scroll for tab + overview links ----------
-function smoothJump(targetId){
-  const el = document.getElementById(targetId);
-  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
-}
-document.addEventListener('click', e=>{
-  const a = e.target.closest('a[href^="#day-"]');
-  if(!a) return;
-  e.preventDefault();
-  smoothJump(a.getAttribute('href').slice(1));
+// ---------- Floating map button ----------
+document.getElementById('map-fab').addEventListener('click', ()=>{
+  const activeTab = document.querySelector('.panel:not(.hidden)').dataset.panel;
+  const modalBackdrop = document.getElementById('map-modal-backdrop');
+  const title = document.getElementById('map-modal-title');
+  const content = document.getElementById('map-modal-content');
+  if(activeTab === 'intro'){
+    title.textContent = '歐胡島全覽：四天活動範圍';
+    content.innerHTML = overviewIslandSVG();
+  } else {
+    const regions = [...new Set(DATA.filter(x=>x.day===activeTab).map(x=>x.region))];
+    title.textContent = `${activeTab} 活動範圍・住宿：${DAY_LODGING[activeTab]}`;
+    content.innerHTML = islandSVG(regions) + `<div class="flex flex-wrap gap-3 mt-3 justify-center">${regionLegendHTML(regions)}</div>`;
+  }
+  modalBackdrop.classList.remove('hidden'); modalBackdrop.classList.add('flex');
+});
+document.getElementById('map-modal-close').addEventListener('click', ()=>{
+  const b = document.getElementById('map-modal-backdrop');
+  b.classList.add('hidden'); b.classList.remove('flex');
+});
+document.getElementById('map-modal-backdrop').addEventListener('click', e=>{
+  if(e.target.id === 'map-modal-backdrop'){
+    e.currentTarget.classList.add('hidden'); e.currentTarget.classList.remove('flex');
+  }
 });
 
-// ---------- scrollspy ----------
-function setupScrollspy(){
-  const sections = DAYS.map(d=>document.getElementById(DAY_ID[d]));
-  const tabs = document.querySelectorAll('#tabs a');
-  if(!('IntersectionObserver' in window)) return;
-  const obs = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        const day = entry.target.dataset.day;
-        tabs.forEach(t=>t.classList.toggle('active', t.dataset.day===day));
-      }
-    });
-  }, {rootMargin:"-35% 0px -55% 0px"});
-  sections.forEach(s=>{ if(s) obs.observe(s); });
-}
-
 renderAll();
-setupScrollspy();
+setActiveTab('intro');
 </script>
 </body>
 </html>
