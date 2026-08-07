@@ -49,6 +49,7 @@
     <p class="font-baloo text-xs tracking-wide opacity-90 mb-1">OʻAHU · GO CITY ALL-INCLUSIVE · 4 DAYS</p>
     <h1 class="font-baloo font-bold text-2xl mb-3">歐胡島行程手冊</h1>
     <div class="flex flex-wrap gap-1.5">
+      <span class="bg-white/15 border border-white/40 rounded-lg px-3 py-1 text-xs font-bold">8/30 抵達</span>
       <span class="bg-white/15 border border-white/40 rounded-lg px-3 py-1 text-xs font-bold">4 天／14 日效期</span>
       <span class="bg-white/15 border border-white/40 rounded-lg px-3 py-1 text-xs font-bold">8/31・9/1・9/2・9/8</span>
     </div>
@@ -57,6 +58,7 @@
   <!-- STICKY TABS -->
   <nav id="tabs" class="sticky top-0 z-20 flex gap-2 overflow-x-auto no-scrollbar px-3 py-2.5 bg-cream/95 backdrop-blur border-b border-amber-100">
     <button data-tab="intro" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">行前提醒</button>
+    <button data-tab="8/30" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">8/30（日）</button>
     <button data-tab="8/31" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">8/31（一）</button>
     <button data-tab="9/1" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/1（二）</button>
     <button data-tab="9/2" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/2（三）</button>
@@ -78,7 +80,7 @@
           <li>多數行程要<b>自己另外向業者預約</b>，App 只負責入場掃碼，不負責訂位</li>
           <li><b>預約時大多會請你留信用卡授權（不會立刻扣款）</b>：只要在該行程規定的時限前取消，就不會被收費；沒取消或沒出現，才會照該行程的規則收費——<b>各行程取消期限不同</b>，詳見各卡片</li>
           <li><b>古蘭尼牧場</b>例外：官網會先刷<b>全額</b>，到現場 Ticket Office 刷歐胡卡後才退款；沒去則不退</li>
-          <li><b>古蘭尼牧場一天只能選一種</b>：神秘島 Secret Island Beach／Kualoa Grown Tour（農場導覽）／Ocean Voyage Adventure（海灣遊船）三選一（本行程選神秘島）</li>
+          <li><b>古蘭尼牧場一天只能選一種</b>：神秘島 Secret Island Beach／Kualoa Grown Tour（農場導覽）／Ocean Voyage Adventure（海灣遊船）三選一（本行程選神秘島 Secret Island Beach）</li>
         </ul>
       </div>
 
@@ -92,6 +94,15 @@
     </section>
 
     <!-- DAY PANELS (populated by JS) -->
+    <section data-panel="8/30" class="panel hidden py-4">
+      <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-slate-500 to-slate-700">
+        <h2 class="font-baloo font-bold text-lg">8/30（日）抵達歐胡島</h2>
+        <p class="text-[12.5px] opacity-90">✈️ 抵達日，不使用 Go City 票｜取車、飯店 check-in、鑽石頭山自駕自費</p>
+      </div>
+      <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-8/30"></div>
+      <div class="timeline" id="timeline-8/30"></div>
+    </section>
+
     <section data-panel="8/31" class="panel hidden py-4">
       <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-ocean to-ocean-dark">
         <h2 class="font-baloo font-bold text-lg">8/31（一）Waikiki 水上日</h2>
@@ -99,27 +110,22 @@
       </div>
       <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-8/31"></div>
       <div class="timeline" id="timeline-8/31"></div>
+
     </section>
 
     <section data-panel="9/1" class="panel hidden py-4">
       <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-palm to-palm-dark">
         <h2 class="font-baloo font-bold text-lg">9/1（二）古蘭尼牧場＋玻里尼西亞文化中心</h2>
-        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜兩景點相距約 20–40 分鐘車程</p>
+        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜兩站相距約 30–40 分鐘車程，順路銜接</p>
       </div>
       <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-9/1"></div>
       <div class="timeline" id="timeline-9/1"></div>
-
-      <div class="mt-6 rounded-xl border-2 border-dashed border-violet-300 bg-violet-50/40 p-4">
-        <h3 class="font-baloo font-bold text-base text-violet-800 mb-1">🎬 加碼自費行程（可選，不含在 Go City 票內）</h3>
-        <p class="text-[12px] text-violet-700 mb-3">這三個都要另外付費，也都要另外預約。如果想加一個，記得下面已經幫你算好「加了之後玻里尼西亞文化中心還剩多少時間」，自己抓時間夠不夠。</p>
-        <div id="addon-list" class="flex flex-col gap-3"></div>
-      </div>
     </section>
 
     <section data-panel="9/2" class="panel hidden py-4">
       <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-magenta to-magenta-dark">
-        <h2 class="font-baloo font-bold text-lg">9/2（三）北海岸：瀑布谷＋Hula</h2>
-        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜今天跑到島的最北邊，離住宿最遠</p>
+        <h2 class="font-baloo font-bold text-lg">9/2（三）北岸：瀑布谷＋海龜沙灘＋SUP</h2>
+        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜今天跑到島的最北邊，離住宿最遠，但全部都是 Go City 含的，不額外花錢</p>
       </div>
       <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-9/2"></div>
       <div class="timeline" id="timeline-9/2"></div>
@@ -192,24 +198,25 @@
 </div>
 
 <script>
-const DAYS = ["8/31","9/1","9/2","9/8"];
-const DAY_WEEKDAY = {"8/31":"一","9/1":"二","9/2":"三","9/8":"二"};
+const DAYS = ["8/30","8/31","9/1","9/2","9/8"];
+const DAY_WEEKDAY = {"8/30":"日","8/31":"一","9/1":"二","9/2":"三","9/8":"二"};
 const DAY_TITLE = {
-  "8/31":"8/31（一）Waikiki 水上日","9/1":"9/1（二）古蘭尼牧場＋玻里尼西亞文化中心（Polynesian Cultural Center, PCC）",
-  "9/2":"9/2（三）北海岸：瀑布谷＋Hula","9/8":"9/8（二）珍珠港（機場進出）"
+  "8/30":"8/30（日）抵達歐胡島","8/31":"8/31（一）Waikiki 水上日","9/1":"9/1（二）古蘭尼牧場＋玻里尼西亞文化中心（Polynesian Cultural Center, PCC）",
+  "9/2":"9/2（三）北岸：瀑布谷＋海龜沙灘＋SUP","9/8":"9/8（二）珍珠港（機場進出）"
 };
-const DAY_LODGING = {"8/31":"Waikiki 威基基","9/1":"Waikiki 威基基","9/2":"Waikiki 威基基","9/8":"機場附近（Airport Area）"};
+const DAY_LODGING = {"8/30":"Waikiki 威基基","8/31":"Waikiki 威基基","9/1":"Waikiki 威基基","9/2":"Waikiki 威基基","9/8":"機場附近（Airport Area）"};
 const DAY_GRADIENT = {
-  "8/31":"from-ocean to-ocean-dark","9/1":"from-palm to-palm-dark",
+  "8/30":"from-slate-500 to-slate-700","8/31":"from-ocean to-ocean-dark","9/1":"from-palm to-palm-dark",
   "9/2":"from-magenta to-magenta-dark","9/8":"from-navy to-navy-dark"
 };
 const REGION_LABEL = {waikiki:"Waikiki", windward:"東岸 Windward", northshore:"北海岸", pearlharbor:"珍珠港／機場"};
-const TYPE_BORDER = {water:"border-ocean", culture:"border-magenta", nature:"border-palm", history:"border-navy"};
-const TYPE_DOT = {water:"bg-ocean", culture:"bg-magenta", nature:"bg-palm", history:"bg-navy"};
-const TYPE_COLOR = {water:'#0B6E8C', culture:'#C81E4B', nature:'#1F6F4A', history:'#33415C'};
-const DAY_PIN_COLOR = {"8/31":'#0B6E8C', "9/1":'#1F6F4A', "9/2":'#C81E4B', "9/8":'#33415C'};
+const TYPE_BORDER = {water:"border-ocean", culture:"border-magenta", nature:"border-palm", history:"border-navy", food:"border-mango", travel:"border-slate-400"};
+const TYPE_DOT = {water:"bg-ocean", culture:"bg-magenta", nature:"bg-palm", history:"bg-navy", food:"bg-mango", travel:"bg-slate-400"};
+const TYPE_COLOR = {water:'#0B6E8C', culture:'#C81E4B', nature:'#1F6F4A', history:'#33415C', food:'#E4A70C', travel:'#64748B'};
+const DAY_PIN_COLOR = {"8/30":'#64748B',"8/31":'#0B6E8C', "9/1":'#1F6F4A', "9/2":'#C81E4B', "9/8":'#33415C'};
 
 const DAY_PHOTOS = {
+  "8/30":[{url:"https://images.unsplash.com/photo-1507876466758-bc54f384809c?q=80&w=800&auto=format&fit=crop", cap:"Waikiki 示意"}],
   "8/31":[{url:"https://images.unsplash.com/photo-1507876466758-bc54f384809c?q=80&w=800&auto=format&fit=crop", cap:"Waikiki 海灘"}],
   "9/1":[{url:"https://images.unsplash.com/photo-1633511090690-0b7f2fec0e8d?q=80&w=800&auto=format&fit=crop", cap:"歐胡島東岸山景（古蘭尼牧場一帶示意）"}],
   "9/2":[{url:"https://images.unsplash.com/photo-1633511090690-0b7f2fec0e8d?q=80&w=800&auto=format&fit=crop", cap:"歐胡島山谷景色示意"}],
@@ -217,14 +224,93 @@ const DAY_PHOTOS = {
 };
 
 const TRANSIT = {
-  "8/31":{ after:"turtle", label:"⛔ 同一個港口，走過去就到，不用移動" },
-  "9/1":{ after:"kualoa", label:"🚗 自駕車程約 30–40 分鐘北上至 Laie（玻里尼西亞文化中心）" },
-  "9/2":{ after:"waimea", label:"🚗 自駕車程約 20–25 分鐘北上至 Kahuku" },
-  "9/8":{ after:"missouri", label:"🚶 同一個園區，搭免費接駁船前往，不需開車" }
+  "8/30":[
+    { after:"flight", label:"🛂 入境審查＋領行李＋海關（國際線，抓 1–1.5 小時）" },
+    { after:"rentalcar", label:"🚗 自駕車程約 20–25 分鐘至 Waikiki" },
+    { after:"checkin", label:"🚗 自駕車程約 10–15 分鐘至鑽石頭山" },
+    { after:"diamondhead", label:"🚗 自駕車程約 10–15 分鐘回 Waikiki" }
+  ],
+  "8/31":[
+    { after:"turtle", label:"⛔ 同一個港口，走過去就到，不用移動" },
+    { after:"makani", label:"🚗 自駕車程約 10–15 分鐘至 Aloha Tower" }
+  ],
+  "9/1":[
+    { after:"kualoa", label:"🚗 自駕車程約 30–40 分鐘北上至 Laie（玻里尼西亞文化中心）" }
+  ],
+  "9/2":[
+    { after:"waimea", label:"🚗 自駕車程約 10–15 分鐘南下至 Laniakea Beach" },
+    { after:"laniakea", label:"🚗 自駕車程約 10 分鐘至 Haleiwa 小鎮（Anahulu River）" },
+    { after:"sup", label:"🚶 走路約 2 分鐘至 Giovanni's Shrimp Truck" },
+    { after:"shrimp", label:"🚶 走路約 3 分鐘至 Matsumoto Shave Ice" },
+    { after:"shaveice", label:"🚗 自駕車程約 50–60 分鐘南下回 Waikiki" }
+  ],
+  "9/8":[
+    { after:"missouri", label:"🚶 同一個園區，搭免費接駁船前往，不需開車" }
+  ]
 };
-const TRANSIT_2 = { "8/31": { after:"makani", label:"🚗 自駕車程約 10–15 分鐘至 Aloha Tower" } };
 
 const DATA = [
+  {
+    id:"flight", day:"8/30", time:"10:05", type:"travel", region:"waikiki", closedDays:[], included:false,
+    title:"班機抵達（AS850，自 KIX 大阪關西機場）",
+    what:"AS850（大阪關西機場 KIX 直飛檀香山，Alaska Airlines 代碼共享航班）抵達檀香山機場（HNL）。<b>這是直接從日本入境美國的國際線</b>，下機後要走完整的移民局審查＋領行李＋海關，<b>抓 1–1.5 小時比較保險</b>，尖峰時段可能更久，行程規劃已經把這段緩衝算進去。",
+    addr:"Daniel K. Inouye International Airport (HNL), Honolulu, HI 96819",
+    geo:"21.3187,-157.9225",
+    hours:"抵達時間 10:05",
+    booking:"—",
+    bookingBadge:"班機資訊",
+    fee:"—",
+    video:null
+  },
+  {
+    id:"rentalcar", day:"8/30", time:"約 11:30–12:15", type:"travel", region:"waikiki", closedDays:[], included:false,
+    title:"機場租車取車",
+    what:"領完行李後搭租車公司接駁車到 CONRAC（機場租車中心），辦手續＋取車，抓 45 分鐘左右比較保險（假日或尖峰時段可能更久）。",
+    addr:"Consolidated Rent-A-Car Facility, 3055 Ualena St, Honolulu, HI 96819",
+    geo:"21.3245,-157.9251",
+    hours:"依租車公司櫃檯營業時間，多數 24 小時都有人",
+    booking:"建議事先線上訂好車，現場只需辦理手續",
+    bookingBadge:"建議先預約",
+    fee:"依租車方案而定",
+    video:null
+  },
+  {
+    id:"checkin", day:"8/30", time:"約 12:45", type:"travel", region:"waikiki", closedDays:[], included:false,
+    title:"飯店 Check-in（Waikiki）",
+    what:"開車到 Waikiki 飯店辦理入住。<b>標準 check-in 時間通常是下午 3 點</b>，這麼早到房間可能還沒好，可以先寄放行李、拿到房卡資訊，午餐後再回來正式入住，或請櫃檯詢問是否能提早入住。",
+    addr:"Waikiki, Honolulu, HI",
+    geo:"21.2793,-157.8294",
+    hours:"依飯店規定，標準約下午 3:00 入住",
+    booking:"—",
+    bookingBadge:"—",
+    fee:"—",
+    video:null
+  },
+  {
+    id:"diamondhead", day:"8/30", time:"14:30–16:00", type:"nature", region:"waikiki", closedDays:[], included:false,
+    title:"鑽石頭山（Diamond Head State Monument）",
+    what:"歐胡島最經典的地標健行，來回約 1.6 英里、爬升 560 英尺，步道大多鋪面但後段有樓梯，山頂可以 360 度俯瞰 Waikiki 海岸線。<b>非夏威夷居民一定要先上網訂位</b>，現場不接受無訂位訪客，沒有例外。",
+    addr:"18Diamond Head Rd, Honolulu, HI 96815",
+    geo:"21.2620,-157.8058",
+    hours:"每日 06:00–18:00，最後一個入場時段 16:00（16:30 前要完成入場），18:00 準時關閘門",
+    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://gostateparks.hawaii.gov/diamondhead'>gostateparks.hawaii.gov ↗</a> 線上訂位，最多可提前 30 天訂；記得同時訂「停車」時段（若要自駕開進去）",
+    bookingBadge:"需訂位（自費）",
+    fee:"非居民門票 $5／人＋停車 $10／車（都只收信用卡，現場不收現金）；抵達需在時段開始後 30 分鐘內入場，逾時視同放棄",
+    video:null,
+    note:"步道全程無遮蔭，正午較曬，建議帶足夠飲水、防曬與好走的鞋；山頂無廁所，出發前先上。"
+  },
+  {
+    id:"eveningsun", day:"8/30", time:"約 17:00 起（彈性）", type:"food", region:"waikiki", closedDays:[], included:false,
+    title:"晚上建議：輕鬆吃飯＋海灘散步",
+    what:"這天從長途飛行到取車、入住、健行，體力會消耗不少，建議晚上不要再排硬行程，讓身體適應時差。可以考慮：①在 Waikiki 找一間輕鬆的餐廳吃晚餐；②飯後沿海灘散步看日落，威基基日落通常在傍晚 6 點多，秋初這個月份是不錯的散步時間。<b>備註：</b>Ala Moana Center 的免費呼拉舞秀官方時段其實是<b>每天下午 3 點</b>（不是晚上），時間會跟鑽石頭山撞在一起，這天排不進去，之後有安排逛 Ala Moana 的行程可以再考慮排進去。",
+    addr:"Waikiki, Honolulu, HI",
+    geo:"21.2793,-157.8294",
+    hours:"彈性，依個人體力決定",
+    booking:"免預約",
+    bookingBadge:"免預約",
+    fee:"依個人選擇的餐廳而定",
+    video:null
+  },
   {
     id:"turtle", day:"8/31", time:"10:15–12:15", type:"water", region:"waikiki", closedDays:[],
     title:"海龜浮潛（Waikiki Turtle Canyon Snorkel Cruise）",
@@ -267,7 +353,7 @@ const DATA = [
   {
     id:"kualoa", day:"9/1", time:"09:30–13:00", type:"nature", region:"windward", closedDays:[],
     title:"古蘭尼牧場：神秘島（Kualoa Ranch: Secret Island Beach）",
-    what:"電影《侏儸紀公園》等好萊塢片取景的私人牧場。這個行程是到牧場自己的私人沙灘（神秘島）玩水上活動（獨木舟／立槳／浮潛），含園區接駁車與魚塭遊船，不用另外找地方下水。",
+    what:"電影《侏儸紀公園》等好萊塢片取景的私人牧場。這個行程是到牧場自己的私人沙灘（神秘島）玩水上活動（獨木舟／立槳／浮潛），含園區接駁車與魚塭遊船，不用另外找地方下水，比較悠閒。",
     addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744",
     geo:"21.520742,-157.839467",
     hours:"分 Morning Adventure 09:30 或 Afternoon Adventure 12:30，每次 3.5 小時，全年開放（僅耶誕節、元旦公休）",
@@ -275,24 +361,24 @@ const DATA = [
     bookingBadge:"需預約",
     value:"約 $63／成人",
     fee:"需先線上付款訂位，現場刷 Go City Pass 後全額退款；若未出席該場次，則不予退還",
-    video:{id:"-L14lBjxhVo", label:"Kualoa Ranch 官方影片：Secret Island Beach Activities"},
-    impact:"選 <b>09:30 場（13:00 結束）</b>：車程 30–40 分鐘到玻里尼西亞文化中心，約 13:40 抵達，玻里尼西亞文化中心還能玩到 18:00，約 4.5 小時，比較從容 → <b>建議選這場</b>。選 <b>12:30 場（16:00 結束）</b>：抵達玻里尼西亞文化中心約 16:30–16:40，只剩約 1.5 小時就閉園，會非常趕。"
+    video:{id:"-L14lBjxhVo", label:"Kualoa Ranch 官方影片：Secret Island Beach Activities"}
   },
   {
-    id:"pcc", day:"9/1", time:"約 12:00–18:00", type:"culture", region:"windward", closedDays:["三","日"],
+    id:"pcc", day:"9/1", time:"約 13:30–18:00", type:"culture", region:"windward", closedDays:["三","日"],
     title:"玻里尼西亞文化中心（Polynesian Cultural Center）",
-    what:"整個園區重現太平洋各島嶼（大溪地、東加、斐濟等）的傳統村落與歌舞表演，像走進一座活的博物館。",
+    what:"走進太平洋 6 個復原村莊（夏威夷、紐西蘭毛利、大溪地、斐濟、薩摩亞、東加），可以體驗生火、丟長矛、編織等互動活動，還有 40 分鐘電動小火車導覽，跟每天的獨木舟大會演（全夏威夷唯一的水上表演）。",
     addr:"55-370 Kamehameha Hwy, Laie, HI 96762",
     geo:"21.6417,-157.9213",
     hours:"週一二四五六 12:15–18:00；週三、週日公休",
     booking:"免預約，主入口噴水池旁 Ticketing Center 刷 Pass；保險起見可先電話 <b>1-844-365-2843</b> 確認",
     bookingBadge:"現場刷卡",
     value:"約 $95／成人",
-    fee:"無需預約，無 no-show 費用；晚間付費大秀需另外加購",
-    video:{id:"Af06OcBG2gM", label:"PCC Island Villages 園區導覽"}
+    fee:"無需預約，無 no-show 費用；<b>晚餐秀（Lūʻau）跟 Hā 夜間大秀都不含在門票內</b>，要另外加購；園區也不含接送，要自己想辦法到（我們是自駕沒問題）",
+    video:{id:"Af06OcBG2gM", label:"PCC Island Villages 園區導覽"},
+    note:"門票上會附 Hukilau Marketplace 商店 9 折優惠，逛紀念品店記得出示。"
   },
   {
-    id:"waimea", day:"9/2", time:"09:00–11:15", type:"nature", region:"northshore", closedDays:["一"],
+    id:"waimea", day:"9/2", time:"09:00–10:45", type:"nature", region:"northshore", closedDays:["一"],
     title:"瀑布谷（Waimea Valley）",
     what:"植物園＋一段好走的鋪面步道，走到底有瀑布可以下水游泳，記得帶泳衣毛巾。",
     addr:"59-864 Kamehameha Hwy, Haleʻiwa, HI 96712",
@@ -305,16 +391,65 @@ const DATA = [
     video:{id:"r83YaKgi98E", label:"Waimea Valley 瀑布谷與植物園導覽"}
   },
   {
-    id:"hula", day:"9/2", time:"12:00–13:00", type:"culture", region:"northshore", closedDays:[],
-    title:"草裙舞體驗課（Hula Class on the North Shore）",
-    what:"跟著當地老師學夏威夷 Hula 舞的基本步伐，一小時體驗課，適合完全沒跳過舞的人。",
-    addr:"57-571 Kamehameha Hwy, Kahuku, HI 96731（集合點靠近 Waiale'e Beach Park，確切位置預約後通知）",
-    geo:"21.693312,-158.019472",
-    hours:"平日固定 12:00 一場；週六日改為 10:00",
-    booking:"需提前 24hr：Email 或電話 <b>(808) 866-6630</b>",
+    id:"laniakea", day:"9/2", time:"11:00–11:30", type:"nature", region:"northshore", closedDays:[], included:false,
+    title:"海龜沙灘（Laniakea Beach）",
+    what:"北岸最知名的野生海龜曬太陽景點，綠蠵龜常常直接爬上岸休息，運氣好一次能看到好幾隻。<b>沒有固定潮汐規律</b>，但當地經驗是海龜上岸機率跟「浪況平穩、接近中午前後」比較有關，跟嚴格的潮汐時刻無關。安全規範規定要保持至少 10 英尺（3公尺）距離、不能碰觸，違規罰款可以到 $10,500。",
+    addr:"Laniakea Beach, Haleʻiwa, HI 96712（Kamehameha Hwy 上，Haleʻiwa 鎮北邊約 2.5 英里）",
+    geo:"21.6169,-158.0794",
+    hours:"全天開放，<b>最佳觀龜時段約 11:00–14:00</b>（浪況平穩、中午前後海龜較常上岸曬太陽）；11 點後車潮＋停車會變得擁擠",
+    booking:"免預約，路邊停車（靠山側，找白色圍籬邊的空地），過馬路要非常小心，這段路沒有斑馬線",
+    bookingBadge:"免預約",
+    fee:"完全免費；建議只安排 30 分鐘左右，海龜出沒沒有保證，純看運氣",
+    video:null
+  },
+  {
+    id:"sup", day:"9/2", time:"12:00–13:30", type:"water", region:"northshore", closedDays:["日"],
+    title:"立槳衝浪／海龜導覽團（Stand-Up Paddleboard Nature and Turtle Tour）",
+    what:"真人教練帶的 90 分鐘 SUP 體驗＋沿 Anahulu River 賞海龜導覽，含教學不是自己租板，水域平緩好上手。地點在 Haleiwa，離 Laniakea 海龜沙灘只要幾分鐘車程，順路銜接。想划獨木舟也可以跟教練說換成 Kayak（數量有限）。",
+    addr:"62-540 Kamehameha Hwy, Haleiwa, HI 96712",
+    geo:"21.5960136,-158.1049705",
+    hours:"每日 08:00 / 12:00 兩場；<b>週日公休</b>",
+    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://sbshawaiitours.com/go.city/'>線上表單 ↗</a> 或電話／簡訊 <b>(808) 736-5080</b>，須提前至少 48 小時預約",
     bookingBadge:"需預約",
-    fee:"官方未公布明確 no-show 罰金；天候不佳可能由主辦方取消",
-    video:{id:"MA91i8kZDQ4", label:"示意影片：Hula 三個基本步伐教學（非本行程實拍）"}
+    value:"約 $155／成人",
+    fee:"訂位時需留信用卡作保；未在 48 小時前取消或未出席將依規定收費",
+    video:null
+  },
+  {
+    id:"shrimp", day:"9/2", time:"13:40–14:20", type:"food", region:"northshore", closedDays:[], included:false,
+    title:"蒜蓉蝦（Giovanni's Shrimp Truck）",
+    what:"北岸最出名的蒜蓉蝦餐車，招牌是 Shrimp Scampi：連殼蝦淋滿蒜香奶油醬配兩勺白飯，記得帶濕紙巾，吃完滿手蒜味醬汁。排在 SUP 結束後當午餐。",
+    addr:"66-472 Kamehameha Hwy, Haleiwa, HI 96712",
+    geo:"21.5974,-158.1046",
+    hours:"每日 10:30–17:00",
+    booking:"免預約，現場排隊點餐；中午常大排長龍",
+    bookingBadge:"免預約",
+    fee:"現場付款，價位約 $17–20／份（含 12 隻蝦＋兩勺飯）",
+    video:null
+  },
+  {
+    id:"shaveice", day:"9/2", time:"14:20–14:40", type:"food", region:"northshore", closedDays:[], included:false,
+    title:"彩虹冰（Matsumoto Shave Ice）",
+    what:"1951 年開業的北岸傳統剉冰老店，招牌就是五顏六色的彩虹糖漿刨冰，口味多、份量大，是北岸必吃甜點，玩完水正好消暑。",
+    addr:"66-111 Kamehameha Hwy Suite 605, Haleʻiwa, HI 96712",
+    geo:"21.5974,-158.1046",
+    hours:"每日 10:00–18:00",
+    booking:"免預約，現場排隊點餐；假日人潮較多",
+    bookingBadge:"免預約",
+    fee:"現場付款，價位約 $5–8／份",
+    video:null
+  },
+  {
+    id:"imphula", day:"9/2", time:"約 18:00–18:30 開演（隨日落調整）", type:"culture", region:"waikiki", closedDays:["二","四","六","日"], free:true,
+    title:"呼拉舞秀（O Nā Lani Sunset Stories Hula Show）",
+    what:"International Market Place 一樓 Queen's Court 廣場的免費演出，先在 Kalakaua Ave 入口點燃火炬塔，接著移到舞台表演夏威夷與玻里尼西亞歌舞，約 30 分鐘，就在 Waikiki 市中心不用移動。<b>每週一、三、五</b>固定演出，9/2 剛好是週三。",
+    addr:"2330 Kalakaua Ave, Honolulu, HI 96815（International Market Place）",
+    geo:"21.2793,-157.8280",
+    hours:"每週一、三、五；開演時間隨日落季節微調（冬季約 18:00，夏季約 18:30）；<b>週二、四、六、日沒有這場</b>",
+    booking:"免預約，現場自由入座；出發前建議上 <a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.internationalmarketplacehawaii.com'>官網 ↗</a> 或現場詢問服務台確認當週準確時間",
+    bookingBadge:"免預約",
+    fee:"完全免費，無取消規則",
+    video:null
   },
   {
     id:"missouri", day:"9/8", time:"13:00–15:00（最後入場）", type:"history", region:"pearlharbor", closedDays:[],
@@ -343,32 +478,6 @@ const DATA = [
   }
 ];
 
-const ADDONS = [
-  {
-    title:"電影場景（Movie Sites & Ranch Tour）",
-    time:"90 分鐘・每 20 分鐘一班，08:20–15:20（每日）",
-    price:"US$59.95＋稅／成人",
-    what:"復古校車開進 Ka'a'awa 山谷，停靠《侏儸紀公園》《LOST》等 250+ 部電影取景點，最容易入門的一團。",
-    impact:"如果排在神秘島（09:30–13:00）之後，最早只能接 13:40 場，90 分鐘結束約 15:10，到玻里尼西亞文化中心時間變成約 15:40，<b>玻里尼西亞文化中心只剩 2 小時多</b>，比不加這團少了約 2 小時。",
-    video:{id:"IF2tEJN7P5Y", label:"Kualoa Ranch 官方影片：Movie Site Tour"}
-  },
-  {
-    title:"侏儸紀冒險（Jurassic Adventure Tour）",
-    time:"2.5 小時・時段以官網當日開放為準（多為上午場）",
-    price:"US$149.95＋稅／成人",
-    what:"深入古蘭尼牧場、Hakipu'u、Ka'a'awa 三個山谷，比電影場景團走得更深、停留景點更多的加強版。",
-    impact:"接在神秘島（09:30–13:00）之後，最快約 13:20 出發，2.5 小時結束約 15:50，到玻里尼西亞文化中心約 16:20，<b>玻里尼西亞文化中心只剩不到 2 小時</b>，晚上大秀基本上看不到。",
-    video:{id:"-ZGhCqdoQTQ", label:"Jurassic Adventure Tour Highlights | Kualoa Ranch"}
-  },
-  {
-    title:"越野體驗（ATV／UTV Raptor Tour）",
-    time:"2 小時・時段依官網當日開放為準（自駕須年滿 21 歲）",
-    price:"US$154.95＋稅／成人起（多人共乘 UTV）",
-    what:"自己開多人座 UTV 衝進山谷小徑，是三個加購裡最刺激的一個，熱門時段常常提前 2–3 週就被訂光。",
-    impact:"接在神秘島之後最快約 13:20 出發，2 小時結束約 15:20，到玻里尼西亞文化中心約 15:50，<b>玻里尼西亞文化中心剩約 2 小時</b>，只夠快速逛完主要村落。",
-    video:{id:"Z5psAh5Rr3M", label:"Kualoa Ranch 官方影片：UTV Raptor Tour"}
-  }
-];
 
 function ytThumb(id){ return `https://img.youtube.com/vi/${id}/hqdefault.jpg`; }
 function parseTime(str){
@@ -552,7 +661,7 @@ function cardHTML(item){
       <div class="flex items-center justify-between gap-2 mb-1.5">
         <span class="font-baloo font-bold text-[13.5px] text-mango-dark bg-amber-50 rounded-md px-2.5 py-0.5">${item.time || '時段依現場而定'}</span>
         <div class="flex items-center gap-1">
-          <span class="text-[10px] font-bold rounded-md px-2 py-0.5 ${item.included===false?'bg-violet-100 text-violet-700':'bg-teal-100 text-teal-700'}">${item.included===false?'自費／需另外購票':'GoCity 已含'}</span>
+          <span class="text-[10px] font-bold rounded-md px-2 py-0.5 ${item.free?'bg-emerald-100 text-emerald-700':(item.included===false?'bg-violet-100 text-violet-700':'bg-teal-100 text-teal-700')}">${item.free?'免費':(item.included===false?'自費／需另外購票':'GoCity 已含')}</span>
           <span class="text-[10px] font-bold rounded-md px-2.5 py-0.5 ${item.bookingBadge==='現場刷卡'?'bg-emerald-100 text-emerald-700':(item.bookingBadge==='本次不排'?'bg-slate-100 text-slate-500':'bg-amber-100 text-amber-700')}">${item.bookingBadge}</span>
         </div>
       </div>
@@ -589,12 +698,9 @@ function renderTimeline(day){
       <span class="absolute -left-[31px] top-2 w-3.5 h-3.5 rounded-full ring-4 ring-cream ${TYPE_DOT[item.type]}"></span>
       ${cardHTML(item)}
     </div>`;
-    if(TRANSIT[day] && TRANSIT[day].after === item.id){
-      html += `<div class="relative -my-3"><span class="absolute -left-[27px] top-1 text-[13px]">🚗</span><p class="text-[12px] text-slate-400 italic pl-1">${TRANSIT[day].label}</p></div>`;
-    }
-    if(TRANSIT_2[day] && TRANSIT_2[day].after === item.id){
-      html += `<div class="relative -my-3"><span class="absolute -left-[27px] top-1 text-[13px]">🚗</span><p class="text-[12px] text-slate-400 italic pl-1">${TRANSIT_2[day].label}</p></div>`;
-    }
+    (TRANSIT[day]||[]).filter(t=>t.after===item.id).forEach(t=>{
+      html += `<div class="relative -my-3"><span class="absolute -left-[27px] top-1 text-[13px]">🚗</span><p class="text-[12px] text-slate-400 italic pl-1">${t.label}</p></div>`;
+    });
   });
   html += `</div>`;
   container.innerHTML = html;
@@ -612,7 +718,6 @@ function renderAll(){
     }
   });
   renderOverview();
-  renderAddons();
   renderCompare();
   attachCardControls();
 }
@@ -626,7 +731,7 @@ function valueToNumber(v){
 function renderCompare(){
   const list = document.getElementById('compare-list');
   if(!list) return;
-  const html = DATA.filter(x=>x.included!==false).map(item=>{
+  const html = DATA.filter(x=>x.included!==false && !x.free).map(item=>{
     const num = valueToNumber(item.value);
     return `<label class="flex items-center justify-between gap-3 bg-white rounded-xl shadow-sm p-3 cursor-pointer">
       <span class="flex items-center gap-2 text-[13px]">
@@ -648,27 +753,6 @@ function updateCompareSum(){
   const savings = sum - 279;
   const savingsEl = document.getElementById('compare-savings');
   savingsEl.textContent = (savings>0? '$'+savings.toFixed(0) : '$0（單獨買票反而較便宜或差不多）');
-}
-
-function renderAddons(){
-  const html = ADDONS.map(a=>`
-    <div class="bg-white rounded-xl shadow-sm p-4 border-l-4 border-violet-400">
-      <div class="flex items-center justify-between gap-2 mb-1.5">
-        <span class="font-baloo font-bold text-[13px] text-violet-700 bg-violet-50 rounded-md px-2.5 py-0.5">${a.time}</span>
-        <span class="text-[10px] font-bold rounded-md px-2.5 py-0.5 bg-violet-100 text-violet-700">自費加購</span>
-      </div>
-      <div class="font-baloo font-bold text-[15.5px] mb-1">${a.title}</div>
-      <p class="text-[12.5px] text-slate-500 italic mb-2">${a.what}</p>
-      <p class="text-[13px] text-slate-700 font-bold mb-2">💵 ${a.price}</p>
-      <div class="bg-indigo-50 text-indigo-800 text-[12px] rounded-md px-2.5 py-1.5"><b>⏱ 加了之後玻里尼西亞文化中心時間：</b>${a.impact}</div>
-      <a target="_blank" href="https://www.youtube.com/watch?v=${a.video.id}" class="mt-2 flex items-center gap-2 bg-sky-50 rounded-md px-2 py-1.5">
-        <img src="${ytThumb(a.video.id)}" class="w-14 h-8 object-cover rounded" alt="video">
-        <span class="text-[11px] font-semibold leading-tight">${a.video.label}</span>
-      </a>
-    </div>
-  `).join('');
-  const el = document.getElementById('addon-list');
-  if(el) el.innerHTML = html;
 }
 
 function attachCardControls(){
