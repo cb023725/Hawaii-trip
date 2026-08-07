@@ -45,7 +45,7 @@
 
   <!-- HERO -->
   <header class="bg-gradient-to-br from-mango via-magenta to-magenta-dark text-white px-5 pt-6 pb-8 rounded-b-2xl relative overflow-hidden">
-    <span class="absolute right-4 top-3 text-3xl opacity-25">🌺</span>
+    
     <p class="font-baloo text-xs tracking-wide opacity-90 mb-1">OʻAHU · GO CITY ALL-INCLUSIVE · 4 DAYS</p>
     <h1 class="font-baloo font-bold text-2xl mb-3">歐胡島行程手冊</h1>
     <div class="flex flex-wrap gap-1.5">
@@ -57,13 +57,14 @@
 
   <!-- STICKY TABS -->
   <nav id="tabs" class="sticky top-0 z-20 flex gap-2 overflow-x-auto no-scrollbar px-3 py-2.5 bg-cream/95 backdrop-blur border-b border-amber-100">
-    <button data-tab="intro" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">行前提醒</button>
+    <button data-tab="flights" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block align-[-3px]"><path d="M12 2.5l0 8M12 2.5c-.6 0-1 .5-1 1v6.3l-7.5 4.3v1.8l7.5-2.3v3.9l-2.2 1.6v1.4l3.2-1 3.2 1v-1.4L13 17.5v-3.9l7.5 2.3v-1.8L13 9.8V3.5c0-.5-.4-1-1-1z"/></svg> 班機資訊</button>
     <button data-tab="8/30" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">8/30（日）</button>
     <button data-tab="8/31" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">8/31（一）</button>
     <button data-tab="9/1" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/1（二）</button>
     <button data-tab="9/2" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/2（三）</button>
     <button data-tab="9/8" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">9/8（二）</button>
-    <button data-tab="compare" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">💰 值不值得</button>
+    <button data-tab="intro" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">Go City 卡</button>
+    <button data-tab="compare" class="tab-btn flex-none font-baloo text-sm font-semibold rounded-lg px-4 py-1.5 border-2 whitespace-nowrap">值不值得</button>
   </nav>
 
   <main class="px-3">
@@ -72,7 +73,7 @@
     <section data-panel="intro" class="panel py-4">
       <div class="rounded-xl border-l-4 border-amber-400 bg-amber-50 p-4 shadow-sm mb-4">
         <div class="flex items-center gap-2 mb-2">
-          <span class="text-xl">🎫</span>
+          <span class="text-mango-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8z"/><path d="M14 6v2M14 11v2M14 16v2" stroke-dasharray="1.5 1.5"/></svg></span>
           <h3 class="font-baloo font-bold text-amber-800">Go City 卡重點提醒</h3>
         </div>
         <ul class="space-y-1.5 text-[13px] text-amber-900 list-disc list-inside leading-relaxed" style="text-wrap:pretty;">
@@ -86,10 +87,96 @@
 
       <!-- Reference-style map -->
       <div class="rounded-xl bg-white shadow-sm p-4 mb-4">
-        <h3 class="font-baloo font-bold text-base mb-1">🗺️ 歐胡島行程總覽</h3>
+        <h3 class="font-baloo font-bold text-base mb-1">歐胡島行程總覽</h3>
         <p class="text-[12.5px] text-slate-500 mb-3">前 3 晚住 <b class="text-slate-700">Waikiki（自駕）</b>；最後一晚從機場直接去珍珠港，改住<b class="text-slate-700">機場附近</b>，這天不租車。</p>
         <div id="overview-map" class="mb-3"></div>
         <div id="overview-list" class="flex flex-col gap-2"></div>
+      </div>
+    </section>
+
+    <section data-panel="flights" class="panel hidden py-4">
+      <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-indigo-500 to-indigo-700">
+        <h2 class="font-baloo font-bold text-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block align-[-3px]"><path d="M12 2.5l0 8M12 2.5c-.6 0-1 .5-1 1v6.3l-7.5 4.3v1.8l7.5-2.3v3.9l-2.2 1.6v1.4l3.2-1 3.2 1v-1.4L13 17.5v-3.9l7.5 2.3v-1.8L13 9.8V3.5c0-.5-.4-1-1-1z"/></svg> 去程班機資訊</h2>
+        <p class="text-[12.5px] opacity-90">8/30（日）從台北出發，經大阪轉機到檀香山</p>
+      </div>
+
+      <div class="mt-4 bg-white rounded-xl shadow-sm p-4 border-l-4 border-indigo-400">
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <span class="font-baloo font-bold text-[13px] text-indigo-700 bg-indigo-50 rounded-md px-2.5 py-0.5">第 1 段：TPE → KIX</span>
+          <a target="_blank" class="text-[11px] font-bold text-ocean-dark underline" href="https://www.google.com/search?q=CX564+flight+status">CX564 即時動態 ↗</a>
+        </div>
+        <div class="text-[13px] text-slate-500 space-y-1.5">
+          <div class="detail-row"><span class="detail-lbl">出發</span><span class="detail-val">8/30 11:05・台北桃園機場（TPE）第一航廈</span></div>
+          <div class="detail-row"><span class="detail-lbl">抵達</span><span class="detail-val">8/30 14:50・大阪關西機場（KIX）第一航廈</span></div>
+          <div class="detail-row"><span class="detail-lbl">機型</span><span class="detail-val">國泰航空 CX564・Boeing 777</span></div>
+          <div class="detail-row"><span class="detail-lbl">飛行</span><span class="detail-val">2 小時 45 分</span></div>
+        </div>
+      </div>
+
+      <div class="my-3 flex items-center gap-2 pl-2">
+        <span class="text-mango-dark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l4 2.2"/></svg></span>
+        <p class="text-[12.5px] text-slate-500 italic">KIX 轉機等待約 <b>5 小時 55 分</b>，可以出關去逛一下機場或市區（大阪轉機時間夠出去簡單逛逛），記得預留回程安檢＋登機時間。</p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-sm p-4 border-l-4 border-indigo-400">
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <span class="font-baloo font-bold text-[13px] text-indigo-700 bg-indigo-50 rounded-md px-2.5 py-0.5">第 2 段：KIX → HNL</span>
+          <a target="_blank" class="text-[11px] font-bold text-ocean-dark underline" href="https://www.google.com/search?q=AS850+flight+status">AS850 即時動態 ↗</a>
+        </div>
+        <div class="text-[13px] text-slate-500 space-y-1.5">
+          <div class="detail-row"><span class="detail-lbl">出發</span><span class="detail-val">8/30 20:45・大阪關西機場（KIX）第一航廈</span></div>
+          <div class="detail-row"><span class="detail-lbl">抵達</span><span class="detail-val">8/30 10:05・檀香山機場（HNL）第二航廈</span></div>
+          <div class="detail-row"><span class="detail-lbl">機型</span><span class="detail-val">Alaska Airlines AS850・Airbus A330-200</span></div>
+          <div class="detail-row"><span class="detail-lbl">飛行</span><span class="detail-val">8 小時 20 分（跨國際換日線，抵達時間仍是同一天 8/30）</span></div>
+        </div>
+      </div>
+
+      <div class="mt-4 rounded-xl border-2 border-dashed border-amber-300 bg-amber-50/50 p-4">
+        <h3 class="font-baloo font-bold text-[13.5px] text-amber-800 mb-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 inline-block align-[-3px]"><rect x="4" y="8" width="16" height="12" rx="1.5"/><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8M4 13h16"/></svg> 行李資訊</h3>
+        <p class="text-[13px] text-amber-900">托運行李 <b>2 件</b>，每件上限 <b>23 公斤</b></p>
+      </div>
+
+      <div class="rounded-xl text-white p-4 mb-1 mt-6 bg-gradient-to-br from-indigo-500 to-indigo-700">
+        <h2 class="font-baloo font-bold text-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block align-[-3px]"><path d="M12 2.5l0 8M12 2.5c-.6 0-1 .5-1 1v6.3l-7.5 4.3v1.8l7.5-2.3v3.9l-2.2 1.6v1.4l3.2-1 3.2 1v-1.4L13 17.5v-3.9l7.5 2.3v-1.8L13 9.8V3.5c0-.5-.4-1-1-1z"/></svg> 回程班機資訊</h2>
+        <p class="text-[12.5px] opacity-90">9/9 從檀香山出發，飛往東京羽田</p>
+      </div>
+      <div class="mt-4 bg-white rounded-xl shadow-sm p-4 border-l-4 border-indigo-400">
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <span class="font-baloo font-bold text-[13px] text-indigo-700 bg-indigo-50 rounded-md px-2.5 py-0.5">HNL → HND</span>
+          <a target="_blank" class="text-[11px] font-bold text-ocean-dark underline" href="https://www.google.com/search?q=NH185+flight+status">NH185 即時動態 ↗</a>
+        </div>
+        <div class="text-[13px] text-slate-500 space-y-1.5">
+          <div class="detail-row"><span class="detail-lbl">出發</span><span class="detail-val">9/9 13:55・檀香山機場（HNL）第二航廈</span></div>
+          <div class="detail-row"><span class="detail-lbl">抵達</span><span class="detail-val">9/10 17:25・東京羽田機場（HND），<b>跨日抵達（+1）</b></span></div>
+          <div class="detail-row"><span class="detail-lbl">班機</span><span class="detail-val">全日空 ANA NH185</span></div>
+        </div>
+      </div>
+
+      <div class="rounded-xl text-white p-4 mb-1 mt-6 bg-gradient-to-br from-slate-500 to-slate-700">
+        <h2 class="font-baloo font-bold text-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block align-[-3px]"><path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/></svg> 住宿資訊</h2>
+        <p class="text-[12.5px] opacity-90">名稱／地址／Maps 連結請自行填入</p>
+      </div>
+      <div class="mt-4 bg-white rounded-xl shadow-sm p-4 border-l-4 border-slate-400">
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <span class="font-baloo font-bold text-[13px] text-slate-600 bg-slate-100 rounded-md px-2.5 py-0.5">8/30 → 9/2（3 晚）</span>
+        </div>
+        <div class="text-[13px] text-slate-500 space-y-1.5">
+          <div class="detail-row"><span class="detail-lbl">名稱</span><span class="detail-val text-slate-300 italic">［待填入飯店名稱］</span></div>
+          <div class="detail-row"><span class="detail-lbl">地址</span><span class="detail-val text-slate-300 italic">［待填入地址］</span></div>
+          <div class="detail-row"><span class="detail-lbl">Maps</span><span class="detail-val text-slate-300 italic">［待填入 Google Maps 連結］</span></div>
+          <div class="detail-row"><span class="detail-lbl">入住</span><span class="detail-val">15:00 Check-in・11:00 Check-out</span></div>
+          <div class="detail-row"><span class="detail-lbl">停車</span><span class="detail-val">附免費停車</span></div>
+        </div>
+      </div>
+      <div class="mt-3 bg-white rounded-xl shadow-sm p-4 border-l-4 border-slate-400">
+        <div class="flex items-center justify-between gap-2 mb-1.5">
+          <span class="font-baloo font-bold text-[13px] text-slate-600 bg-slate-100 rounded-md px-2.5 py-0.5">9/2 → 9/3（1 晚）</span>
+        </div>
+        <div class="text-[13px] text-slate-500 space-y-1.5">
+          <div class="detail-row"><span class="detail-lbl">名稱</span><span class="detail-val text-slate-300 italic">［待填入飯店名稱］</span></div>
+          <div class="detail-row"><span class="detail-lbl">地址</span><span class="detail-val text-slate-300 italic">［待填入地址］</span></div>
+          <div class="detail-row"><span class="detail-lbl">Maps</span><span class="detail-val text-slate-300 italic">［待填入 Google Maps 連結］</span></div>
+        </div>
       </div>
     </section>
 
@@ -97,7 +184,7 @@
     <section data-panel="8/30" class="panel hidden py-4">
       <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-slate-500 to-slate-700">
         <h2 class="font-baloo font-bold text-lg">8/30（日）抵達歐胡島</h2>
-        <p class="text-[12.5px] opacity-90">✈️ 抵達日，不使用 Go City 票｜取車、飯店 check-in、鑽石頭山自駕自費</p>
+        <p class="text-[12.5px] opacity-90"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block align-[-3px]"><path d="M12 2.5l0 8M12 2.5c-.6 0-1 .5-1 1v6.3l-7.5 4.3v1.8l7.5-2.3v3.9l-2.2 1.6v1.4l3.2-1 3.2 1v-1.4L13 17.5v-3.9l7.5 2.3v-1.8L13 9.8V3.5c0-.5-.4-1-1-1z"/></svg> 抵達日，不使用 Go City 票｜取車、飯店 check-in、鑽石頭山自駕自費</p>
       </div>
       <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-8/30"></div>
       <div class="timeline" id="timeline-8/30"></div>
@@ -106,7 +193,7 @@
     <section data-panel="8/31" class="panel hidden py-4">
       <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-ocean to-ocean-dark">
         <h2 class="font-baloo font-bold text-lg">8/31（一）Waikiki 水上日</h2>
-        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜兩個行程都在住的附近港口出發</p>
+        <p class="text-[12.5px] opacity-90"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block align-[-3px]"><path d="M3 11l1.5-4.5A2 2 0 0 1 6.4 5h11.2a2 2 0 0 1 1.9 1.5L21 11"/><rect x="2.5" y="11" width="19" height="6" rx="1.5"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg> 自駕・住宿 Waikiki｜兩個行程都在住的附近港口出發</p>
       </div>
       <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-8/31"></div>
       <div class="timeline" id="timeline-8/31"></div>
@@ -116,7 +203,7 @@
     <section data-panel="9/1" class="panel hidden py-4">
       <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-palm to-palm-dark">
         <h2 class="font-baloo font-bold text-lg">9/1（二）古蘭尼牧場＋玻里尼西亞文化中心</h2>
-        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜兩站相距約 30–40 分鐘車程，順路銜接</p>
+        <p class="text-[12.5px] opacity-90"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block align-[-3px]"><path d="M3 11l1.5-4.5A2 2 0 0 1 6.4 5h11.2a2 2 0 0 1 1.9 1.5L21 11"/><rect x="2.5" y="11" width="19" height="6" rx="1.5"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg> 自駕・住宿 Waikiki｜兩站相距約 30–40 分鐘車程，順路銜接</p>
       </div>
       <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-9/1"></div>
       <div class="timeline" id="timeline-9/1"></div>
@@ -125,7 +212,7 @@
     <section data-panel="9/2" class="panel hidden py-4">
       <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-magenta to-magenta-dark">
         <h2 class="font-baloo font-bold text-lg">9/2（三）北岸：瀑布谷＋海龜沙灘＋SUP</h2>
-        <p class="text-[12.5px] opacity-90">🚗 自駕・住宿 Waikiki｜今天跑到島的最北邊，離住宿最遠，但全部都是 Go City 含的，不額外花錢</p>
+        <p class="text-[12.5px] opacity-90"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block align-[-3px]"><path d="M3 11l1.5-4.5A2 2 0 0 1 6.4 5h11.2a2 2 0 0 1 1.9 1.5L21 11"/><rect x="2.5" y="11" width="19" height="6" rx="1.5"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg> 自駕・住宿 Waikiki｜今天跑到島的最北邊，離住宿最遠，但全部都是 Go City 含的，不額外花錢</p>
       </div>
       <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-9/2"></div>
       <div class="timeline" id="timeline-9/2"></div>
@@ -134,7 +221,7 @@
     <section data-panel="9/8" class="panel hidden py-4">
       <div class="rounded-xl text-white p-4 mb-1 bg-gradient-to-br from-navy to-navy-dark">
         <h2 class="font-baloo font-bold text-lg">9/8（二）珍珠港（機場進出）</h2>
-        <p class="text-[12.5px] opacity-90">🚕 搭計程車／Uber，不租車・住宿改在機場附近｜從機場直接前往，只排下午</p>
+        <p class="text-[12.5px] opacity-90"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 inline-block align-[-3px]"><path d="M3 11l1.5-4.5A2 2 0 0 1 6.4 5h11.2a2 2 0 0 1 1.9 1.5L21 11"/><rect x="2.5" y="11" width="19" height="6" rx="1.5"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/></svg> 搭計程車／Uber，不租車・住宿改在機場附近｜從機場直接前往，只排下午</p>
       </div>
       <div class="day-photos flex gap-2 overflow-x-auto no-scrollbar my-3" id="photos-9/8"></div>
       <div class="timeline" id="timeline-9/8"></div>
@@ -172,7 +259,7 @@
 </div>
 
 <!-- Floating map button -->
-<button id="map-fab" class="fixed bottom-5 right-5 z-30 bg-ocean hover:bg-ocean-dark text-white rounded-full w-14 h-14 shadow-lg flex items-center justify-center text-2xl">🗺️</button>
+<button id="map-fab" class="fixed bottom-5 right-5 z-30 bg-ocean hover:bg-ocean-dark text-white rounded-full w-14 h-14 shadow-lg flex items-center justify-center text-2xl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6"><path d="M9 4.5L4 6.5v13l5-2 6 2 5-2v-13l-5 2-6-2z"/><path d="M9 4.5v13M15 6.5v13"/></svg></button>
 
 <!-- Map modal -->
 <div id="map-modal-backdrop" class="fixed inset-0 bg-slate-900/50 hidden items-center justify-center z-40 p-4">
@@ -198,6 +285,32 @@
 </div>
 
 <script>
+// ---------- Professional line-icon system (replaces emoji) ----------
+const ICONS = {
+  car: '<path d="M3 11l1.5-4.5A2 2 0 0 1 6.4 5h11.2a2 2 0 0 1 1.9 1.5L21 11"/><rect x="2.5" y="11" width="19" height="6" rx="1.5"/><circle cx="7" cy="17.5" r="1.5"/><circle cx="17" cy="17.5" r="1.5"/>',
+  walk: '<circle cx="12" cy="4.5" r="1.8"/><path d="M9 8.5l2.5 1.5v4l-3 6M11.5 10l2.5-1 2.5 2.5-1 4.5M14 12.5l2.5 1.5"/>',
+  ban: '<circle cx="12" cy="12" r="9"/><path d="M5.5 5.5l13 13"/>',
+  passport: '<rect x="5" y="3" width="14" height="18" rx="1.5"/><circle cx="12" cy="10" r="2.5"/><path d="M8.5 15.5h7M9.5 18h5"/>',
+  plane: '<path d="M12 2.5l0 8M12 2.5c-.6 0-1 .5-1 1v6.3l-7.5 4.3v1.8l7.5-2.3v3.9l-2.2 1.6v1.4l3.2-1 3.2 1v-1.4L13 17.5v-3.9l7.5 2.3v-1.8L13 9.8V3.5c0-.5-.4-1-1-1z"/>',
+  ticket: '<path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2 2 0 0 0 0 4v2a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2a2 2 0 0 0 0-4V8z"/><path d="M14 6v2M14 11v2M14 16v2" stroke-dasharray="1.5 1.5"/>',
+  dollar: '<circle cx="12" cy="12" r="9"/><path d="M12 7v10M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.3c0 3 6 1.4 6 4.4 0 1.4-1.3 2.3-3 2.3s-3-1-3-2.3"/>',
+  map: '<path d="M9 4.5L4 6.5v13l5-2 6 2 5-2v-13l-5 2-6-2z"/><path d="M9 4.5v13M15 6.5v13"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l4 2.2"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 8.2h.01M12 11v5.5" stroke-linecap="round"/>',
+  luggage: '<rect x="4" y="8" width="16" height="12" rx="1.5"/><path d="M9 8V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V8M4 13h16"/>',
+  warning: '<path d="M12 3.5l9.3 16H2.7L12 3.5z"/><path d="M12 9.5V14M12 17h.01" stroke-linecap="round"/>',
+  home: '<path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/>',
+  flag: '<path d="M6 3v18"/><path d="M6 4h11l-2.5 3.5L17 11H6z"/>',
+  compare: '<path d="M6 4v13a2 2 0 0 0 2 2h10"/><path d="M17 4l4 4-4 4"/><path d="M18 20V7"/>',
+  check: '<path d="M5 13l4.5 4.5L19 8"/>',
+  anchor: '<circle cx="12" cy="5" r="2"/><path d="M12 7v13M7 13H3a9 9 0 0 0 9 8 9 9 0 0 0 9-8h-4M8 11l4 2 4-2"/>',
+  image: '<rect x="3.5" y="4.5" width="17" height="15" rx="1.5"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M4 16.5l5-5 4 4 3-3 4 4"/>'
+};
+function icon(name, cls){
+  const body = ICONS[name] || '';
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="${cls||'w-4 h-4 inline-block align-[-3px]'}">${body}</svg>`;
+}
+
 const DAYS = ["8/30","8/31","9/1","9/2","9/8"];
 const DAY_WEEKDAY = {"8/30":"日","8/31":"一","9/1":"二","9/2":"三","9/8":"二"};
 const DAY_TITLE = {
@@ -225,35 +338,35 @@ const DAY_PHOTOS = {
 
 const TRANSIT = {
   "8/30":[
-    { after:"flight", label:"🛂 入境審查＋領行李＋海關（國際線，抓 1–1.5 小時）" },
-    { after:"rentalcar", label:"🚗 自駕車程約 20–25 分鐘至 Waikiki" },
-    { after:"checkin", label:"🚗 自駕車程約 10–15 分鐘至鑽石頭山" },
-    { after:"diamondhead", label:"🚗 自駕車程約 10–15 分鐘回 Waikiki" }
+    { after:"flight", mode:"passport", label:"入境審查＋領行李＋海關（國際線，抓 1–1.5 小時）" },
+    { after:"rentalcar", mode:"car", label:"自駕車程約 20–25 分鐘至 Waikiki" },
+    { after:"checkin", mode:"car", label:"自駕車程約 10–15 分鐘至鑽石頭山" },
+    { after:"diamondhead", mode:"car", label:"自駕車程約 10–15 分鐘回 Waikiki" }
   ],
   "8/31":[
-    { after:"turtle", label:"⛔ 同一個港口，走過去就到，不用移動" },
-    { after:"makani", label:"🚗 自駕車程約 10–15 分鐘至 Aloha Tower" }
+    { after:"turtle", mode:"walk", label:"同一個港口，走過去就到，不用移動" },
+    { after:"makani", mode:"car", label:"自駕車程約 10–15 分鐘至 Aloha Tower" }
   ],
   "9/1":[
-    { after:"kualoa", label:"🚗 自駕車程約 30–40 分鐘北上至 Laie（玻里尼西亞文化中心）" }
+    { after:"kualoa", mode:"car", label:"自駕車程約 30–40 分鐘北上至 Laie（玻里尼西亞文化中心）" }
   ],
   "9/2":[
-    { after:"waimea", label:"🚗 自駕車程約 10–15 分鐘南下至 Laniakea Beach" },
-    { after:"laniakea", label:"🚗 自駕車程約 10 分鐘至 Haleiwa 小鎮（Anahulu River）" },
-    { after:"sup", label:"🚶 走路約 2 分鐘至 Giovanni's Shrimp Truck" },
-    { after:"shrimp", label:"🚶 走路約 3 分鐘至 Matsumoto Shave Ice" },
-    { after:"shaveice", label:"🚗 自駕車程約 50–60 分鐘南下回 Waikiki" }
+    { after:"waimea", mode:"car", label:"自駕車程約 10–15 分鐘南下至 Laniakea Beach" },
+    { after:"laniakea", mode:"car", label:"自駕車程約 10 分鐘至 Haleiwa 小鎮（Anahulu River）" },
+    { after:"sup", mode:"walk", label:"走路約 2 分鐘至 Giovanni's Shrimp Truck" },
+    { after:"shrimp", mode:"walk", label:"走路約 3 分鐘至 Matsumoto Shave Ice" },
+    { after:"shaveice", mode:"car", label:"自駕車程約 50–60 分鐘南下回 Waikiki" }
   ],
   "9/8":[
-    { after:"missouri", label:"🚶 同一個園區，搭免費接駁船前往，不需開車" }
+    { after:"missouri", mode:"walk", label:"同一個園區，搭免費接駁船前往，不需開車" }
   ]
 };
 
 const DATA = [
   {
     id:"flight", day:"8/30", time:"10:05", type:"travel", region:"waikiki", closedDays:[], included:false,
-    title:"班機抵達（AS850，自 KIX 大阪關西機場）",
-    what:"AS850（大阪關西機場 KIX 直飛檀香山，Alaska Airlines 代碼共享航班）抵達檀香山機場（HNL）。<b>這是直接從日本入境美國的國際線</b>，下機後要走完整的移民局審查＋領行李＋海關，<b>抓 1–1.5 小時比較保險</b>，尖峰時段可能更久，行程規劃已經把這段緩衝算進去。",
+    title:"抵達 HNL 檀香山機場",
+    what:"國際線入境，需走移民局審查＋領行李＋海關。完整班機資訊見「${icon('plane','w-3.5 h-3.5 inline-block align-[-3px]')} 班機資訊」分頁。",
     addr:"Daniel K. Inouye International Airport (HNL), Honolulu, HI 96819",
     geo:"21.3187,-157.9225",
     hours:"抵達時間 10:05",
@@ -265,7 +378,7 @@ const DATA = [
   {
     id:"rentalcar", day:"8/30", time:"約 11:30–12:15", type:"travel", region:"waikiki", closedDays:[], included:false,
     title:"機場租車取車",
-    what:"領完行李後搭租車公司接駁車到 CONRAC（機場租車中心），辦手續＋取車，抓 45 分鐘左右比較保險（假日或尖峰時段可能更久）。",
+    what:"搭接駁車到 CONRAC 租車中心辦手續取車，抓約 45 分鐘。",
     addr:"Consolidated Rent-A-Car Facility, 3055 Ualena St, Honolulu, HI 96819",
     geo:"21.3245,-157.9251",
     hours:"依租車公司櫃檯營業時間，多數 24 小時都有人",
@@ -277,7 +390,7 @@ const DATA = [
   {
     id:"checkin", day:"8/30", time:"約 12:45", type:"travel", region:"waikiki", closedDays:[], included:false,
     title:"飯店 Check-in（Waikiki）",
-    what:"開車到 Waikiki 飯店辦理入住。<b>標準 check-in 時間通常是下午 3 點</b>，這麼早到房間可能還沒好，可以先寄放行李、拿到房卡資訊，午餐後再回來正式入住，或請櫃檯詢問是否能提早入住。",
+    what:"Waikiki 飯店入住；標準 check-in 為下午 3 點，提早到可先寄放行李。",
     addr:"Waikiki, Honolulu, HI",
     geo:"21.2793,-157.8294",
     hours:"依飯店規定，標準約下午 3:00 入住",
@@ -289,12 +402,13 @@ const DATA = [
   {
     id:"diamondhead", day:"8/30", time:"14:30–16:00", type:"nature", region:"waikiki", closedDays:[], included:false,
     title:"鑽石頭山（Diamond Head State Monument）",
-    what:"歐胡島最經典的地標健行，來回約 1.6 英里、爬升 560 英尺，步道大多鋪面但後段有樓梯，山頂可以 360 度俯瞰 Waikiki 海岸線。<b>非夏威夷居民一定要先上網訂位</b>，現場不接受無訂位訪客，沒有例外。",
+    what:"經典地標健行，來回約 1.6 英里、爬升 560 英尺，山頂可俯瞰 Waikiki。非居民需先上網訂位。",
     addr:"18Diamond Head Rd, Honolulu, HI 96815",
     geo:"21.2620,-157.8058",
     hours:"每日 06:00–18:00，最後一個入場時段 16:00（16:30 前要完成入場），18:00 準時關閘門",
     booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://gostateparks.hawaii.gov/diamondhead'>gostateparks.hawaii.gov ↗</a> 線上訂位，最多可提前 30 天訂；記得同時訂「停車」時段（若要自駕開進去）",
     bookingBadge:"需訂位（自費）",
+    parking:"付費 $10／車（訂位時一併預約停車時段，只收信用卡）",
     fee:"非居民門票 $5／人＋停車 $10／車（都只收信用卡，現場不收現金）；抵達需在時段開始後 30 分鐘內入場，逾時視同放棄",
     video:null,
     note:"步道全程無遮蔭，正午較曬，建議帶足夠飲水、防曬與好走的鞋；山頂無廁所，出發前先上。"
@@ -302,7 +416,7 @@ const DATA = [
   {
     id:"eveningsun", day:"8/30", time:"約 17:00 起（彈性）", type:"food", region:"waikiki", closedDays:[], included:false,
     title:"晚上建議：輕鬆吃飯＋海灘散步",
-    what:"這天從長途飛行到取車、入住、健行，體力會消耗不少，建議晚上不要再排硬行程，讓身體適應時差。可以考慮：①在 Waikiki 找一間輕鬆的餐廳吃晚餐；②飯後沿海灘散步看日落，威基基日落通常在傍晚 6 點多，秋初這個月份是不錯的散步時間。<b>備註：</b>Ala Moana Center 的免費呼拉舞秀官方時段其實是<b>每天下午 3 點</b>（不是晚上），時間會跟鑽石頭山撞在一起，這天排不進去，之後有安排逛 Ala Moana 的行程可以再考慮排進去。",
+    what:"長途飛行＋健行後建議放鬆：Waikiki 晚餐＋海灘散步看日落。",
     addr:"Waikiki, Honolulu, HI",
     geo:"21.2793,-157.8294",
     hours:"彈性，依個人體力決定",
@@ -314,65 +428,70 @@ const DATA = [
   {
     id:"turtle", day:"8/31", time:"10:15–12:15", type:"water", region:"waikiki", closedDays:[],
     title:"海龜浮潛（Waikiki Turtle Canyon Snorkel Cruise）",
-    what:"搭乘雙體船 Lola 出海 2 小時，到淺水區跟綠蠵龜一起浮潛。救生員隨行、保證看得到海龜、浮潛裝備與各尺寸救生衣（含嬰兒）現場都有提供，不會游泳也能參加。",
+    what:"搭船到淺水區浮潛看綠蠵龜，2 小時，含裝備與救生衣，不會游泳也能參加。",
     addr:"1085 Ala Moana Blvd, Suite 104, Honolulu, HI 96814（Kewalo Basin Harbor 報到處）",
     geo:"21.293892,-157.855489",
     hours:"每日 10:15 / 13:00 兩場，全年無休",
     booking:"官網訂位 <a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.honolulusnorkelcompany.com/go-city-honolulu-snorkel-co'>↗</a>（選日期時段人數，輸入 Go City 票號）",
     bookingBadge:"需預約",
     value:"約 $94／成人",
+    parking:"付費（Kewalo Basin Harbor 停車場約 $1–4／小時）；也可停 Ala Moana Beach Park 免費，步行約 5–10 分鐘",
     fee:"訂位時需留信用卡作保；每人另收 $1 州政府海洋保育費，24 小時內取消或未出席將依規定從該信用卡收費",
     video:{id:"dVBwvXAdur4", label:"Kewalo Basin Harbor 出發的 Turtle Canyon 浮潛實況"}
   },
   {
     id:"makani", day:"8/31", time:"14:00–16:00", type:"water", region:"waikiki", closedDays:[],
     title:"雙體帆船出海（Makani Catamaran Sail）",
-    what:"坐大型雙體帆船出海放鬆吹風看海岸線，不用下水，比較像是海上觀光兜風。",
+    what:"雙體帆船出海賞海岸線，不下水，觀光兜風性質。",
     addr:"1009 Ala Moana Blvd F31, Honolulu, HI 96814（同樣在 Kewalo Basin Harbor，Makani Kiosk）",
     geo:"21.294837,-157.857350",
     hours:"每日 11:00 / 14:00 兩場，全年無休",
     booking:"電話預約 <b>(808) 591-9000</b>（無線上系統，視空位而定）",
     bookingBadge:"需預約",
     value:"約 $143／成人",
+    parking:"付費（Kewalo Basin Harbor 停車場約 $1–4／小時）；也可停 Ala Moana Beach Park 免費，步行約 5–10 分鐘",
     fee:"訂位時需留信用卡作保；每人另收 $1 州政府海洋保育費，48 小時內取消將依規定從該信用卡收費",
     video:{id:"T_2Dz2WRu8U", label:"Go City 官方介紹：Makani Catamaran Sail"}
   },
   {
     id:"luau", day:"8/31", time:"17:30–20:00", type:"culture", region:"waikiki", closedDays:["六"],
     title:"傳統夏威夷晚宴秀（Ka Moana Luau at Aloha Tower，Premium 名額）",
-    what:"到場先戴貝殼花環迎賓，中段是編織／刺青貼紙／草裙舞／烏克麗麗等體驗活動，接著吃到飽自助晚餐＋2 張飲料券，最後看傳統歌舞秀，約 2.5 小時，是很多人心中的「必體驗」。",
+    what:"傳統歌舞秀＋吃到飽自助晚宴，約 2.5 小時。",
     addr:"1 Aloha Tower Dr, Honolulu, HI 96813",
     geo:"21.3067,-157.8677",
     hours:"週一至週五、週日 17:30–20:00；週六公休",
     booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
     bookingBadge:"需預約",
     value:"約 $169／成人",
+    parking:"付費（Aloha Tower Marketplace 代客泊車 $10／車；附近公共停車場約 $6／小時）",
     fee:"24 小時內取消不予退款，視同全額收費",
     video:{id:"xvSD0AzOb_I", label:"Ka Moana Luau 新場地（Aloha Tower）"}
   },
   {
     id:"kualoa", day:"9/1", time:"09:30–13:00", type:"nature", region:"windward", closedDays:[],
     title:"古蘭尼牧場：神秘島（Kualoa Ranch: Secret Island Beach）",
-    what:"電影《侏儸紀公園》等好萊塢片取景的私人牧場。這個行程是到牧場自己的私人沙灘（神秘島）玩水上活動（獨木舟／立槳／浮潛），含園區接駁車與魚塭遊船，不用另外找地方下水，比較悠閒。",
+    what:"電影取景牧場的私人沙灘，含獨木舟／立槳／浮潛與魚塭遊船，3.5 小時。",
     addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744",
     geo:"21.520742,-157.839467",
     hours:"分 Morning Adventure 09:30 或 Afternoon Adventure 12:30，每次 3.5 小時，全年開放（僅耶誕節、元旦公休）",
     booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.kualoa.com/tours-and-activities/secret-island-beach-adventure'>kualoa.com ↗</a> 選「Kualoa Secret Island Beach (Half-Day)」選時間人數，現場刷 Pass 後退款；報到需提前 45 分鐘",
     bookingBadge:"需預約",
     value:"約 $63／成人",
+    parking:"免費（園區自有停車場）",
     fee:"需先線上付款訂位，現場刷 Go City Pass 後全額退款；若未出席該場次，則不予退還",
     video:{id:"-L14lBjxhVo", label:"Kualoa Ranch 官方影片：Secret Island Beach Activities"}
   },
   {
     id:"pcc", day:"9/1", time:"約 13:30–18:00", type:"culture", region:"windward", closedDays:["三","日"],
     title:"玻里尼西亞文化中心（Polynesian Cultural Center）",
-    what:"走進太平洋 6 個復原村莊（夏威夷、紐西蘭毛利、大溪地、斐濟、薩摩亞、東加），可以體驗生火、丟長矛、編織等互動活動，還有 40 分鐘電動小火車導覽，跟每天的獨木舟大會演（全夏威夷唯一的水上表演）。",
+    what:"太平洋 6 個復原村莊＋互動體驗＋小火車導覽＋獨木舟大會演。",
     addr:"55-370 Kamehameha Hwy, Laie, HI 96762",
     geo:"21.6417,-157.9213",
     hours:"週一二四五六 12:15–18:00；週三、週日公休",
     booking:"免預約，主入口噴水池旁 Ticketing Center 刷 Pass；保險起見可先電話 <b>1-844-365-2843</b> 確認",
     bookingBadge:"現場刷卡",
     value:"約 $95／成人",
+    parking:"免費（園區自有停車場）",
     fee:"無需預約，無 no-show 費用；<b>晚餐秀（Lūʻau）跟 Hā 夜間大秀都不含在門票內</b>，要另外加購；園區也不含接送，要自己想辦法到（我們是自駕沒問題）",
     video:{id:"Af06OcBG2gM", label:"PCC Island Villages 園區導覽"},
     note:"門票上會附 Hukilau Marketplace 商店 9 折優惠，逛紀念品店記得出示。"
@@ -380,94 +499,101 @@ const DATA = [
   {
     id:"waimea", day:"9/2", time:"09:00–10:45", type:"nature", region:"northshore", closedDays:["一"],
     title:"瀑布谷（Waimea Valley）",
-    what:"植物園＋一段好走的鋪面步道，走到底有瀑布可以下水游泳，記得帶泳衣毛巾。",
+    what:"植物園步道，走到底有瀑布可游泳，記得帶泳衣。",
     addr:"59-864 Kamehameha Hwy, Haleʻiwa, HI 96712",
     geo:"21.636171,-158.054026",
     hours:"週二至週日 09:00–16:00；週一公休",
     booking:"免預約，現場出示 Go City App 掃碼即可入園",
     bookingBadge:"現場刷卡",
     value:"約 $26／成人",
+    parking:"免費（園區自有停車場）",
     fee:"無需預約，無 no-show 費用",
     video:{id:"r83YaKgi98E", label:"Waimea Valley 瀑布谷與植物園導覽"}
   },
   {
     id:"laniakea", day:"9/2", time:"11:00–11:30", type:"nature", region:"northshore", closedDays:[], included:false,
     title:"海龜沙灘（Laniakea Beach）",
-    what:"北岸最知名的野生海龜曬太陽景點，綠蠵龜常常直接爬上岸休息，運氣好一次能看到好幾隻。<b>沒有固定潮汐規律</b>，但當地經驗是海龜上岸機率跟「浪況平穩、接近中午前後」比較有關，跟嚴格的潮汐時刻無關。安全規範規定要保持至少 10 英尺（3公尺）距離、不能碰觸，違規罰款可以到 $10,500。",
+    what:"北岸知名野生海龜曬灘點，須保持 10 英尺距離、不可碰觸。",
     addr:"Laniakea Beach, Haleʻiwa, HI 96712（Kamehameha Hwy 上，Haleʻiwa 鎮北邊約 2.5 英里）",
     geo:"21.6169,-158.0794",
     hours:"全天開放，<b>最佳觀龜時段約 11:00–14:00</b>（浪況平穩、中午前後海龜較常上岸曬太陽）；11 點後車潮＋停車會變得擁擠",
     booking:"免預約，路邊停車（靠山側，找白色圍籬邊的空地），過馬路要非常小心，這段路沒有斑馬線",
     bookingBadge:"免預約",
+    parking:"免費路邊停車，車位有限、11 點後常一位難求",
     fee:"完全免費；建議只安排 30 分鐘左右，海龜出沒沒有保證，純看運氣",
     video:null
   },
   {
     id:"sup", day:"9/2", time:"12:00–13:30", type:"water", region:"northshore", closedDays:["日"],
     title:"立槳衝浪／海龜導覽團（Stand-Up Paddleboard Nature and Turtle Tour）",
-    what:"真人教練帶的 90 分鐘 SUP 體驗＋沿 Anahulu River 賞海龜導覽，含教學不是自己租板，水域平緩好上手。地點在 Haleiwa，離 Laniakea 海龜沙灘只要幾分鐘車程，順路銜接。想划獨木舟也可以跟教練說換成 Kayak（數量有限）。",
+    what:"教練帶的 90 分鐘 SUP＋海龜導覽，水域平緩，也可換成 Kayak。",
     addr:"62-540 Kamehameha Hwy, Haleiwa, HI 96712",
     geo:"21.5960136,-158.1049705",
     hours:"每日 08:00 / 12:00 兩場；<b>週日公休</b>",
     booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://sbshawaiitours.com/go.city/'>線上表單 ↗</a> 或電話／簡訊 <b>(808) 736-5080</b>，須提前至少 48 小時預約",
     bookingBadge:"需預約",
     value:"約 $155／成人",
+    parking:"免費路邊停車（Haleiwa 小鎮車位有限，建議提早到）",
     fee:"訂位時需留信用卡作保；未在 48 小時前取消或未出席將依規定收費",
     video:null
   },
   {
     id:"shrimp", day:"9/2", time:"13:40–14:20", type:"food", region:"northshore", closedDays:[], included:false,
     title:"蒜蓉蝦（Giovanni's Shrimp Truck）",
-    what:"北岸最出名的蒜蓉蝦餐車，招牌是 Shrimp Scampi：連殼蝦淋滿蒜香奶油醬配兩勺白飯，記得帶濕紙巾，吃完滿手蒜味醬汁。排在 SUP 結束後當午餐。",
+    what:"北岸招牌蒜蓉蝦餐車，連殼蝦淋蒜香奶油醬配白飯。",
     addr:"66-472 Kamehameha Hwy, Haleiwa, HI 96712",
     geo:"21.5974,-158.1046",
     hours:"每日 10:30–17:00",
     booking:"免預約，現場排隊點餐；中午常大排長龍",
     bookingBadge:"免預約",
+    parking:"免費路邊停車（Haleiwa 小鎮車位有限）",
     fee:"現場付款，價位約 $17–20／份（含 12 隻蝦＋兩勺飯）",
     video:null
   },
   {
     id:"shaveice", day:"9/2", time:"14:20–14:40", type:"food", region:"northshore", closedDays:[], included:false,
     title:"彩虹冰（Matsumoto Shave Ice）",
-    what:"1951 年開業的北岸傳統剉冰老店，招牌就是五顏六色的彩虹糖漿刨冰，口味多、份量大，是北岸必吃甜點，玩完水正好消暑。",
+    what:"1951 年老店，招牌彩虹糖漿刨冰，北岸必吃甜點。",
     addr:"66-111 Kamehameha Hwy Suite 605, Haleʻiwa, HI 96712",
     geo:"21.5974,-158.1046",
     hours:"每日 10:00–18:00",
     booking:"免預約，現場排隊點餐；假日人潮較多",
     bookingBadge:"免預約",
+    parking:"免費路邊停車（Haleiwa 小鎮車位有限）",
     fee:"現場付款，價位約 $5–8／份",
     video:null
   },
   {
     id:"imphula", day:"9/2", time:"約 18:00–18:30 開演（隨日落調整）", type:"culture", region:"waikiki", closedDays:["二","四","六","日"], free:true,
     title:"呼拉舞秀（O Nā Lani Sunset Stories Hula Show）",
-    what:"International Market Place 一樓 Queen's Court 廣場的免費演出，先在 Kalakaua Ave 入口點燃火炬塔，接著移到舞台表演夏威夷與玻里尼西亞歌舞，約 30 分鐘，就在 Waikiki 市中心不用移動。<b>每週一、三、五</b>固定演出，9/2 剛好是週三。",
+    what:"International Market Place 免費呼拉舞秀，先點火炬塔再表演，約 30 分鐘，每週一三五。",
     addr:"2330 Kalakaua Ave, Honolulu, HI 96815（International Market Place）",
     geo:"21.2793,-157.8280",
     hours:"每週一、三、五；開演時間隨日落季節微調（冬季約 18:00，夏季約 18:30）；<b>週二、四、六、日沒有這場</b>",
     booking:"免預約，現場自由入座；出發前建議上 <a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.internationalmarketplacehawaii.com'>官網 ↗</a> 或現場詢問服務台確認當週準確時間",
     bookingBadge:"免預約",
+    parking:"付費停車場（International Market Place，消費可能有折抵，出發前確認）",
     fee:"完全免費，無取消規則",
     video:null
   },
   {
     id:"missouri", day:"9/8", time:"13:00–15:00（最後入場）", type:"history", region:"pearlharbor", closedDays:[],
     title:"密蘇里號戰艦紀念館（Battleship Missouri Memorial）",
-    what:"二戰時日本簽署投降文件的那艘戰艦，現在停在珍珠港開放參觀，含導覽。因為這天下午才從機場過來，只安排這一個景點。",
+    what:"二戰日本簽降文件的戰艦，開放參觀含導覽。",
     addr:"1 Arizona Memorial Rd, Honolulu, HI 96818（Pearl Harbor Visitor Center）",
     geo:"21.3444,-157.9539",
     hours:"每日 08:00–16:00（最後入場 15:00），全年無休；需攜帶政府核發相片證件／護照",
     booking:"免預約，Go City Pass 現場出示掃碼；含 35 分鐘導覽",
     bookingBadge:"現場刷卡",
     value:"約 $40／成人",
+    parking:"免費（Pearl Harbor Visitor Center 停車場，尖峰時段較滿）",
     fee:"無需預約，無 no-show 費用",
     video:{id:"BZ8i12GDRBo", label:"Battleship Missouri Memorial 參觀導覽"}
   },
   {
     id:"arizona", day:"9/8", time:"", type:"history", region:"pearlharbor", closedDays:[], included:false,
     title:"亞利桑那號紀念碑（USS Arizona Memorial，本次時間有限，暫不安排）",
-    what:"紀念珍珠港事變中沉船罹難者的紀念碑，蓋在海上需搭船，通常建議留一整個上午才夠悠閒排隊＋參觀。這次下午才到，時間排不進去，先列在這裡備查。",
+    what:"珍珠港事變罹難者紀念碑，海上需搭船，通常需一整個上午。",
     addr:"同 Pearl Harbor Visitor Center",
     geo:"21.3646,-157.9524",
     hours:"依 NPS 每日釋出名額而定",
@@ -547,8 +673,12 @@ const PLACE_LABELS = [
 
 const WAIKIKI_LL = [21.2793,-157.8294];
 const AIRPORT_LL = [21.3245,-157.9251];
-const HOME_EMOJI = String.fromCodePoint(127968);
-const PLANE_EMOJI = String.fromCodePoint(9992,65039);
+function svgMiniIcon(x, y, pathD, size){
+  const s = (size||10)/24;
+  return '<g transform="translate(' + (x - (size||10)/2) + ',' + (y - (size||10)/2) + ') scale(' + s + ')" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">' + pathD + '</g>';
+}
+const HOME_ICON_PATH = '<path d="M4 11l8-7 8 7"/><path d="M6 10v9h12v-9"/>';
+const PLANE_ICON_PATH = '<path d="M12 2.5l0 8M12 2.5c-.6 0-1 .5-1 1v6.3l-7.5 4.3v1.8l7.5-2.3v3.9l-2.2 1.6v1.4l3.2-1 3.2 1v-1.4L13 17.5v-3.9l7.5 2.3v-1.8L13 9.8V3.5c0-.5-.4-1-1-1z"/>';
 
 function mapChrome(){
   const placeLabels = PLACE_LABELS.map(function(item){
@@ -581,9 +711,9 @@ function islandSVG(day){
       + '<text x="' + p.x + '" y="' + (p.y-15.5) + '" font-size="6.5" text-anchor="middle" fill="#fff" font-weight="700">' + (i+1) + '</text>';
   }).join('');
   const lodgeLL = day==='9/8' ? AIRPORT_LL : WAIKIKI_LL;
-  const lodgeIcon = day==='9/8' ? PLANE_EMOJI : HOME_EMOJI;
+  const lodgeIcon = day==='9/8' ? PLANE_ICON_PATH : HOME_ICON_PATH;
   const lodgePos = geoToXY(lodgeLL[0], lodgeLL[1]);
-  const lodgePin = pinSVG(lodgePos.x, lodgePos.y, '#B9860A', 0.8, 0.85) + '<text x="' + lodgePos.x + '" y="' + (lodgePos.y-14) + '" font-size="7" text-anchor="middle">' + lodgeIcon + '</text>';
+  const lodgePin = pinSVG(lodgePos.x, lodgePos.y, '#B9860A', 0.8, 0.85) + svgMiniIcon(lodgePos.x, lodgePos.y-15, lodgeIcon, 9);
   return '<svg viewBox="-8 -8 202 130" class="w-full h-auto"><rect x="-8" y="-8" width="202" height="130" fill="var(--map-sea)"/><path d="' + ISLAND_PATH + '" fill="var(--map-land)" stroke="#C9BC98" stroke-width="2" stroke-linejoin="round"/>' + mapChrome() + routeLineSVG(pts) + pins + lodgePin + '</svg>';
 }
 
@@ -595,8 +725,8 @@ function overviewIslandSVG(){
   }).join('');
   const waikikiPos = geoToXY(WAIKIKI_LL[0], WAIKIKI_LL[1]);
   const airportPos = geoToXY(AIRPORT_LL[0], AIRPORT_LL[1]);
-  const home = pinSVG(waikikiPos.x, waikikiPos.y-18, '#B9860A', 0.85, 0.9) + '<text x="' + waikikiPos.x + '" y="' + (waikikiPos.y-31) + '" font-size="8" text-anchor="middle">' + HOME_EMOJI + '</text>';
-  const airport = pinSVG(airportPos.x, airportPos.y, '#232D42', 0.85, 0.9) + '<text x="' + airportPos.x + '" y="' + (airportPos.y-14) + '" font-size="8" text-anchor="middle">' + PLANE_EMOJI + '</text>';
+  const home = pinSVG(waikikiPos.x, waikikiPos.y-18, '#B9860A', 0.85, 0.9) + svgMiniIcon(waikikiPos.x, waikikiPos.y-32, HOME_ICON_PATH, 9);
+  const airport = pinSVG(airportPos.x, airportPos.y, '#232D42', 0.85, 0.9) + svgMiniIcon(airportPos.x, airportPos.y-15, PLANE_ICON_PATH, 9);
   return '<svg viewBox="-8 -8 202 130" class="w-full h-auto"><rect x="-8" y="-8" width="202" height="130" fill="var(--map-sea)"/><path d="' + ISLAND_PATH + '" fill="var(--map-land)" stroke="#C9BC98" stroke-width="2" stroke-linejoin="round"/>' + mapChrome() + dayPins + home + airport + '</svg>';
 }
 
@@ -639,7 +769,7 @@ function renderOverview(){
       <div class="font-baloo font-bold text-[11px] text-white w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0 text-center leading-tight bg-gradient-to-br ${DAY_GRADIENT[d]}">${d}<br>（${DAY_WEEKDAY[d]}）</div>
       <div>
         <b class="font-baloo text-[14.5px] block mb-0.5">${DAY_TITLE[d]}</b>
-        <div class="text-[11.5px] text-slate-500">🛏 住宿：${DAY_LODGING[d]}</div>
+        <div class="text-[11.5px] text-slate-500"><span class="text-mango-dark">${icon('home','w-3.5 h-3.5 inline-block align-[-3px]')}</span> 住宿：${DAY_LODGING[d]}</div>
         <div class="text-[12.5px] text-slate-500 mt-0.5">${hi}</div>
       </div>
     </button>`;
@@ -661,8 +791,8 @@ function cardHTML(item){
       <div class="flex items-center justify-between gap-2 mb-1.5">
         <span class="font-baloo font-bold text-[13.5px] text-mango-dark bg-amber-50 rounded-md px-2.5 py-0.5">${item.time || '時段依現場而定'}</span>
         <div class="flex items-center gap-1">
-          <span class="text-[10px] font-bold rounded-md px-2 py-0.5 ${item.free?'bg-emerald-100 text-emerald-700':(item.included===false?'bg-violet-100 text-violet-700':'bg-teal-100 text-teal-700')}">${item.free?'免費':(item.included===false?'自費／需另外購票':'GoCity 已含')}</span>
-          <span class="text-[10px] font-bold rounded-md px-2.5 py-0.5 ${item.bookingBadge==='現場刷卡'?'bg-emerald-100 text-emerald-700':(item.bookingBadge==='本次不排'?'bg-slate-100 text-slate-500':'bg-amber-100 text-amber-700')}">${item.bookingBadge}</span>
+          ${item.free? `<span class="text-[10px] font-bold rounded-md px-2 py-0.5 bg-emerald-100 text-emerald-700">免費</span>` : (item.included!==false? `<span class="text-[10px] font-bold rounded-md px-2 py-0.5 bg-teal-100 text-teal-700">GoCity 已含</span>` : '')}
+          ${item.bookingBadge && item.bookingBadge!=='建議先預約'? `<span class="text-[10px] font-bold rounded-md px-2.5 py-0.5 ${item.bookingBadge==='現場刷卡'?'bg-emerald-100 text-emerald-700':(item.bookingBadge==='本次不排'?'bg-slate-100 text-slate-500':'bg-amber-100 text-amber-700')}">${item.bookingBadge}</span>` : ''}
         </div>
       </div>
       <div class="font-baloo font-bold text-[16px] mb-1" style="text-wrap:balance;">${item.title}</div>
@@ -671,11 +801,12 @@ function cardHTML(item){
         <div class="detail-row"><span class="detail-lbl">地點</span><span class="detail-val">${item.addr} · <a target="_blank" class="text-ocean-dark font-bold underline" href="https://www.google.com/maps/search/?api=1&query=${item.geo ? item.geo : encodeURIComponent(item.addr)}">Maps↗</a></span></div>
         <div class="detail-row"><span class="detail-lbl">營業</span><span class="detail-val">${item.hours}</span></div>
         <div class="detail-row"><span class="detail-lbl">預約</span><span class="detail-val">${item.booking}</span></div>
+        ${item.parking? `<div class="detail-row"><span class="detail-lbl">停車</span><span class="detail-val">${item.parking}</span></div>` : ''}
         ${item.value && item.included!==false ? `<div class="detail-row"><span class="detail-lbl">現值</span><span class="detail-val">單獨購票約 ${item.value}（已含在 Go City 票內）</span></div>` : ''}
       </div>
       <div class="mt-2 bg-amber-50 text-amber-800 text-[12px] rounded-md px-2.5 py-1.5">${item.fee}</div>
-      ${item.impact? `<div class="mt-2 bg-indigo-50 text-indigo-800 text-[12px] rounded-md px-2.5 py-1.5"><b>⏱ 影響後面玻里尼西亞文化中心的時間：</b>${item.impact}</div>` : ''}
-      ${item.note? `<div class="mt-2 bg-sky-50 text-sky-800 text-[12px] rounded-md px-2.5 py-1.5"><b>💡 補充：</b>${item.note}</div>` : ''}
+      ${item.impact? `<div class="mt-2 bg-indigo-50 text-indigo-800 text-[12px] rounded-md px-2.5 py-1.5"><b>影響後面玻里尼西亞文化中心的時間：</b>${item.impact}</div>` : ''}
+      ${item.note? `<div class="mt-2 bg-sky-50 text-sky-800 text-[12px] rounded-md px-2.5 py-1.5"><b>補充：</b>${item.note}</div>` : ''}
       ${item.video? `<a target="_blank" href="https://www.youtube.com/watch?v=${item.video.id}" class="mt-2 flex items-center gap-2 bg-sky-50 rounded-md px-2 py-1.5">
         <img src="${ytThumb(item.video.id)}" class="w-14 h-8 object-cover rounded" alt="video">
         <span class="text-[11px] font-semibold leading-tight">${item.video.label}</span>
@@ -699,7 +830,8 @@ function renderTimeline(day){
       ${cardHTML(item)}
     </div>`;
     (TRANSIT[day]||[]).filter(t=>t.after===item.id).forEach(t=>{
-      html += `<div class="relative -my-3"><span class="absolute -left-[27px] top-1 text-[13px]">🚗</span><p class="text-[12px] text-slate-400 italic pl-1">${t.label}</p></div>`;
+      const modeColor = {car:'text-ocean-dark', walk:'text-palm-dark', passport:'text-navy'}[t.mode] || 'text-slate-400';
+      html += `<div class="relative -my-3 flex items-start gap-1.5 pl-1"><span class="absolute -left-[29px] top-0.5 ${modeColor}">${icon(t.mode,'w-3.5 h-3.5')}</span><p class="text-[12px] text-slate-400 italic">${t.label}</p></div>`;
     });
   });
   html += `</div>`;
@@ -714,7 +846,7 @@ function renderAll(){
     if(photos && photos.length){
       photoWrap.innerHTML = photos.map(p=>`<div class="flex-none"><img src="${p.url}" alt="${p.cap}" class="w-36 h-24 object-cover rounded-lg shadow"><p class="text-[10px] text-slate-400 text-center mt-1">${p.cap}</p></div>`).join('');
     } else {
-      photoWrap.innerHTML = `<div class="flex-none"><div class="w-36 h-24 rounded-lg shadow bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center text-3xl text-white">⚓</div><p class="text-[10px] text-slate-400 text-center mt-1">示意圖（尚無授權實景照片）</p></div>`;
+      photoWrap.innerHTML = `<div class="flex-none"><div class="w-36 h-24 rounded-lg shadow bg-gradient-to-br from-navy to-navy-dark flex items-center justify-center text-white">${icon('anchor','w-9 h-9')}</div><p class="text-[10px] text-slate-400 text-center mt-1">示意圖（尚無授權實景照片）</p></div>`;
     }
   });
   renderOverview();
@@ -791,13 +923,13 @@ function openMoveModal(id, oldDay, newDay, selectEl){
 
   const isClosed = item.closedDays.includes(weekday);
   const closedCheck = isClosed
-    ? `<div class="flex gap-2"><span>⚠️</span><span class="text-magenta-dark font-bold">${newDay} 是星期${weekday}，此行程公休，搬過去無法成行</span></div>`
-    : `<div class="flex gap-2"><span>✅</span><span>${newDay}（星期${weekday}）此行程有營業</span></div>`;
+    ? `<div class="flex gap-2"><span class='text-amber-600'>${icon('warning','w-4 h-4 inline-block')}</span><span class="text-magenta-dark font-bold">${newDay} 是星期${weekday}，此行程公休，搬過去無法成行</span></div>`
+    : `<div class="flex gap-2"><span class='text-emerald-600'>${icon('check','w-4 h-4 inline-block')}</span><span>${newDay}（星期${weekday}）此行程有營業</span></div>`;
 
   let overlapCheck;
   const myRange = parseTime(item.time);
   if(!myRange){
-    overlapCheck = `<div class="flex gap-2"><span>ℹ️</span><span>此行程沒有固定時段，略過時間比對</span></div>`;
+    overlapCheck = `<div class="flex gap-2"><span class='text-slate-400'>${icon('info','w-4 h-4 inline-block')}</span><span>此行程沒有固定時段，略過時間比對</span></div>`;
   } else {
     const conflicts = others.filter(o=>{
       const r = parseTime(o.time);
@@ -805,18 +937,18 @@ function openMoveModal(id, oldDay, newDay, selectEl){
       return myRange[0] < r[1] && r[0] < myRange[1];
     });
     overlapCheck = conflicts.length
-      ? `<div class="flex gap-2"><span>⚠️</span><span class="text-magenta-dark font-bold">跟「${conflicts.map(c=>c.title).join('、')}」時段重疊</span></div>`
-      : `<div class="flex gap-2"><span>✅</span><span>跟這天其他行程沒有時間衝突</span></div>`;
+      ? `<div class="flex gap-2"><span class='text-amber-600'>${icon('warning','w-4 h-4 inline-block')}</span><span class="text-magenta-dark font-bold">跟「${conflicts.map(c=>c.title).join('、')}」時段重疊</span></div>`
+      : `<div class="flex gap-2"><span class='text-emerald-600'>${icon('check','w-4 h-4 inline-block')}</span><span>跟這天其他行程沒有時間衝突</span></div>`;
   }
 
   const otherRegions = [...new Set(others.map(o=>o.region))];
   let geoCheck;
   if(otherRegions.length===0){
-    geoCheck = `<div class="flex gap-2"><span>ℹ️</span><span>${newDay} 目前還沒有其他行程，沒有地理位置比對對象</span></div>`;
+    geoCheck = `<div class="flex gap-2"><span class='text-slate-400'>${icon('info','w-4 h-4 inline-block')}</span><span>${newDay} 目前還沒有其他行程，沒有地理位置比對對象</span></div>`;
   } else if(otherRegions.includes(item.region)){
-    geoCheck = `<div class="flex gap-2"><span>✅</span><span>跟這天其他行程都在 ${REGION_LABEL[item.region]}，順路</span></div>`;
+    geoCheck = `<div class="flex gap-2"><span class='text-emerald-600'>${icon('check','w-4 h-4 inline-block')}</span><span>跟這天其他行程都在 ${REGION_LABEL[item.region]}，順路</span></div>`;
   } else {
-    geoCheck = `<div class="flex gap-2"><span>⚠️</span><span class="text-magenta-dark font-bold">這天其他行程在 ${otherRegions.map(r=>REGION_LABEL[r]).join('、')}，此行程在 ${REGION_LABEL[item.region]}，跨區可能拉長交通時間</span></div>`;
+    geoCheck = `<div class="flex gap-2"><span class='text-amber-600'>${icon('warning','w-4 h-4 inline-block')}</span><span class="text-magenta-dark font-bold">這天其他行程在 ${otherRegions.map(r=>REGION_LABEL[r]).join('、')}，此行程在 ${REGION_LABEL[item.region]}，跨區可能拉長交通時間</span></div>`;
   }
 
   document.getElementById('modal-title').textContent = `搬動「${item.title}」→ ${newDay}（${weekday}）？`;
@@ -853,7 +985,7 @@ document.getElementById('map-fab').addEventListener('click', ()=>{
   const modalBackdrop = document.getElementById('map-modal-backdrop');
   const title = document.getElementById('map-modal-title');
   const content = document.getElementById('map-modal-content');
-  if(activeTab === 'intro' || activeTab === 'compare'){
+  if(activeTab === 'intro' || activeTab === 'compare' || activeTab === 'flights'){
     title.textContent = '歐胡島全覽：四天活動範圍';
     content.innerHTML = overviewIslandSVG();
   } else {
@@ -873,7 +1005,7 @@ document.getElementById('map-modal-backdrop').addEventListener('click', e=>{
 });
 
 renderAll();
-setActiveTab('intro');
+setActiveTab('flights');
 </script>
 </body>
 </html>
