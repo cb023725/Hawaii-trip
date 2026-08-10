@@ -426,9 +426,9 @@ const DATA = [
     booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://gostateparks.hawaii.gov/diamondhead'>gostateparks.hawaii.gov ↗</a> 線上訂位，最多可提前 30 天訂，記得同時訂「停車」時段",
     bookingBadge:"需預約",
     parking:"付費 $10／車（訂位時一併預約停車時段，只收信用卡）",
-    fee:"非居民門票 $5／人＋停車 $10／車（都只收信用卡，現場不收現金）；抵達需在時段開始後 30 分鐘內入場，逾時視同放棄",
+    fee:"非居民門票 $5／人＋停車 $10／車（都只收信用卡，現場不收現金）。<br>抵達需在時段開始後 30 分鐘內入場，逾時視同放棄",
     video:null,
-    note:"步道全程無遮蔭，正午較曬，建議帶足夠飲水、防曬與好走的鞋；山頂無廁所，出發前先上。"
+    note:"步道全程無遮蔭，正午較曬，建議帶足夠飲水、防曬與好走的鞋；山頂無廁所，出發前先上。<br><b>停車安全：</b>車門鎖好、車窗關好；東西別放後座，放後車廂；盡量不要中途開後車廂；貴重物品不留車內。"
   },
   {
     id:"dhvista", day:"8/30", time:"約 16:00–16:20（彈性）", type:"nature", region:"waikiki", closedDays:[], included:false, free:true,
@@ -441,6 +441,7 @@ const DATA = [
     bookingBadge:"免預約",
     parking:"免費（沿路 3 處停車區＋路邊停車）",
     fee:"完全免費",
+    note:"<b>停車安全：</b>車門鎖好、車窗關好；東西放後車廂、盡量不開；貴重物品不留車內。<br>這裡<b>是路邊停車區、沒有監視器</b>，拍照建議輪流拍、至少留一人顧車。",
     video:null
   },
   {
@@ -462,52 +463,56 @@ const DATA = [
     addr:"100 Hanauma Bay Rd, Honolulu, HI 96825",
     geo:"21.2690,-157.6938",
     hours:"僅週三至週日開放（週一、二公休）；06:45–16:00，最後入場 13:30，建議一開園就到，人少水最清",
-    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://pros.hnl.info'>官方訂位系統 ↗</a>；限「參觀日前 2 天」當地時間早上 7:00 開放搶票，很快額滿——也就是要在 <b>8/31（一）早上 7:00</b> 準時搶 9/2 的名額",
+    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://pros.hnl.info'>官方訂位系統 ↗</a><br>限「參觀日前 2 天」當地時間早上 7:00 開放搶票，很快額滿——<b>要在 8/31（一）早上 7:00</b> 準時搶 9/2 的名額",
     bookingBadge:"需搶票（自費）",
     parking:"免費（園區自有停車場，車位有限）",
     fee:"$25／成人（13 歲以上，12 歲以下免費）；現場另有浮潛用具租借約 $15–20",
+    note:"<b>停車安全：</b>車門鎖好、車窗關好；東西別放後座，放後車廂；盡量不要中途開後車廂；貴重物品不留車內（現場有置物櫃可租，貴重物品建議直接鎖進去）。",
     video:null
   },
   {
-    id:"makani", day:"9/2", time:"14:00–16:00", type:"water", region:"waikiki", closedDays:[],
+    id:"makani", day:"9/2", time:"14:00–16:00（13:30 前抵達）", type:"water", region:"waikiki", closedDays:[],
     title:"雙體帆船出海（Makani Catamaran Sail）",
-    what:"雙體帆船出海賞海岸線，不下水，觀光兜風性質。",
+    what:"雙體帆船出海賞海岸線，不下水，觀光兜風性質。<br>報到在出發前 30 分鐘，行前務必先簽好棄權書。",
     addr:"1009 Ala Moana Blvd F31, Honolulu, HI 96814（同樣在 Kewalo Basin Harbor，Makani Kiosk）",
     geo:"21.294837,-157.857350",
     hours:"每日 11:00 / 14:00 兩場，全年無休",
-    booking:"電話預約 <b>(808) 591-9000</b>（無線上系統，視空位而定）",
-    bookingBadge:"需預約",
+    booking:"已完成訂位 ✓ 確認號 <b>#370763150</b>（Fun in the Sun Sail）",
+    bookingBadge:"已預約",
     value:"約 $143／成人",
-    parking:"付費（Kewalo Basin Harbor 停車場約 $1–4／小時）；也可停 Ala Moana Beach Park 免費，步行約 5–10 分鐘",
-    fee:"訂位時需留信用卡作保；每人另收 $1 州政府海洋保育費，48 小時內取消將依規定從該信用卡收費",
+    parking:"Kewalo Harbor 車位<b>非常有限</b>，$3／小時（<b>限刷卡</b>）；建議提前 1 小時到，找不到位可到對街找",
+    fee:"<b>取消政策：</b>提前 48 小時取消可全額退款。<br>48 小時內取消或未出席：<b>沒收票券／全額不退，且 Go City 訂位另收 $30／人</b> no-show 費用。<br>電話 (808) 591-9000 或 email rez@sailmakani.com 辦理取消。",
+    note:"<b>訂位資訊：</b>4 位成人（Go Oahu Card）・9/2（三）14:00–16:00<br><b>⚠️ 出發前必做：</b>每人都要線上簽<b>棄權書（Waiver）</b>，未簽無法完成報到。<br><b>攜帶：</b>防曬乳（<b>非噴霧式</b>）、太陽眼鏡、好走的鞋、怕冷可帶薄外套；可自帶食物，<b>不可帶外食飲料</b>（酒牌規定）。",
     video:{id:"T_2Dz2WRu8U", label:"Go City 官方介紹：Makani Catamaran Sail"}
   },
   {
-    id:"luau", day:"9/2", time:"17:30–20:00", type:"culture", region:"waikiki", closedDays:["六"],
-    title:"傳統夏威夷晚宴秀（Ka Moana Luau at Aloha Tower，Premium 名額）",
-    what:"傳統歌舞秀＋吃到飽自助晚宴，約 2.5 小時。",
+    id:"luau", day:"9/2", time:"17:00–19:45（16:45–17:00 報到，17:15 開門）", type:"culture", region:"waikiki", closedDays:["六"],
+    title:"傳統夏威夷晚宴秀（Ka Moana Luau at Aloha Tower）",
+    what:"傳統歌舞秀＋吃到飽自助晚宴，約 2.75 小時。<br>自駕前往，車程約 15 分鐘。",
     addr:"1 Aloha Tower Dr, Honolulu, HI 96813",
     geo:"21.3067,-157.8677",
-    hours:"週一至週五、週日 17:30–20:00；週六公休",
-    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>（用 Go City Pass 連結預約）",
-    bookingBadge:"需預約",
+    hours:"週一至週五、週日 17:00 場；週六公休",
+    booking:"已完成訂位 ✓ <a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.moanaluau.com/reservations'>moanaluau.com ↗</a>",
+    bookingBadge:"已預約",
     value:"約 $169／成人",
-    parking:"付費（Aloha Tower Marketplace 代客泊車 $10／車；附近公共停車場約 $6／小時）",
-    fee:"24 小時內取消不予退款，視同全額收費",
+    parking:"<b>只能代客泊車（Valet Only）$10／車</b>，沒有自行停車選項",
+    fee:"<b>取消政策：</b>行程開始前至少 48 小時取消可全額退款。<br><b>最晚取消時間：8/31（一）17:00</b>，超過恕不退款。",
+    note:"<b>訂位資訊：</b>確認號 <b>#370742610</b>・Splash Seating<br>9/2（三）17:00–19:45・4 位成人（Go City Adult）",
     video:{id:"xvSD0AzOb_I", label:"Ka Moana Luau 新場地（Aloha Tower）"}
   },
   {
-    id:"kualoa", day:"8/31", time:"09:30–13:00", type:"nature", region:"windward", closedDays:[],
+    id:"kualoa", day:"8/31", time:"09:30–13:00（08:45 報到）", type:"nature", region:"windward", closedDays:[],
     title:"古蘭尼牧場：神秘島（Kualoa Ranch: Secret Island Beach）",
-    what:"電影取景牧場的私人沙灘，含獨木舟／立槳／浮潛與魚塭遊船，3.5 小時。",
-    addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744",
+    what:"電影取景牧場的私人沙灘，含獨木舟／立槳／浮潛與魚塭遊船，3.5 小時。<br><b>路線：</b>H-1 → Likelike Hwy（過 Wilson Tunnel）→ Kahekili Hwy，約 30 分鐘／11 英里。",
+    addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744（Ticket Office 報到）",
     geo:"21.520742,-157.839467",
-    hours:"分 Morning Adventure 09:30 或 Afternoon Adventure 12:30，每次 3.5 小時，全年開放（僅耶誕節、元旦公休）",
-    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://www.kualoa.com/tours-and-activities/secret-island-beach-adventure'>kualoa.com ↗</a> 選「Kualoa Secret Island Beach (Half-Day)」選時間人數，現場刷 Pass 後退款；報到需提前 45 分鐘",
-    bookingBadge:"需預約",
+    hours:"3.5 小時，08:45 報到、09:30 出發",
+    booking:"已完成訂位 ✓ 確認號 <b>BEHGWZ3G</b>",
+    bookingBadge:"已預約",
     value:"約 $63／成人",
     parking:"免費（園區自有停車場）",
-    fee:"需先線上付款訂位，現場刷 Go City Pass 後全額退款；若未出席該場次，則不予退還",
+    fee:"<b>取消政策：</b>電話 (808) 237-7321，至少提前 48 小時可全額退款。<br><b>最晚取消時間：8/29（六）09:30 HST</b>（約台灣時間 8/30 凌晨 3:30，等於出發前）。<br>48 小時內或未出席，恕不退款。電話服務時間 07:00–16:30 HST。",
+    note:"<b>訂位資訊：</b>YIWEN WU・4 位成人・8/31（一）09:30 場<br><b>攜帶：</b>身分證件（需與訂位姓名相符）、防曬乳、泳裝、水鞋、毛巾（園區有淋浴間可換裝）",
     video:{id:"-L14lBjxhVo", label:"Kualoa Ranch 官方影片：Secret Island Beach Activities"}
   },
   {
@@ -521,7 +526,7 @@ const DATA = [
     bookingBadge:"現場刷卡",
     value:"約 $95／成人",
     parking:"免費（園區自有停車場）",
-    fee:"無需預約，無 no-show 費用；<b>晚餐秀（Lūʻau）跟 Hā 夜間大秀都不含在門票內</b>，要另外加購；園區也不含接送，要自己想辦法到（我們是自駕沒問題）",
+    fee:"無需預約，無 no-show 費用。<br><b>晚餐秀（Lūʻau）跟 Hā 夜間大秀都不含在門票內</b>，要另外加購；園區也不含接送，要自己想辦法到（我們是自駕沒問題）",
     video:{id:"Af06OcBG2gM", label:"PCC Island Villages 園區導覽"},
     note:"門票上會附 Hukilau Marketplace 商店 9 折優惠，逛紀念品店記得出示。"
   },
@@ -590,6 +595,18 @@ const DATA = [
     bookingBadge:"免預約",
     parking:"免費路邊停車（Haleiwa 小鎮車位有限）",
     fee:"現場付款，價位約 $5–8／份",
+    video:null
+  },
+  {
+    id:"kuhaaheo", day:"9/1", time:"16:30–18:00", type:"culture", region:"waikiki", closedDays:["一","三","四","五","六","日"], free:true,
+    title:"Kū Haʻaheo 免費音樂會（Waikiki Beach Walk）",
+    what:"KAMANAWA（Blaine Kia＋Kalei Kahalewai）主唱的免費現場夏威夷音樂會，搭配 Hālau Ka Waikahe Lani Mālie 舞團的傳統呼拉舞演出，約 1.5 小時。<b>每週二</b>固定演出，剛好接在北岸行程回程之後。",
+    addr:"Waikiki Beach Walk Plaza, Honolulu, HI 96815",
+    geo:"21.2822,-157.8309",
+    hours:"每週二 16:30–18:00；<b>其餘 6 天沒有這場</b>",
+    booking:"免預約，現場自由入座",
+    bookingBadge:"免預約",
+    fee:"完全免費",
     video:null
   },
   {
@@ -808,7 +825,7 @@ function cardHTML(item){
         <span class="font-baloo font-bold text-[13.5px] text-mango-dark bg-amber-50 rounded-md px-2.5 py-0.5">${item.time || '時段依現場而定'}</span>
         <div class="flex items-center gap-1">
           ${item.noBadge ? '' : (item.free? `<span class="text-[10px] font-bold rounded-md px-2 py-0.5 bg-emerald-100 text-emerald-700">免費</span>` : (item.included!==false? `<span class="text-[10px] font-bold rounded-md px-2 py-0.5 bg-teal-100 text-teal-700">GoCity 已含</span>` : ''))}
-          ${item.bookingBadge && item.bookingBadge!=='建議先預約'? `<span class="text-[10px] font-bold rounded-md px-2.5 py-0.5 ${item.bookingBadge==='現場刷卡'?'bg-emerald-100 text-emerald-700':(item.bookingBadge==='本次不排'?'bg-slate-100 text-slate-500':'bg-amber-100 text-amber-700')}">${item.bookingBadge}</span>` : ''}
+          ${item.bookingBadge && item.bookingBadge!=='建議先預約'? `<span class="text-[10px] font-bold rounded-md px-2.5 py-0.5 ${(item.bookingBadge==='現場刷卡'||item.bookingBadge==='已預約')?'bg-emerald-100 text-emerald-700':(item.bookingBadge==='本次不排'?'bg-slate-100 text-slate-500':'bg-amber-100 text-amber-700')}">${item.bookingBadge}</span>` : ''}
         </div>
       </div>
       <div class="font-baloo font-bold text-[16px] mb-1" style="text-wrap:balance;">${item.title}</div>
