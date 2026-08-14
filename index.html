@@ -370,7 +370,7 @@ const TRANSIT = {
     { after:"shaveice", mode:"car", label:"自駕車程約 50–60 分鐘南下回 Waikiki" }
   ],
   "9/2":[
-    { after:"hanauma", mode:"car", label:"自駕車程約 20–30 分鐘回市區至 Kewalo Basin Harbor" },
+    { after:"hanauma", mode:"car", label:"自駕車程約 20–30 分鐘回市區，中間留約 2.5 小時洗澡換裝＋吃午餐＋休息" },
     { after:"makani", mode:"car", label:"自駕車程約 10–15 分鐘至 Aloha Tower" }
   ],
   "9/8":[
@@ -417,21 +417,22 @@ const DATA = [
     video:null
   },
   {
-    id:"diamondhead", day:"8/30", time:"14:30–16:00", type:"nature", region:"waikiki", closedDays:[], included:false,
+    id:"diamondhead", day:"8/30", time:"14:30–16:15", type:"nature", region:"waikiki", closedDays:[], included:false,
     title:"鑽石頭山（Diamond Head State Monument）",
     what:"經典地標健行，來回約 1.6 英里、爬升 560 英尺，山頂可俯瞰 Waikiki。非居民需先上網訂位。",
     addr:"Diamond Head Rd, Honolulu, HI 96815（停車場入口，經隧道進入火山口內）",
     geo:"21.2609,-157.8055",
+    mapUrl:"https://maps.app.goo.gl/ZcJxAuVkVAhctLrf8",
     hours:"每日 06:00–18:00，最後一個入場時段 16:00（16:30 前要完成入場），18:00 準時關閘門",
     booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://gostateparks.hawaii.gov/diamondhead'>gostateparks.hawaii.gov ↗</a> 線上訂位，最多可提前 30 天訂，記得同時訂「停車」時段",
     bookingBadge:"需預約",
     parking:"付費 $10／車（訂位時一併預約停車時段，只收信用卡）",
-    fee:"非居民門票 $5／人＋停車 $10／車（都只收信用卡，現場不收現金）。<br>抵達需在時段開始後 30 分鐘內入場，逾時視同放棄",
+    fee:"非居民門票 $5／人＋停車 $10／車（都只收信用卡，現場不收現金）。<br>抵達需在時段開始後 30 分鐘內入場，逾時視同放棄<br><b>退改政策：</b>入園日前 <b>3 天</b>可全額退款；前一天午夜（HST）前可改期（視空位），改期收 <b>$5</b> 手續費（若不影響費用則免收）。",
     video:null,
     note:"步道全程無遮蔭，正午較曬，建議帶足夠飲水、防曬與好走的鞋；山頂無廁所，出發前先上。<br><b>停車安全：</b>車門鎖好、車窗關好；東西別放後座，放後車廂；盡量不要中途開後車廂；貴重物品不留車內。"
   },
   {
-    id:"dhvista", day:"8/30", time:"約 16:00–16:20（彈性）", type:"nature", region:"waikiki", closedDays:[], included:false, free:true,
+    id:"dhvista", day:"8/30", time:"約 16:25–16:45（彈性）", type:"nature", region:"waikiki", closedDays:[], included:false, free:true,
     title:"Diamond Head Road Vista Point（鑽石頭山觀景台）",
     what:"鑽石頭山健行結束後順路的觀景停車點，跟山頂步道是不同地方——不用爬山，開車就到，可以看南岸海景與 Kahala 高級住宅區，也有 Amelia Earhart 紀念碑。",
     addr:"3483 Diamond Head Rd, Honolulu, HI 96816（沿 Diamond Head Rd 共 3 處免費停車區）",
@@ -482,7 +483,7 @@ const DATA = [
     value:"約 $143／成人",
     parking:"Kewalo Harbor 車位<b>非常有限</b>，$3／小時（<b>限刷卡</b>）；建議提前 1 小時到，找不到位可到對街找",
     fee:"<b>取消政策：</b>提前 48 小時取消可全額退款。<br>48 小時內取消或未出席：<b>沒收票券／全額不退，且 Go City 訂位另收 $30／人</b> no-show 費用。<br>電話 (808) 591-9000 或 email rez@sailmakani.com 辦理取消。",
-    note:"<b>訂位資訊：</b>4 位成人（Go Oahu Card）・9/2（三）14:00–16:00<br><b>⚠️ 出發前必做：</b>每人都要線上簽<b>棄權書（Waiver）</b>，未簽無法完成報到。<br><b>攜帶：</b>防曬乳（<b>非噴霧式</b>）、太陽眼鏡、好走的鞋、怕冷可帶薄外套；可自帶食物，<b>不可帶外食飲料</b>（酒牌規定）。",
+    note:"<b>訂位資訊：</b>4 位成人（Go Oahu Card）・9/2（三）14:00–16:00<br><b>⚠️ 出發前必做：</b>每人都要<a target='_blank' class='text-ocean-dark font-bold underline' href='https://fareharbor.com/waivers?shortname=sailmakani&bookingUuid=878fa9c7-90b2-4011-b3e5-f67986856444&source=email-booking-confirmation'>線上簽棄權書 ↗</a>，未簽無法完成報到。<br><b>攜帶：</b>防曬乳（<b>非噴霧式</b>）、太陽眼鏡、好走的鞋、怕冷可帶薄外套；可自帶食物，<b>不可帶外食飲料</b>（酒牌規定）。",
     video:{id:"T_2Dz2WRu8U", label:"Go City 官方介紹：Makani Catamaran Sail"}
   },
   {
@@ -503,7 +504,7 @@ const DATA = [
   {
     id:"kualoa", day:"8/31", time:"09:30–13:00（08:45 報到）", type:"nature", region:"windward", closedDays:[],
     title:"古蘭尼牧場：神秘島（Kualoa Ranch: Secret Island Beach）",
-    what:"電影取景牧場的私人沙灘，含獨木舟／立槳／浮潛與魚塭遊船，3.5 小時。<br><b>路線：</b>H-1 → Likelike Hwy（過 Wilson Tunnel）→ Kahekili Hwy，約 30 分鐘／11 英里。",
+    what:"電影《侏儸紀公園》拍攝場地的私人海灘，可以玩獨木舟、立槳、浮潛，泡一整個上午，3.5 小時。<br><b>路線：</b>H-1 → Likelike Hwy（過 Wilson Tunnel）→ Kahekili Hwy，約 30 分鐘／11 英里。",
     addr:"49-560 Kamehameha Hwy, Kaneohe, HI 96744（Ticket Office 報到）",
     geo:"21.520742,-157.839467",
     hours:"3.5 小時，08:45 報到、09:30 出發",
@@ -516,9 +517,9 @@ const DATA = [
     video:{id:"-L14lBjxhVo", label:"Kualoa Ranch 官方影片：Secret Island Beach Activities"}
   },
   {
-    id:"pcc", day:"8/31", time:"約 13:30–18:00", type:"culture", region:"windward", closedDays:["三","日"],
+    id:"pcc", day:"8/31", time:"約 14:00–18:00", type:"culture", region:"windward", closedDays:["三","日"],
     title:"玻里尼西亞文化中心（Polynesian Cultural Center）",
-    what:"太平洋 6 個復原村莊＋互動體驗＋小火車導覽＋獨木舟大會演。",
+    what:"逛一圈太平洋 6 個傳統村落（夏威夷、紐西蘭、大溪地等），可以體驗生火、丟長矛，坐小火車遊園，晚上還有獨木舟表演。",
     addr:"55-370 Kamehameha Hwy, Laie, HI 96762",
     geo:"21.6417,-157.9213",
     hours:"週一二四五六 12:15–18:00；週三、週日公休",
@@ -531,7 +532,7 @@ const DATA = [
     note:"門票上會附 Hukilau Marketplace 商店 9 折優惠，逛紀念品店記得出示。"
   },
   {
-    id:"waimea", day:"9/1", time:"09:00–10:45", type:"nature", region:"northshore", closedDays:["一"],
+    id:"waimea", day:"9/1", time:"09:00–10:30", type:"nature", region:"northshore", closedDays:["一"],
     title:"瀑布谷（Waimea Valley）",
     what:"植物園步道，走到底有瀑布可游泳，記得帶泳衣。",
     addr:"59-864 Kamehameha Hwy, Haleʻiwa, HI 96712",
@@ -545,7 +546,7 @@ const DATA = [
     video:{id:"r83YaKgi98E", label:"Waimea Valley 瀑布谷與植物園導覽"}
   },
   {
-    id:"laniakea", day:"9/1", time:"11:00–11:30", type:"nature", region:"northshore", closedDays:[], included:false,
+    id:"laniakea", day:"9/1", time:"10:45–11:05", type:"nature", region:"northshore", closedDays:[], included:false,
     title:"海龜沙灘（Laniakea Beach）",
     what:"北岸知名野生海龜曬灘點，須保持 10 英尺距離、不可碰觸。",
     addr:"Laniakea Beach, Haleʻiwa, HI 96712（Kamehameha Hwy 上，Haleʻiwa 鎮北邊約 2.5 英里）",
@@ -558,17 +559,18 @@ const DATA = [
     video:null
   },
   {
-    id:"sup", day:"9/1", time:"12:00–13:30", type:"water", region:"northshore", closedDays:["日"],
+    id:"sup", day:"9/1", time:"12:00–13:30（11:30 報到）", type:"water", region:"northshore", closedDays:["日"],
     title:"立槳衝浪／海龜導覽團（Stand-Up Paddleboard Nature and Turtle Tour）",
-    what:"教練帶的 90 分鐘 SUP＋海龜導覽，水域平緩，也可換成 Kayak。",
-    addr:"62-540 Kamehameha Hwy, Haleiwa, HI 96712",
+    what:"教練帶的 SUP 或 Kayak＋海龜導覽，含岸上安全講解，水域平緩。<br>是<b>行動公司，直接在海灘集合</b>，沒有固定門市。",
+    addr:"62-540 Kamehameha Hwy, Haleiwa, HI 96712（Haleiwa Beach House 對面沙灘）",
     geo:"21.5960136,-158.1049705",
     hours:"每日 08:00 / 12:00 兩場；<b>週日公休</b>",
-    booking:"<a target='_blank' class='text-ocean-dark font-bold underline' href='https://sbshawaiitours.com/go.city/'>線上表單 ↗</a> 或電話／簡訊 <b>(808) 736-5080</b>，須提前至少 48 小時預約",
-    bookingBadge:"需預約",
+    booking:"已完成訂位 ✓ 確認號 <b>#370950973</b>・電話 <b>(808) 352-9775</b> 或 reservations@sbshawaiitours.com<br><b>訂位不代表付款：</b>業者（Steve Andreas）確認可<b>抵達歐胡島後再打電話提供信用卡資訊</b>（規定只能電話、不可 email／WhatsApp 傳卡號），<b>訂位當下不扣款</b>",
+    bookingBadge:"已預約",
     value:"約 $155／成人",
-    parking:"免費路邊停車（Haleiwa 小鎮車位有限，建議提早到）",
-    fee:"訂位時需留信用卡作保；未在 48 小時前取消或未出席將依規定收費",
+    parking:"<b>免費</b>——沙灘旁或對街土地停車場皆可；<b>不要停 Haleiwa Beach House 的柏油停車場</b>",
+    fee:"<b>取消政策（Go City 嚴格執行）：</b>須提前 <b>48 小時</b>通知更改。<br>48 小時內改期手續費：官方兩封確認信寫法不一（$50 或 $75），<b>建議來電登記卡片時一併確認正確金額</b>。<br>48 小時內取消或未出席：<b>收全額團費</b>。遲到錯過安全講解＝視同未出席，全額收費。<br><b>⚠️ 最晚取消時間為 8/30（日）12:00 前</b>——等於抵達當天中午前就要決定，時間非常緊。<br>因天候／海況取消由業者主動全額退款。",
+    note:"<b>訂位金額：</b>系統顯示應付 $586.39（4 人 Group Rate，Go City 結算用，非額外自費）。<br><b>從 Waikiki 車程約 1.5 小時</b>，北岸路況常塞車，抓寬鬆一點。<br><b>集合方式：</b>找車身寫「Aloha」、車門有海龜圖案的白色貨車。<br><b>廁所：</b>現場沒有，最近的公廁在 Pua'ena Point Beach Park。<br><b>貴重物品：</b>現場<b>沒有置物櫃</b>，不要帶下水，留在現場恕不負責遺失／損壞。",
     video:null
   },
   {
@@ -831,7 +833,7 @@ function cardHTML(item){
       <div class="font-baloo font-bold text-[16px] mb-1" style="text-wrap:balance;">${item.title}</div>
       <p class="text-[12.5px] text-slate-500 italic mb-2" style="text-wrap:pretty;">${item.what}</p>
       <div class="text-[13px] text-slate-500 space-y-1.5">
-        ${item.addr? `<div class="detail-row"><span class="detail-lbl">地點</span><span class="detail-val">${item.addr} · <a target="_blank" class="text-ocean-dark font-bold underline" href="https://www.google.com/maps/search/?api=1&query=${item.geo ? item.geo : encodeURIComponent(item.addr)}">Maps↗</a></span></div>` : ''}
+        ${item.addr? `<div class="detail-row"><span class="detail-lbl">地點</span><span class="detail-val">${item.addr} · <a target="_blank" class="text-ocean-dark font-bold underline" href="${item.mapUrl ? item.mapUrl : ('https://www.google.com/maps/search/?api=1&query=' + (item.geo ? item.geo : encodeURIComponent(item.addr)))}">Maps↗</a></span></div>` : ''}
         ${item.hours? `<div class="detail-row"><span class="detail-lbl">營業</span><span class="detail-val">${item.hours}</span></div>` : ''}
         ${item.booking? `<div class="detail-row"><span class="detail-lbl">預約</span><span class="detail-val">${item.booking}</span></div>` : ''}
         ${item.parking? `<div class="detail-row"><span class="detail-lbl">停車</span><span class="detail-val">${item.parking}</span></div>` : ''}
